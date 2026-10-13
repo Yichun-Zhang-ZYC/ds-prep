@@ -1,0 +1,341 @@
+@import "tailwindcss";
+
+/* Design tokens (DESIGN.md §9). Light on :root; dark follows the system unless the
+   header toggle pins a theme via html[data-theme]. */
+:root {
+  --bg: #ffffff;
+  --surface: #f7f8fa;
+  --surface-2: #eef0f4;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-soft: #eef2ff;
+  --on-accent: #ffffff;
+  --success: #16a34a;
+  --success-soft: #dcfce7;
+  --warning: #d97706;
+  --warning-soft: #fef3c7;
+  --error: #dc2626;
+  --error-soft: #fee2e2;
+  --track: #e5e7eb;
+  --code-bg: #f7f8fa;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1115;
+    --surface: #171a21;
+    --surface-2: #1e222b;
+    --border: #2a2f3a;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    /* Indigo 500 is too dark on #0F1115; Indigo 400 keeps contrast. */
+    --accent: #818cf8;
+    --accent-hover: #a5b4fc;
+    --accent-soft: #1e1b4b;
+    --on-accent: #0f1115;
+    --success: #22c55e;
+    --success-soft: #052e16;
+    --warning: #f59e0b;
+    --warning-soft: #2b1d05;
+    --error: #f87171;
+    --error-soft: #2d0b0b;
+    --track: #2a2f3a;
+    --code-bg: #171a21;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1115;
+  --surface: #171a21;
+  --surface-2: #1e222b;
+  --border: #2a2f3a;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #818cf8;
+  --accent-hover: #a5b4fc;
+  --accent-soft: #1e1b4b;
+  --on-accent: #0f1115;
+  --success: #22c55e;
+  --success-soft: #052e16;
+  --warning: #f59e0b;
+  --warning-soft: #2b1d05;
+  --error: #f87171;
+  --error-soft: #2d0b0b;
+  --track: #2a2f3a;
+  --code-bg: #171a21;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-fg: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-error: var(--error);
+  --color-error-soft: var(--error-soft);
+  --color-track: var(--track);
+  --color-code: var(--code-bg);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --radius-card: 12px;
+  --radius-btn: 8px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  *, ::before, ::after {
+    border-color: var(--border);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled), summary {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-btn border border-border bg-bg px-4 text-sm font-medium transition-colors hover:bg-surface disabled:cursor-not-allowed disabled:opacity-45;
+  }
+  .btn-primary {
+    @apply border-accent bg-accent text-on-accent hover:border-accent-hover hover:bg-accent-hover;
+  }
+  .btn-success {
+    @apply border-success bg-success-soft text-success hover:bg-success-soft;
+  }
+  .btn-danger {
+    @apply border-error bg-error text-bg hover:bg-error;
+  }
+  .btn-sm {
+    @apply h-8 px-3 text-[13px];
+  }
+  .input {
+    @apply h-10 w-full rounded-btn border border-border bg-bg px-3 text-sm outline-none focus-visible:border-accent;
+  }
+  .badge {
+    @apply inline-flex h-[22px] items-center whitespace-nowrap rounded-md bg-surface-2 px-2 text-xs font-medium text-muted;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.06em] text-muted;
+  }
+  .card {
+    @apply rounded-card border border-border bg-bg;
+  }
+}
+
+/* ---------- Lesson prose ---------- */
+.prose-lesson {
+  line-height: 1.7;
+  display: grid;
+  gap: 1.1rem;
+  min-width: 0;
+}
+.prose-lesson > * {
+  min-width: 0;
+}
+.prose-lesson h2 {
+  font-size: 1.3rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin-top: 1.1rem;
+  line-height: 1.35;
+}
+.prose-lesson h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+}
+.prose-lesson ul,
+.prose-lesson ol {
+  padding-left: 1.4rem;
+  display: grid;
+  gap: 0.3rem;
+}
+.prose-lesson ul { list-style: disc; }
+.prose-lesson ol { list-style: decimal; }
+.prose-lesson a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-lesson strong { font-weight: 600; }
+.prose-lesson :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--surface-2);
+  padding: 0.1em 0.35em;
+  border-radius: 5px;
+}
+.prose-lesson blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1rem;
+  color: var(--muted);
+}
+.prose-lesson .table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+}
+.prose-lesson table,
+.result-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.prose-lesson th,
+.prose-lesson td,
+.result-table th,
+.result-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.prose-lesson th,
+.result-table th {
+  background: var(--surface);
+  font-weight: 600;
+  font-size: 13px;
+}
+.prose-lesson tr:last-child td,
+.result-table tr:last-child td {
+  border-bottom: 0;
+}
+.prose-lesson .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25rem;
+}
+
+.code-block {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.65;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+
+/* CodeMirror inherits the theme tokens */
+.cm-theme .cm-editor {
+  font-size: 13.5px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  overflow: hidden;
+}
+.cm-theme .cm-editor.cm-focused {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.cm-theme .cm-scroller {
+  font-family: var(--font-mono);
+  line-height: 1.65;
+}
+.cm-theme .cm-gutters {
+  background: var(--code-bg);
+  border-right: 1px solid var(--border);
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Syntax highlighting tokens (read-only code blocks) */
+:root {
+  --tok-keyword: #4338ca;
+  --tok-string: #15803d;
+  --tok-number: #b45309;
+  --tok-comment: #9ca3af;
+  --tok-function: #0e7490;
+  --tok-operator: #6b7280;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --tok-keyword: #a5b4fc;
+    --tok-string: #4ade80;
+    --tok-number: #fbbf24;
+    --tok-comment: #6b7280;
+    --tok-function: #67e8f9;
+    --tok-operator: #9ca3af;
+  }
+}
+:root[data-theme="dark"] {
+  --tok-keyword: #a5b4fc;
+  --tok-string: #4ade80;
+  --tok-number: #fbbf24;
+  --tok-comment: #6b7280;
+  --tok-function: #67e8f9;
+  --tok-operator: #9ca3af;
+}
+
+/* Callouts: > [!TIP] / [!NOTE] / [!WARNING] */
+.prose-lesson aside.callout {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 14px 18px;
+  display: grid;
+  gap: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+.prose-lesson aside.callout::before {
+  content: attr(data-title);
+  font-weight: 600;
+}
+.prose-lesson aside.callout-tip {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.prose-lesson aside.callout-tip::before {
+  content: "💡  " attr(data-title);
+  color: var(--accent);
+}
+.prose-lesson aside.callout-note::before {
+  content: "ℹ︎  " attr(data-title);
+}
+.prose-lesson aside.callout-warning {
+  background: var(--warning-soft);
+  border-color: var(--warning);
+}
+.prose-lesson aside.callout-warning::before {
+  content: "⚠︎  " attr(data-title);
+  color: var(--warning);
+}
