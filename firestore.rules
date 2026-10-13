@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Study-group allowlist (DESIGN.md §8). Applies to Google and linked
+    // email/password sign-in alike: both carry the same Google-verified email.
+    function allowed() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email.lower() in [
+          // ===== EDIT ALLOWLIST HERE (lowercase) =====
+          "member1@gmail.com",
+          "member2@gmail.com"
+        ];
+    }
+
+    match /users/{uid} {
+      allow read, write: if allowed() && request.auth.uid == uid;
+
+      match /progress/{lessonId} {
+        allow read, write: if allowed() && request.auth.uid == uid;
+      }
+    }
+  }
+}
