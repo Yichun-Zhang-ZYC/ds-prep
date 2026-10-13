@@ -1,0 +1,3420 @@
+{
+  "sections": [
+    {
+      "id": "sql",
+      "title": "SQL",
+      "description": "Querying, aggregation, joins, window functions and classic interview patterns.",
+      "roles": {
+        "ds": 3,
+        "aids": 3,
+        "da": 3,
+        "bi": 3,
+        "de": 3,
+        "mle": 2,
+        "mlsci": 2,
+        "aidev": 1,
+        "mlops": 1,
+        "devops": 1,
+        "dataops": 1
+      },
+      "subtopics": [
+        {
+          "id": "sql-fundamentals",
+          "title": "SQL Fundamentals",
+          "lessons": [
+            {
+              "id": "sql-select-where-order-by-limit",
+              "title": "SELECT, WHERE, ORDER BY, LIMIT"
+            },
+            {
+              "id": "sql-distinct",
+              "title": "DISTINCT"
+            },
+            {
+              "id": "sql-logical-operators-in-between-like",
+              "title": "Logical operators, IN, BETWEEN, LIKE"
+            },
+            {
+              "id": "sql-null-handling-is-null-coalesce-nullif",
+              "title": "NULL handling: IS NULL, COALESCE, NULLIF"
+            },
+            {
+              "id": "sql-case-when",
+              "title": "CASE WHEN"
+            },
+            {
+              "id": "sql-order-of-execution",
+              "title": "Order of execution (FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY)"
+            }
+          ]
+        },
+        {
+          "id": "sql-aggregation",
+          "title": "Aggregation",
+          "lessons": [
+            {
+              "id": "sql-count-sum-avg-min-max",
+              "title": "COUNT / SUM / AVG / MIN / MAX"
+            },
+            {
+              "id": "sql-group-by-having",
+              "title": "GROUP BY, HAVING"
+            },
+            {
+              "id": "sql-count-star-vs-count-col-vs-count-distinct",
+              "title": "COUNT(*) vs COUNT(col) vs COUNT(DISTINCT col)"
+            },
+            {
+              "id": "sql-conditional-aggregation",
+              "title": "Conditional aggregation (SUM(CASE WHEN ...))"
+            }
+          ]
+        },
+        {
+          "id": "sql-joins",
+          "title": "Joins",
+          "lessons": [
+            {
+              "id": "sql-inner-left-right-full-outer-join",
+              "title": "INNER / LEFT / RIGHT / FULL OUTER JOIN"
+            },
+            {
+              "id": "sql-cross-join",
+              "title": "CROSS JOIN"
+            },
+            {
+              "id": "sql-self-join",
+              "title": "SELF JOIN"
+            },
+            {
+              "id": "sql-anti-join-and-semi-join",
+              "title": "Anti-join & semi-join (NOT EXISTS, LEFT JOIN ... IS NULL)"
+            },
+            {
+              "id": "sql-join-fan-out-and-duplicate-rows",
+              "title": "Join fan-out & duplicate rows"
+            },
+            {
+              "id": "sql-joining-on-multiple-keys-non-equi-joins",
+              "title": "Joining on multiple keys / non-equi joins"
+            }
+          ]
+        },
+        {
+          "id": "sql-subqueries-and-ctes",
+          "title": "Subqueries & CTEs",
+          "lessons": [
+            {
+              "id": "sql-scalar-correlated-subqueries",
+              "title": "Scalar / correlated subqueries"
+            },
+            {
+              "id": "sql-exists-vs-in",
+              "title": "EXISTS vs IN"
+            },
+            {
+              "id": "sql-common-table-expressions",
+              "title": "Common Table Expressions (WITH)"
+            },
+            {
+              "id": "sql-recursive-ctes",
+              "title": "Recursive CTEs (hierarchies, date spines)"
+            }
+          ]
+        },
+        {
+          "id": "sql-set-operations",
+          "title": "Set Operations",
+          "lessons": [
+            {
+              "id": "sql-union-vs-union-all",
+              "title": "UNION vs UNION ALL"
+            },
+            {
+              "id": "sql-intersect-except",
+              "title": "INTERSECT, EXCEPT"
+            }
+          ]
+        },
+        {
+          "id": "sql-window-functions",
+          "title": "Window Functions",
+          "lessons": [
+            {
+              "id": "sql-row-number-rank-dense-rank",
+              "title": "ROW_NUMBER, RANK, DENSE_RANK"
+            },
+            {
+              "id": "sql-ntile-percent-rank",
+              "title": "NTILE, PERCENT_RANK"
+            },
+            {
+              "id": "sql-lag-lead",
+              "title": "LAG / LEAD"
+            },
+            {
+              "id": "sql-running-totals-and-moving-averages",
+              "title": "Running totals & moving averages (ROWS BETWEEN)"
+            },
+            {
+              "id": "sql-first-value-last-value",
+              "title": "FIRST_VALUE / LAST_VALUE"
+            },
+            {
+              "id": "sql-partition-by-vs-group-by",
+              "title": "PARTITION BY vs GROUP BY"
+            }
+          ]
+        },
+        {
+          "id": "sql-date-and-string-functions",
+          "title": "Date & String Functions",
+          "lessons": [
+            {
+              "id": "sql-date-trunc-date-diff-extract",
+              "title": "DATE_TRUNC, DATE_DIFF, EXTRACT"
+            },
+            {
+              "id": "sql-time-zones",
+              "title": "Time zones"
+            },
+            {
+              "id": "sql-string-functions-substring-concat-split-regexp",
+              "title": "String functions: SUBSTRING, CONCAT, SPLIT, REGEXP"
+            }
+          ]
+        },
+        {
+          "id": "sql-classic-interview-patterns",
+          "title": "Classic Interview Patterns",
+          "lessons": [
+            {
+              "id": "sql-top-n-per-group",
+              "title": "Top N per group"
+            },
+            {
+              "id": "sql-second-highest-salary-nth-value",
+              "title": "Second highest salary / Nth value"
+            },
+            {
+              "id": "sql-duplicates-detection-and-dedup",
+              "title": "Duplicates detection & dedup"
+            },
+            {
+              "id": "sql-consecutive-days-gaps-and-islands",
+              "title": "Consecutive days / gaps and islands"
+            },
+            {
+              "id": "sql-retention-and-cohort-analysis",
+              "title": "Retention & cohort analysis"
+            },
+            {
+              "id": "sql-dau-mau-stickiness",
+              "title": "DAU / MAU / stickiness"
+            },
+            {
+              "id": "sql-funnel-conversion",
+              "title": "Funnel conversion"
+            },
+            {
+              "id": "sql-month-over-month-growth",
+              "title": "Month-over-month growth"
+            },
+            {
+              "id": "sql-median-and-percentiles",
+              "title": "Median & percentiles"
+            },
+            {
+              "id": "sql-pivot-unpivot",
+              "title": "Pivot / unpivot"
+            },
+            {
+              "id": "sql-sessionization",
+              "title": "Sessionization"
+            }
+          ]
+        },
+        {
+          "id": "sql-performance-and-internals",
+          "title": "Performance & Internals",
+          "lessons": [
+            {
+              "id": "sql-indexes",
+              "title": "Indexes (B-tree, composite index)"
+            },
+            {
+              "id": "sql-explain-query-plans",
+              "title": "EXPLAIN / query plans"
+            },
+            {
+              "id": "sql-partitioning-and-clustering",
+              "title": "Partitioning & clustering"
+            },
+            {
+              "id": "sql-normalization-vs-denormalization",
+              "title": "Normalization (1NF, 2NF, 3NF) vs denormalization"
+            },
+            {
+              "id": "sql-transactions-and-acid-isolation-levels",
+              "title": "Transactions & ACID, isolation levels"
+            }
+          ]
+        },
+        {
+          "id": "sql-dialects",
+          "title": "SQL Dialects",
+          "lessons": [
+            {
+              "id": "sql-postgresql-mysql",
+              "title": "PostgreSQL / MySQL"
+            },
+            {
+              "id": "sql-bigquery-snowflake-spark-sql-differences",
+              "title": "BigQuery, Snowflake, Spark SQL differences"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python",
+      "title": "Python & Data Manipulation",
+      "description": "Core Python, NumPy, pandas and from-scratch coding questions.",
+      "roles": {
+        "ds": 3,
+        "aids": 3,
+        "da": 2,
+        "bi": 2,
+        "de": 3,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 3,
+        "mlops": 2,
+        "devops": 2,
+        "dataops": 2
+      },
+      "subtopics": [
+        {
+          "id": "python-core",
+          "title": "Python Core",
+          "lessons": [
+            {
+              "id": "python-data-types-mutability",
+              "title": "Data types, mutability"
+            },
+            {
+              "id": "python-list-dict-set-comprehensions",
+              "title": "List / dict / set comprehensions"
+            },
+            {
+              "id": "python-functions-args-kwargs-lambda",
+              "title": "Functions, *args / **kwargs, lambda"
+            },
+            {
+              "id": "python-iterators-and-generators",
+              "title": "Iterators & generators"
+            },
+            {
+              "id": "python-decorators-and-context-managers",
+              "title": "Decorators & context managers"
+            },
+            {
+              "id": "python-oop-class-inheritance-dunder-methods",
+              "title": "OOP: class, inheritance, dunder methods"
+            },
+            {
+              "id": "python-exceptions",
+              "title": "Exceptions"
+            },
+            {
+              "id": "python-type-hints",
+              "title": "Type hints"
+            },
+            {
+              "id": "python-shallow-vs-deep-copy",
+              "title": "Shallow vs deep copy"
+            },
+            {
+              "id": "python-gil-threading-vs-multiprocessing-vs-asyncio",
+              "title": "GIL, threading vs multiprocessing vs asyncio"
+            }
+          ]
+        },
+        {
+          "id": "python-numpy",
+          "title": "NumPy",
+          "lessons": [
+            {
+              "id": "python-ndarray-shape-dtype",
+              "title": "ndarray, shape, dtype"
+            },
+            {
+              "id": "python-broadcasting",
+              "title": "Broadcasting"
+            },
+            {
+              "id": "python-vectorization-vs-loops",
+              "title": "Vectorization vs loops"
+            },
+            {
+              "id": "python-indexing-boolean-masks",
+              "title": "Indexing, boolean masks"
+            },
+            {
+              "id": "python-linear-algebra-ops",
+              "title": "Linear algebra ops"
+            }
+          ]
+        },
+        {
+          "id": "python-pandas",
+          "title": "pandas",
+          "lessons": [
+            {
+              "id": "python-series-and-dataframe",
+              "title": "Series & DataFrame"
+            },
+            {
+              "id": "python-indexing-loc-iloc",
+              "title": "Indexing: loc / iloc"
+            },
+            {
+              "id": "python-filtering-sorting",
+              "title": "Filtering, sorting"
+            },
+            {
+              "id": "python-groupby-agg-transform",
+              "title": "groupby / agg / transform"
+            },
+            {
+              "id": "python-merge-join-concat",
+              "title": "merge / join / concat"
+            },
+            {
+              "id": "python-pivot-table-melt-stack-unstack",
+              "title": "pivot_table, melt, stack / unstack"
+            },
+            {
+              "id": "python-apply-vs-vectorized-ops",
+              "title": "apply vs vectorized ops"
+            },
+            {
+              "id": "python-missing-values",
+              "title": "Missing values"
+            },
+            {
+              "id": "python-datetime-handling-resample-rolling",
+              "title": "Datetime handling, resample, rolling"
+            },
+            {
+              "id": "python-memory-and-performance",
+              "title": "Memory & performance (categorical dtype, chunking)"
+            },
+            {
+              "id": "python-pandas-sql-equivalents",
+              "title": "pandas ↔ SQL equivalents"
+            }
+          ]
+        },
+        {
+          "id": "python-visualization",
+          "title": "Visualization",
+          "lessons": [
+            {
+              "id": "python-matplotlib-seaborn-basics",
+              "title": "matplotlib / seaborn basics"
+            },
+            {
+              "id": "python-choosing-the-right-chart",
+              "title": "Choosing the right chart"
+            },
+            {
+              "id": "python-plotly-for-interactive-charts",
+              "title": "plotly for interactive charts"
+            }
+          ]
+        },
+        {
+          "id": "python-polars-and-duckdb",
+          "title": "Polars & DuckDB (modern alternatives)",
+          "lessons": [
+            {
+              "id": "python-polars-and-duckdb",
+              "title": "Polars & DuckDB (modern alternatives)"
+            }
+          ]
+        },
+        {
+          "id": "python-coding-interview-patterns-for-ds",
+          "title": "Python Coding Interview Patterns for DS",
+          "lessons": [
+            {
+              "id": "python-implement-metrics-from-scratch",
+              "title": "Implement metrics from scratch (precision, recall, AUC)"
+            },
+            {
+              "id": "python-implement-algorithms-from-scratch",
+              "title": "Implement algorithms from scratch (k-means, linear regression, kNN)"
+            },
+            {
+              "id": "python-data-cleaning-tasks",
+              "title": "Data cleaning tasks"
+            },
+            {
+              "id": "python-simulations",
+              "title": "Simulations (Monte Carlo)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math",
+      "title": "Math Foundations",
+      "description": "Linear algebra, calculus, optimization and information theory for ML.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 1,
+        "bi": 1,
+        "de": 0,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 1,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "math-linear-algebra",
+          "title": "Linear Algebra",
+          "lessons": [
+            {
+              "id": "math-vectors-dot-product-norms",
+              "title": "Vectors, dot product, norms (L1, L2)"
+            },
+            {
+              "id": "math-matrix-multiplication-transpose-inverse",
+              "title": "Matrix multiplication, transpose, inverse"
+            },
+            {
+              "id": "math-rank-linear-independence",
+              "title": "Rank, linear independence"
+            },
+            {
+              "id": "math-eigenvalues-and-eigenvectors",
+              "title": "Eigenvalues & eigenvectors"
+            },
+            {
+              "id": "math-svd",
+              "title": "SVD"
+            },
+            {
+              "id": "math-positive-definite-matrices",
+              "title": "Positive definite matrices"
+            },
+            {
+              "id": "math-projections",
+              "title": "Projections"
+            }
+          ]
+        },
+        {
+          "id": "math-calculus",
+          "title": "Calculus",
+          "lessons": [
+            {
+              "id": "math-derivatives-chain-rule",
+              "title": "Derivatives, chain rule"
+            },
+            {
+              "id": "math-partial-derivatives-gradient",
+              "title": "Partial derivatives, gradient"
+            },
+            {
+              "id": "math-jacobian-hessian",
+              "title": "Jacobian, Hessian"
+            },
+            {
+              "id": "math-taylor-expansion",
+              "title": "Taylor expansion"
+            }
+          ]
+        },
+        {
+          "id": "math-optimization",
+          "title": "Optimization",
+          "lessons": [
+            {
+              "id": "math-convex-vs-non-convex",
+              "title": "Convex vs non-convex"
+            },
+            {
+              "id": "math-gradient-descent-learning-rate",
+              "title": "Gradient descent, learning rate"
+            },
+            {
+              "id": "math-sgd-mini-batch",
+              "title": "SGD, mini-batch"
+            },
+            {
+              "id": "math-momentum-rmsprop-adam",
+              "title": "Momentum, RMSProp, Adam"
+            },
+            {
+              "id": "math-newton-s-method",
+              "title": "Newton's method"
+            },
+            {
+              "id": "math-lagrange-multipliers",
+              "title": "Lagrange multipliers"
+            },
+            {
+              "id": "math-closed-form-vs-iterative-solutions",
+              "title": "Closed-form vs iterative solutions"
+            }
+          ]
+        },
+        {
+          "id": "math-information-theory",
+          "title": "Information Theory",
+          "lessons": [
+            {
+              "id": "math-entropy-cross-entropy",
+              "title": "Entropy, cross-entropy"
+            },
+            {
+              "id": "math-kl-divergence",
+              "title": "KL divergence"
+            },
+            {
+              "id": "math-mutual-information",
+              "title": "Mutual information"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "probability",
+      "title": "Probability",
+      "description": "Counting, conditional probability, distributions and brain-teasers.",
+      "roles": {
+        "ds": 3,
+        "aids": 3,
+        "da": 2,
+        "bi": 2,
+        "de": 0,
+        "mle": 2,
+        "mlsci": 2,
+        "aidev": 1,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "probability-basics",
+          "title": "Basics",
+          "lessons": [
+            {
+              "id": "probability-sample-space-events-axioms",
+              "title": "Sample space, events, axioms"
+            },
+            {
+              "id": "probability-counting-permutations-and-combinations",
+              "title": "Counting: permutations & combinations"
+            },
+            {
+              "id": "probability-conditional-probability",
+              "title": "Conditional probability"
+            },
+            {
+              "id": "probability-independence",
+              "title": "Independence"
+            },
+            {
+              "id": "probability-law-of-total-probability",
+              "title": "Law of total probability"
+            },
+            {
+              "id": "probability-bayes-theorem",
+              "title": "Bayes' theorem"
+            }
+          ]
+        },
+        {
+          "id": "probability-random-variables",
+          "title": "Random Variables",
+          "lessons": [
+            {
+              "id": "probability-discrete-vs-continuous",
+              "title": "Discrete vs continuous"
+            },
+            {
+              "id": "probability-pmf-pdf-cdf",
+              "title": "PMF / PDF / CDF"
+            },
+            {
+              "id": "probability-expectation-variance-covariance-correlation",
+              "title": "Expectation, variance, covariance, correlation"
+            },
+            {
+              "id": "probability-linearity-of-expectation",
+              "title": "Linearity of expectation"
+            },
+            {
+              "id": "probability-conditional-expectation-law-of-total-expectation",
+              "title": "Conditional expectation, law of total expectation"
+            }
+          ]
+        },
+        {
+          "id": "probability-distributions",
+          "title": "Distributions",
+          "lessons": [
+            {
+              "id": "probability-bernoulli-binomial",
+              "title": "Bernoulli, Binomial"
+            },
+            {
+              "id": "probability-geometric-negative-binomial",
+              "title": "Geometric, Negative Binomial"
+            },
+            {
+              "id": "probability-poisson",
+              "title": "Poisson"
+            },
+            {
+              "id": "probability-uniform",
+              "title": "Uniform"
+            },
+            {
+              "id": "probability-normal",
+              "title": "Normal"
+            },
+            {
+              "id": "probability-exponential",
+              "title": "Exponential"
+            },
+            {
+              "id": "probability-beta-gamma",
+              "title": "Beta, Gamma"
+            },
+            {
+              "id": "probability-multinomial",
+              "title": "Multinomial"
+            },
+            {
+              "id": "probability-log-normal",
+              "title": "Log-normal"
+            }
+          ]
+        },
+        {
+          "id": "probability-limit-theorems",
+          "title": "Limit Theorems",
+          "lessons": [
+            {
+              "id": "probability-law-of-large-numbers",
+              "title": "Law of large numbers"
+            },
+            {
+              "id": "probability-central-limit-theorem",
+              "title": "Central limit theorem"
+            }
+          ]
+        },
+        {
+          "id": "probability-classic-interview-problems",
+          "title": "Classic Interview Problems",
+          "lessons": [
+            {
+              "id": "probability-dice-coin-card-problems",
+              "title": "Dice / coin / card problems"
+            },
+            {
+              "id": "probability-birthday-problem",
+              "title": "Birthday problem"
+            },
+            {
+              "id": "probability-expected-number-of-trials",
+              "title": "Expected number of trials"
+            },
+            {
+              "id": "probability-random-walks-and-gambler-s-ruin",
+              "title": "Random walks & gambler's ruin"
+            },
+            {
+              "id": "probability-markov-chains",
+              "title": "Markov chains"
+            },
+            {
+              "id": "probability-monty-hall",
+              "title": "Monty Hall"
+            },
+            {
+              "id": "probability-geometric-probability",
+              "title": "Geometric probability"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "statistics",
+      "title": "Statistics & Inference",
+      "description": "Sampling, estimation, hypothesis testing and regression.",
+      "roles": {
+        "ds": 3,
+        "aids": 3,
+        "da": 3,
+        "bi": 3,
+        "de": 0,
+        "mle": 2,
+        "mlsci": 2,
+        "aidev": 1,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "statistics-descriptive-statistics",
+          "title": "Descriptive Statistics",
+          "lessons": [
+            {
+              "id": "statistics-mean-median-mode",
+              "title": "Mean, median, mode"
+            },
+            {
+              "id": "statistics-variance-standard-deviation-iqr",
+              "title": "Variance, standard deviation, IQR"
+            },
+            {
+              "id": "statistics-skewness-kurtosis",
+              "title": "Skewness, kurtosis"
+            },
+            {
+              "id": "statistics-outliers",
+              "title": "Outliers"
+            }
+          ]
+        },
+        {
+          "id": "statistics-sampling",
+          "title": "Sampling",
+          "lessons": [
+            {
+              "id": "statistics-sampling-methods",
+              "title": "Sampling methods (simple random, stratified, cluster)"
+            },
+            {
+              "id": "statistics-sampling-bias-selection-bias-survivorship-bias",
+              "title": "Sampling bias, selection bias, survivorship bias"
+            },
+            {
+              "id": "statistics-sampling-distribution-standard-error",
+              "title": "Sampling distribution, standard error"
+            }
+          ]
+        },
+        {
+          "id": "statistics-estimation",
+          "title": "Estimation",
+          "lessons": [
+            {
+              "id": "statistics-point-estimates-bias-and-consistency",
+              "title": "Point estimates, bias & consistency"
+            },
+            {
+              "id": "statistics-maximum-likelihood-estimation",
+              "title": "Maximum likelihood estimation (MLE)"
+            },
+            {
+              "id": "statistics-method-of-moments",
+              "title": "Method of moments"
+            },
+            {
+              "id": "statistics-map-and-bayesian-estimation",
+              "title": "MAP & Bayesian estimation"
+            }
+          ]
+        },
+        {
+          "id": "statistics-confidence-intervals",
+          "title": "Confidence Intervals",
+          "lessons": [
+            {
+              "id": "statistics-ci-for-mean-and-proportion",
+              "title": "CI for mean & proportion"
+            },
+            {
+              "id": "statistics-interpretation-pitfalls",
+              "title": "Interpretation pitfalls"
+            },
+            {
+              "id": "statistics-bootstrap-ci",
+              "title": "Bootstrap CI"
+            }
+          ]
+        },
+        {
+          "id": "statistics-hypothesis-testing",
+          "title": "Hypothesis Testing",
+          "lessons": [
+            {
+              "id": "statistics-null-and-alternative-hypotheses",
+              "title": "Null & alternative hypotheses"
+            },
+            {
+              "id": "statistics-p-value-significance-level",
+              "title": "p-value, significance level"
+            },
+            {
+              "id": "statistics-type-i-type-ii-error-power",
+              "title": "Type I / Type II error, power"
+            },
+            {
+              "id": "statistics-one-sided-vs-two-sided",
+              "title": "One-sided vs two-sided"
+            },
+            {
+              "id": "statistics-z-test-t-test",
+              "title": "z-test, t-test (one-sample, two-sample, paired)"
+            },
+            {
+              "id": "statistics-chi-square-test",
+              "title": "Chi-square test"
+            },
+            {
+              "id": "statistics-anova",
+              "title": "ANOVA"
+            },
+            {
+              "id": "statistics-non-parametric-tests",
+              "title": "Non-parametric tests (Mann-Whitney U, Wilcoxon)"
+            },
+            {
+              "id": "statistics-multiple-testing",
+              "title": "Multiple testing (Bonferroni, FDR / Benjamini-Hochberg)"
+            }
+          ]
+        },
+        {
+          "id": "statistics-regression-analysis",
+          "title": "Regression Analysis",
+          "lessons": [
+            {
+              "id": "statistics-ols-assumptions",
+              "title": "OLS assumptions"
+            },
+            {
+              "id": "statistics-interpreting-coefficients",
+              "title": "Interpreting coefficients"
+            },
+            {
+              "id": "statistics-r-adjusted-r",
+              "title": "R², adjusted R²"
+            },
+            {
+              "id": "statistics-multicollinearity-vif",
+              "title": "Multicollinearity, VIF"
+            },
+            {
+              "id": "statistics-heteroscedasticity",
+              "title": "Heteroscedasticity"
+            },
+            {
+              "id": "statistics-logistic-regression-interpretation",
+              "title": "Logistic regression interpretation (odds ratios)"
+            },
+            {
+              "id": "statistics-interaction-terms",
+              "title": "Interaction terms"
+            }
+          ]
+        },
+        {
+          "id": "statistics-bayesian-statistics",
+          "title": "Bayesian Statistics",
+          "lessons": [
+            {
+              "id": "statistics-prior-likelihood-posterior",
+              "title": "Prior, likelihood, posterior"
+            },
+            {
+              "id": "statistics-conjugate-priors",
+              "title": "Conjugate priors"
+            },
+            {
+              "id": "statistics-frequentist-vs-bayesian",
+              "title": "Frequentist vs Bayesian"
+            }
+          ]
+        },
+        {
+          "id": "statistics-paradoxes-and-pitfalls",
+          "title": "Paradoxes & Pitfalls",
+          "lessons": [
+            {
+              "id": "statistics-simpson-s-paradox",
+              "title": "Simpson's paradox"
+            },
+            {
+              "id": "statistics-correlation-vs-causation",
+              "title": "Correlation vs causation"
+            },
+            {
+              "id": "statistics-regression-to-the-mean",
+              "title": "Regression to the mean"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "experimentation",
+      "title": "Experimentation & Causal Inference",
+      "description": "A/B test design, analysis pitfalls and causal methods.",
+      "roles": {
+        "ds": 3,
+        "aids": 3,
+        "da": 3,
+        "bi": 3,
+        "de": 0,
+        "mle": 1,
+        "mlsci": 1,
+        "aidev": 1,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "experimentation-a-b-testing-fundamentals",
+          "title": "A/B Testing Fundamentals",
+          "lessons": [
+            {
+              "id": "experimentation-hypothesis-and-metric-selection",
+              "title": "Hypothesis & metric selection"
+            },
+            {
+              "id": "experimentation-randomization-unit",
+              "title": "Randomization unit"
+            },
+            {
+              "id": "experimentation-sample-size-and-power-analysis",
+              "title": "Sample size & power analysis"
+            },
+            {
+              "id": "experimentation-mde",
+              "title": "MDE (minimum detectable effect)"
+            },
+            {
+              "id": "experimentation-test-duration",
+              "title": "Test duration"
+            }
+          ]
+        },
+        {
+          "id": "experimentation-running-experiments",
+          "title": "Running Experiments",
+          "lessons": [
+            {
+              "id": "experimentation-a-a-tests",
+              "title": "A/A tests"
+            },
+            {
+              "id": "experimentation-sample-ratio-mismatch",
+              "title": "Sample ratio mismatch (SRM)"
+            },
+            {
+              "id": "experimentation-novelty-and-primacy-effects",
+              "title": "Novelty & primacy effects"
+            },
+            {
+              "id": "experimentation-peeking-problem-and-sequential-testing",
+              "title": "Peeking problem & sequential testing"
+            },
+            {
+              "id": "experimentation-guardrail-metrics",
+              "title": "Guardrail metrics"
+            }
+          ]
+        },
+        {
+          "id": "experimentation-analysis",
+          "title": "Analysis",
+          "lessons": [
+            {
+              "id": "experimentation-statistical-vs-practical-significance",
+              "title": "Statistical vs practical significance"
+            },
+            {
+              "id": "experimentation-variance-reduction",
+              "title": "Variance reduction (CUPED)"
+            },
+            {
+              "id": "experimentation-heterogeneous-treatment-effects-segmentation",
+              "title": "Heterogeneous treatment effects / segmentation"
+            },
+            {
+              "id": "experimentation-multiple-metrics-and-multiple-variants",
+              "title": "Multiple metrics & multiple variants"
+            }
+          ]
+        },
+        {
+          "id": "experimentation-advanced-designs",
+          "title": "Advanced Designs",
+          "lessons": [
+            {
+              "id": "experimentation-network-effects-and-interference",
+              "title": "Network effects & interference"
+            },
+            {
+              "id": "experimentation-cluster-switchback-experiments",
+              "title": "Cluster / switchback experiments"
+            },
+            {
+              "id": "experimentation-multi-armed-bandits",
+              "title": "Multi-armed bandits"
+            },
+            {
+              "id": "experimentation-holdout-groups",
+              "title": "Holdout groups"
+            }
+          ]
+        },
+        {
+          "id": "experimentation-causal-inference",
+          "title": "Causal Inference (when you can't A/B test)",
+          "lessons": [
+            {
+              "id": "experimentation-potential-outcomes-framework",
+              "title": "Potential outcomes framework"
+            },
+            {
+              "id": "experimentation-confounding-dags",
+              "title": "Confounding, DAGs"
+            },
+            {
+              "id": "experimentation-difference-in-differences",
+              "title": "Difference-in-differences"
+            },
+            {
+              "id": "experimentation-propensity-score-matching",
+              "title": "Propensity score matching"
+            },
+            {
+              "id": "experimentation-instrumental-variables",
+              "title": "Instrumental variables"
+            },
+            {
+              "id": "experimentation-regression-discontinuity",
+              "title": "Regression discontinuity"
+            },
+            {
+              "id": "experimentation-synthetic-control",
+              "title": "Synthetic control"
+            },
+            {
+              "id": "experimentation-uplift-modeling",
+              "title": "Uplift modeling"
+            }
+          ]
+        },
+        {
+          "id": "experimentation-experiment-case-interviews",
+          "title": "Experiment Case Interviews",
+          "lessons": [
+            {
+              "id": "experimentation-launch-or-not-decision-framework",
+              "title": "\"Launch or not?\" decision framework"
+            },
+            {
+              "id": "experimentation-conflicting-metrics",
+              "title": "Conflicting metrics"
+            },
+            {
+              "id": "experimentation-debugging-unexpected-results",
+              "title": "Debugging unexpected results"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ml",
+      "title": "Machine Learning",
+      "description": "Fundamentals, core algorithms, evaluation and practical issues.",
+      "roles": {
+        "ds": 3,
+        "aids": 3,
+        "da": 1,
+        "bi": 1,
+        "de": 1,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 2,
+        "mlops": 1,
+        "devops": 1,
+        "dataops": 1
+      },
+      "subtopics": [
+        {
+          "id": "ml-fundamentals",
+          "title": "ML Fundamentals",
+          "lessons": [
+            {
+              "id": "ml-supervised-vs-unsupervised-vs-reinforcement-learning",
+              "title": "Supervised vs unsupervised vs reinforcement learning"
+            },
+            {
+              "id": "ml-training-validation-test-split",
+              "title": "Training / validation / test split"
+            },
+            {
+              "id": "ml-bias-variance-tradeoff",
+              "title": "Bias-variance tradeoff"
+            },
+            {
+              "id": "ml-overfitting-and-underfitting",
+              "title": "Overfitting & underfitting"
+            },
+            {
+              "id": "ml-regularization",
+              "title": "Regularization (L1, L2, Elastic Net)"
+            },
+            {
+              "id": "ml-cross-validation",
+              "title": "Cross-validation (k-fold, stratified, time-series split)"
+            },
+            {
+              "id": "ml-data-leakage",
+              "title": "Data leakage"
+            },
+            {
+              "id": "ml-curse-of-dimensionality",
+              "title": "Curse of dimensionality"
+            },
+            {
+              "id": "ml-parametric-vs-non-parametric",
+              "title": "Parametric vs non-parametric"
+            },
+            {
+              "id": "ml-generative-vs-discriminative-models",
+              "title": "Generative vs discriminative models"
+            }
+          ]
+        },
+        {
+          "id": "ml-supervised-learning",
+          "title": "Supervised Learning",
+          "lessons": [
+            {
+              "id": "ml-linear-regression",
+              "title": "Linear Regression"
+            },
+            {
+              "id": "ml-logistic-regression",
+              "title": "Logistic Regression"
+            },
+            {
+              "id": "ml-naive-bayes",
+              "title": "Naive Bayes"
+            },
+            {
+              "id": "ml-k-nearest-neighbors",
+              "title": "k-Nearest Neighbors"
+            },
+            {
+              "id": "ml-support-vector-machines",
+              "title": "Support Vector Machines (kernel trick)"
+            },
+            {
+              "id": "ml-decision-trees",
+              "title": "Decision Trees (Gini, entropy, pruning)"
+            },
+            {
+              "id": "ml-random-forest",
+              "title": "Random Forest"
+            },
+            {
+              "id": "ml-boosting-adaboost-gradient-boosting",
+              "title": "Boosting: AdaBoost, Gradient Boosting"
+            },
+            {
+              "id": "ml-xgboost-lightgbm-catboost",
+              "title": "XGBoost / LightGBM / CatBoost"
+            },
+            {
+              "id": "ml-bagging-vs-boosting-vs-stacking",
+              "title": "Bagging vs boosting vs stacking"
+            }
+          ]
+        },
+        {
+          "id": "ml-unsupervised-learning",
+          "title": "Unsupervised Learning",
+          "lessons": [
+            {
+              "id": "ml-k-means",
+              "title": "k-Means"
+            },
+            {
+              "id": "ml-hierarchical-clustering",
+              "title": "Hierarchical clustering"
+            },
+            {
+              "id": "ml-dbscan",
+              "title": "DBSCAN"
+            },
+            {
+              "id": "ml-gaussian-mixture-models-and-em",
+              "title": "Gaussian Mixture Models & EM"
+            },
+            {
+              "id": "ml-pca",
+              "title": "PCA"
+            },
+            {
+              "id": "ml-t-sne-umap",
+              "title": "t-SNE, UMAP"
+            },
+            {
+              "id": "ml-anomaly-detection",
+              "title": "Anomaly detection (Isolation Forest, One-Class SVM)"
+            },
+            {
+              "id": "ml-association-rules",
+              "title": "Association rules"
+            }
+          ]
+        },
+        {
+          "id": "ml-feature-engineering",
+          "title": "Feature Engineering",
+          "lessons": [
+            {
+              "id": "ml-scaling-and-normalization",
+              "title": "Scaling & normalization"
+            },
+            {
+              "id": "ml-encoding-categorical-variables",
+              "title": "Encoding categorical variables (one-hot, target encoding)"
+            },
+            {
+              "id": "ml-missing-value-imputation",
+              "title": "Missing value imputation"
+            },
+            {
+              "id": "ml-feature-selection",
+              "title": "Feature selection"
+            },
+            {
+              "id": "ml-feature-interactions",
+              "title": "Feature interactions"
+            },
+            {
+              "id": "ml-handling-high-cardinality-features",
+              "title": "Handling high-cardinality features"
+            }
+          ]
+        },
+        {
+          "id": "ml-model-evaluation",
+          "title": "Model Evaluation",
+          "lessons": [
+            {
+              "id": "ml-regression-mse-rmse-mae-mape-r",
+              "title": "Regression: MSE, RMSE, MAE, MAPE, R²"
+            },
+            {
+              "id": "ml-classification-accuracy-precision-recall-f1",
+              "title": "Classification: accuracy, precision, recall, F1"
+            },
+            {
+              "id": "ml-confusion-matrix",
+              "title": "Confusion matrix"
+            },
+            {
+              "id": "ml-roc-auc-vs-pr-auc",
+              "title": "ROC-AUC vs PR-AUC"
+            },
+            {
+              "id": "ml-log-loss",
+              "title": "Log loss"
+            },
+            {
+              "id": "ml-threshold-selection",
+              "title": "Threshold selection"
+            },
+            {
+              "id": "ml-calibration",
+              "title": "Calibration"
+            },
+            {
+              "id": "ml-ranking-metrics-ndcg-map-mrr",
+              "title": "Ranking metrics: NDCG, MAP, MRR"
+            }
+          ]
+        },
+        {
+          "id": "ml-practical-issues",
+          "title": "Practical Issues",
+          "lessons": [
+            {
+              "id": "ml-imbalanced-data",
+              "title": "Imbalanced data (resampling, class weights, SMOTE)"
+            },
+            {
+              "id": "ml-hyperparameter-tuning",
+              "title": "Hyperparameter tuning (grid, random, Bayesian)"
+            },
+            {
+              "id": "ml-model-interpretability",
+              "title": "Model interpretability (feature importance, SHAP, LIME)"
+            },
+            {
+              "id": "ml-fairness-and-bias-in-ml",
+              "title": "Fairness & bias in ML"
+            }
+          ]
+        },
+        {
+          "id": "ml-reinforcement-learning-basics",
+          "title": "Reinforcement Learning Basics",
+          "lessons": [
+            {
+              "id": "ml-mdp-reward-policy",
+              "title": "MDP, reward, policy"
+            },
+            {
+              "id": "ml-q-learning",
+              "title": "Q-learning"
+            },
+            {
+              "id": "ml-exploration-vs-exploitation",
+              "title": "Exploration vs exploitation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deep-learning",
+      "title": "Deep Learning",
+      "description": "Neural networks, training techniques and modern architectures.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 0,
+        "bi": 0,
+        "de": 0,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 2,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "deep-learning-neural-network-basics",
+          "title": "Neural Network Basics",
+          "lessons": [
+            {
+              "id": "deep-learning-perceptron-mlp",
+              "title": "Perceptron, MLP"
+            },
+            {
+              "id": "deep-learning-activation-functions",
+              "title": "Activation functions (ReLU, sigmoid, tanh, GELU)"
+            },
+            {
+              "id": "deep-learning-forward-and-backpropagation",
+              "title": "Forward & backpropagation"
+            },
+            {
+              "id": "deep-learning-loss-functions",
+              "title": "Loss functions"
+            },
+            {
+              "id": "deep-learning-weight-initialization",
+              "title": "Weight initialization"
+            },
+            {
+              "id": "deep-learning-vanishing-exploding-gradients",
+              "title": "Vanishing / exploding gradients"
+            }
+          ]
+        },
+        {
+          "id": "deep-learning-training-techniques",
+          "title": "Training Techniques",
+          "lessons": [
+            {
+              "id": "deep-learning-optimizers",
+              "title": "Optimizers (SGD, Adam, AdamW)"
+            },
+            {
+              "id": "deep-learning-learning-rate-schedules",
+              "title": "Learning rate schedules"
+            },
+            {
+              "id": "deep-learning-batch-normalization-layer-normalization",
+              "title": "Batch normalization, layer normalization"
+            },
+            {
+              "id": "deep-learning-dropout",
+              "title": "Dropout"
+            },
+            {
+              "id": "deep-learning-early-stopping",
+              "title": "Early stopping"
+            },
+            {
+              "id": "deep-learning-gradient-clipping",
+              "title": "Gradient clipping"
+            },
+            {
+              "id": "deep-learning-mixed-precision-training",
+              "title": "Mixed precision training"
+            }
+          ]
+        },
+        {
+          "id": "deep-learning-architectures",
+          "title": "Architectures",
+          "lessons": [
+            {
+              "id": "deep-learning-cnn",
+              "title": "CNN (convolution, pooling, ResNet)"
+            },
+            {
+              "id": "deep-learning-rnn-lstm-gru",
+              "title": "RNN, LSTM, GRU"
+            },
+            {
+              "id": "deep-learning-attention-mechanism",
+              "title": "Attention mechanism"
+            },
+            {
+              "id": "deep-learning-transformer",
+              "title": "Transformer (encoder, decoder, positional encoding)"
+            },
+            {
+              "id": "deep-learning-autoencoders-vae",
+              "title": "Autoencoders, VAE"
+            },
+            {
+              "id": "deep-learning-gans",
+              "title": "GANs"
+            },
+            {
+              "id": "deep-learning-diffusion-models",
+              "title": "Diffusion models"
+            }
+          ]
+        },
+        {
+          "id": "deep-learning-transfer-learning-and-fine-tuning",
+          "title": "Transfer Learning & Fine-tuning",
+          "lessons": [
+            {
+              "id": "deep-learning-transfer-learning-and-fine-tuning",
+              "title": "Transfer Learning & Fine-tuning"
+            }
+          ]
+        },
+        {
+          "id": "deep-learning-frameworks",
+          "title": "Frameworks",
+          "lessons": [
+            {
+              "id": "deep-learning-pytorch-basics",
+              "title": "PyTorch basics (tensor, autograd, Dataset / DataLoader, training loop)"
+            },
+            {
+              "id": "deep-learning-hugging-face-transformers",
+              "title": "Hugging Face Transformers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nlp-llms",
+      "title": "NLP & LLMs",
+      "description": "Embeddings, transformers, LLM training, fine-tuning and efficiency.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 0,
+        "bi": 0,
+        "de": 0,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 3,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "nlp-llms-classic-nlp",
+          "title": "Classic NLP",
+          "lessons": [
+            {
+              "id": "nlp-llms-tokenization-stemming-lemmatization",
+              "title": "Tokenization, stemming, lemmatization"
+            },
+            {
+              "id": "nlp-llms-bag-of-words-tf-idf",
+              "title": "Bag of words, TF-IDF"
+            },
+            {
+              "id": "nlp-llms-n-gram-language-models",
+              "title": "n-gram language models"
+            },
+            {
+              "id": "nlp-llms-sentiment-analysis-ner-text-classification",
+              "title": "Sentiment analysis, NER, text classification"
+            }
+          ]
+        },
+        {
+          "id": "nlp-llms-embeddings",
+          "title": "Embeddings",
+          "lessons": [
+            {
+              "id": "nlp-llms-word2vec-glove",
+              "title": "Word2Vec, GloVe"
+            },
+            {
+              "id": "nlp-llms-contextual-embeddings",
+              "title": "Contextual embeddings"
+            },
+            {
+              "id": "nlp-llms-sentence-embeddings",
+              "title": "Sentence embeddings"
+            },
+            {
+              "id": "nlp-llms-cosine-similarity",
+              "title": "Cosine similarity"
+            }
+          ]
+        },
+        {
+          "id": "nlp-llms-transformer-based-models",
+          "title": "Transformer-based Models",
+          "lessons": [
+            {
+              "id": "nlp-llms-self-attention-multi-head-attention",
+              "title": "Self-attention, multi-head attention"
+            },
+            {
+              "id": "nlp-llms-bert",
+              "title": "BERT (encoder-only)"
+            },
+            {
+              "id": "nlp-llms-gpt",
+              "title": "GPT (decoder-only)"
+            },
+            {
+              "id": "nlp-llms-t5",
+              "title": "T5 (encoder-decoder)"
+            },
+            {
+              "id": "nlp-llms-tokenizers",
+              "title": "Tokenizers (BPE, WordPiece)"
+            }
+          ]
+        },
+        {
+          "id": "nlp-llms-large-language-models",
+          "title": "Large Language Models",
+          "lessons": [
+            {
+              "id": "nlp-llms-pre-training-objectives",
+              "title": "Pre-training objectives"
+            },
+            {
+              "id": "nlp-llms-scaling-laws",
+              "title": "Scaling laws"
+            },
+            {
+              "id": "nlp-llms-instruction-tuning",
+              "title": "Instruction tuning"
+            },
+            {
+              "id": "nlp-llms-rlhf-dpo",
+              "title": "RLHF, DPO"
+            },
+            {
+              "id": "nlp-llms-context-window-kv-cache",
+              "title": "Context window, KV cache"
+            },
+            {
+              "id": "nlp-llms-decoding-greedy-beam-search-temperature-top-k-top-p",
+              "title": "Decoding: greedy, beam search, temperature, top-k, top-p"
+            },
+            {
+              "id": "nlp-llms-hallucination",
+              "title": "Hallucination"
+            }
+          ]
+        },
+        {
+          "id": "nlp-llms-fine-tuning",
+          "title": "Fine-tuning",
+          "lessons": [
+            {
+              "id": "nlp-llms-full-fine-tuning-vs-peft",
+              "title": "Full fine-tuning vs PEFT"
+            },
+            {
+              "id": "nlp-llms-lora-qlora",
+              "title": "LoRA, QLoRA"
+            },
+            {
+              "id": "nlp-llms-when-to-fine-tune-vs-prompt-vs-rag",
+              "title": "When to fine-tune vs prompt vs RAG"
+            }
+          ]
+        },
+        {
+          "id": "nlp-llms-efficiency",
+          "title": "Efficiency",
+          "lessons": [
+            {
+              "id": "nlp-llms-quantization",
+              "title": "Quantization"
+            },
+            {
+              "id": "nlp-llms-distillation",
+              "title": "Distillation"
+            },
+            {
+              "id": "nlp-llms-inference-serving",
+              "title": "Inference serving (vLLM, batching)"
+            }
+          ]
+        },
+        {
+          "id": "nlp-llms-multimodal-models",
+          "title": "Multimodal Models (vision-language)",
+          "lessons": [
+            {
+              "id": "nlp-llms-multimodal-models",
+              "title": "Multimodal Models (vision-language)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "genai-eng",
+      "title": "GenAI Application Engineering",
+      "description": "Prompting, RAG, agents, evaluation, guardrails and LLMOps.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 0,
+        "bi": 0,
+        "de": 1,
+        "mle": 2,
+        "mlsci": 2,
+        "aidev": 3,
+        "mlops": 1,
+        "devops": 1,
+        "dataops": 1
+      },
+      "subtopics": [
+        {
+          "id": "genai-eng-prompt-engineering",
+          "title": "Prompt Engineering",
+          "lessons": [
+            {
+              "id": "genai-eng-zero-shot-few-shot",
+              "title": "Zero-shot, few-shot"
+            },
+            {
+              "id": "genai-eng-chain-of-thought",
+              "title": "Chain-of-thought"
+            },
+            {
+              "id": "genai-eng-system-prompts-and-structured-output",
+              "title": "System prompts & structured output (JSON)"
+            }
+          ]
+        },
+        {
+          "id": "genai-eng-llm-apis",
+          "title": "LLM APIs",
+          "lessons": [
+            {
+              "id": "genai-eng-openai-anthropic-open-source-model-apis",
+              "title": "OpenAI / Anthropic / open-source model APIs"
+            },
+            {
+              "id": "genai-eng-token-cost-and-latency",
+              "title": "Token cost & latency"
+            },
+            {
+              "id": "genai-eng-streaming-rate-limits",
+              "title": "Streaming, rate limits"
+            }
+          ]
+        },
+        {
+          "id": "genai-eng-rag",
+          "title": "RAG (Retrieval-Augmented Generation)",
+          "lessons": [
+            {
+              "id": "genai-eng-document-loading-and-chunking-strategies",
+              "title": "Document loading & chunking strategies"
+            },
+            {
+              "id": "genai-eng-embedding-models",
+              "title": "Embedding models"
+            },
+            {
+              "id": "genai-eng-vector-databases",
+              "title": "Vector databases (FAISS, Pinecone, pgvector, Chroma)"
+            },
+            {
+              "id": "genai-eng-hybrid-search",
+              "title": "Hybrid search (BM25 + dense)"
+            },
+            {
+              "id": "genai-eng-reranking",
+              "title": "Reranking"
+            },
+            {
+              "id": "genai-eng-query-rewriting",
+              "title": "Query rewriting"
+            },
+            {
+              "id": "genai-eng-graphrag-knowledge-graphs",
+              "title": "GraphRAG / knowledge graphs"
+            }
+          ]
+        },
+        {
+          "id": "genai-eng-agents",
+          "title": "Agents",
+          "lessons": [
+            {
+              "id": "genai-eng-tool-use-function-calling",
+              "title": "Tool use / function calling"
+            },
+            {
+              "id": "genai-eng-react-pattern",
+              "title": "ReAct pattern"
+            },
+            {
+              "id": "genai-eng-multi-agent-systems",
+              "title": "Multi-agent systems"
+            },
+            {
+              "id": "genai-eng-memory",
+              "title": "Memory"
+            },
+            {
+              "id": "genai-eng-mcp",
+              "title": "MCP (Model Context Protocol)"
+            },
+            {
+              "id": "genai-eng-frameworks-langchain-langgraph-llamaindex",
+              "title": "Frameworks: LangChain, LangGraph, LlamaIndex"
+            }
+          ]
+        },
+        {
+          "id": "genai-eng-nl-to-sql-text-to-sql-systems",
+          "title": "NL-to-SQL / Text-to-SQL systems",
+          "lessons": [
+            {
+              "id": "genai-eng-nl-to-sql-text-to-sql-systems",
+              "title": "NL-to-SQL / Text-to-SQL systems"
+            }
+          ]
+        },
+        {
+          "id": "genai-eng-evaluation-of-llm-apps",
+          "title": "Evaluation of LLM Apps",
+          "lessons": [
+            {
+              "id": "genai-eng-offline-eval-sets",
+              "title": "Offline eval sets"
+            },
+            {
+              "id": "genai-eng-llm-as-a-judge",
+              "title": "LLM-as-a-judge"
+            },
+            {
+              "id": "genai-eng-rag-metrics",
+              "title": "RAG metrics (faithfulness, relevance, context recall)"
+            },
+            {
+              "id": "genai-eng-human-evaluation",
+              "title": "Human evaluation"
+            }
+          ]
+        },
+        {
+          "id": "genai-eng-safety-and-guardrails",
+          "title": "Safety & Guardrails",
+          "lessons": [
+            {
+              "id": "genai-eng-prompt-injection",
+              "title": "Prompt injection"
+            },
+            {
+              "id": "genai-eng-pii-handling",
+              "title": "PII handling"
+            },
+            {
+              "id": "genai-eng-content-filtering",
+              "title": "Content filtering"
+            }
+          ]
+        },
+        {
+          "id": "genai-eng-llmops",
+          "title": "LLMOps",
+          "lessons": [
+            {
+              "id": "genai-eng-prompt-versioning",
+              "title": "Prompt versioning"
+            },
+            {
+              "id": "genai-eng-tracing-and-observability",
+              "title": "Tracing & observability"
+            },
+            {
+              "id": "genai-eng-caching",
+              "title": "Caching"
+            },
+            {
+              "id": "genai-eng-cost-monitoring",
+              "title": "Cost monitoring"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "computer-vision",
+      "title": "Computer Vision",
+      "description": "Classification, detection, segmentation and vision transformers.",
+      "roles": {
+        "ds": 1,
+        "aids": 1,
+        "da": 0,
+        "bi": 0,
+        "de": 0,
+        "mle": 2,
+        "mlsci": 2,
+        "aidev": 1,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "computer-vision-core-topics",
+          "title": "Core Topics",
+          "lessons": [
+            {
+              "id": "computer-vision-image-basics",
+              "title": "Image basics (pixels, channels, augmentation)"
+            },
+            {
+              "id": "computer-vision-image-classification",
+              "title": "Image classification"
+            },
+            {
+              "id": "computer-vision-object-detection",
+              "title": "Object detection (YOLO, Faster R-CNN)"
+            },
+            {
+              "id": "computer-vision-segmentation",
+              "title": "Segmentation (U-Net, SAM)"
+            },
+            {
+              "id": "computer-vision-vision-transformers",
+              "title": "Vision Transformers (ViT)"
+            },
+            {
+              "id": "computer-vision-depth-estimation-and-3d-vision",
+              "title": "Depth estimation & 3D vision"
+            },
+            {
+              "id": "computer-vision-clip-and-vision-language-models",
+              "title": "CLIP & vision-language models"
+            },
+            {
+              "id": "computer-vision-cv-evaluation-metrics",
+              "title": "CV evaluation metrics (IoU, mAP)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "time-series",
+      "title": "Time Series & Forecasting",
+      "description": "Stationarity, ARIMA, ML forecasting and backtesting.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 2,
+        "bi": 2,
+        "de": 0,
+        "mle": 2,
+        "mlsci": 2,
+        "aidev": 0,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "time-series-core-topics",
+          "title": "Core Topics",
+          "lessons": [
+            {
+              "id": "time-series-components-trend-seasonality-residual",
+              "title": "Components: trend, seasonality, residual"
+            },
+            {
+              "id": "time-series-stationarity-adf-test",
+              "title": "Stationarity, ADF test"
+            },
+            {
+              "id": "time-series-differencing",
+              "title": "Differencing"
+            },
+            {
+              "id": "time-series-acf-pacf",
+              "title": "ACF / PACF"
+            },
+            {
+              "id": "time-series-moving-averages-exponential-smoothing",
+              "title": "Moving averages, exponential smoothing (Holt-Winters)"
+            },
+            {
+              "id": "time-series-ar-ma-arma-arima-sarima",
+              "title": "AR, MA, ARMA, ARIMA, SARIMA"
+            },
+            {
+              "id": "time-series-prophet",
+              "title": "Prophet"
+            },
+            {
+              "id": "time-series-ml-for-time-series",
+              "title": "ML for time series (lag features, gradient boosting)"
+            },
+            {
+              "id": "time-series-deep-learning-for-time-series",
+              "title": "Deep learning for time series (LSTM, Temporal Fusion Transformer)"
+            },
+            {
+              "id": "time-series-forecast-evaluation-and-backtesting",
+              "title": "Forecast evaluation & backtesting"
+            },
+            {
+              "id": "time-series-anomaly-detection-in-time-series",
+              "title": "Anomaly detection in time series"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recsys",
+      "title": "Recommender & Ranking Systems",
+      "description": "Collaborative filtering, two-tower models and learning to rank.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 0,
+        "bi": 0,
+        "de": 0,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 1,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "recsys-core-topics",
+          "title": "Core Topics",
+          "lessons": [
+            {
+              "id": "recsys-collaborative-filtering",
+              "title": "Collaborative filtering (user-based, item-based)"
+            },
+            {
+              "id": "recsys-matrix-factorization",
+              "title": "Matrix factorization"
+            },
+            {
+              "id": "recsys-content-based-filtering",
+              "title": "Content-based filtering"
+            },
+            {
+              "id": "recsys-hybrid-approaches",
+              "title": "Hybrid approaches"
+            },
+            {
+              "id": "recsys-two-tower-models",
+              "title": "Two-tower models"
+            },
+            {
+              "id": "recsys-candidate-generation-ranking-re-ranking",
+              "title": "Candidate generation → ranking → re-ranking"
+            },
+            {
+              "id": "recsys-cold-start-problem",
+              "title": "Cold start problem"
+            },
+            {
+              "id": "recsys-implicit-vs-explicit-feedback",
+              "title": "Implicit vs explicit feedback"
+            },
+            {
+              "id": "recsys-learning-to-rank",
+              "title": "Learning to rank (pointwise, pairwise, listwise)"
+            },
+            {
+              "id": "recsys-evaluation-offline-metrics-vs-online-metrics",
+              "title": "Evaluation: offline metrics vs online metrics"
+            },
+            {
+              "id": "recsys-search-ranking-basics",
+              "title": "Search ranking basics"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ml-system-design",
+      "title": "ML System Design",
+      "description": "A repeatable design framework plus classic design questions.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 0,
+        "bi": 0,
+        "de": 1,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 2,
+        "mlops": 2,
+        "devops": 2,
+        "dataops": 2
+      },
+      "subtopics": [
+        {
+          "id": "ml-system-design-design-framework",
+          "title": "Design Framework",
+          "lessons": [
+            {
+              "id": "ml-system-design-clarify-requirements-and-business-goal",
+              "title": "Clarify requirements & business goal"
+            },
+            {
+              "id": "ml-system-design-define-ml-objective-and-metrics",
+              "title": "Define ML objective & metrics"
+            },
+            {
+              "id": "ml-system-design-data-collection-and-labeling",
+              "title": "Data collection & labeling"
+            },
+            {
+              "id": "ml-system-design-feature-design",
+              "title": "Feature design"
+            },
+            {
+              "id": "ml-system-design-model-selection-and-baseline",
+              "title": "Model selection & baseline"
+            },
+            {
+              "id": "ml-system-design-offline-evaluation",
+              "title": "Offline evaluation"
+            },
+            {
+              "id": "ml-system-design-online-evaluation",
+              "title": "Online evaluation (A/B test)"
+            },
+            {
+              "id": "ml-system-design-serving-and-deployment",
+              "title": "Serving & deployment"
+            },
+            {
+              "id": "ml-system-design-monitoring-and-iteration",
+              "title": "Monitoring & iteration"
+            }
+          ]
+        },
+        {
+          "id": "ml-system-design-serving-patterns",
+          "title": "Serving Patterns",
+          "lessons": [
+            {
+              "id": "ml-system-design-batch-vs-real-time-inference",
+              "title": "Batch vs real-time inference"
+            },
+            {
+              "id": "ml-system-design-latency-vs-throughput",
+              "title": "Latency vs throughput"
+            },
+            {
+              "id": "ml-system-design-feature-store",
+              "title": "Feature store"
+            },
+            {
+              "id": "ml-system-design-caching",
+              "title": "Caching"
+            }
+          ]
+        },
+        {
+          "id": "ml-system-design-scaling",
+          "title": "Scaling",
+          "lessons": [
+            {
+              "id": "ml-system-design-distributed-training",
+              "title": "Distributed training (data parallel, model parallel)"
+            },
+            {
+              "id": "ml-system-design-model-compression",
+              "title": "Model compression"
+            }
+          ]
+        },
+        {
+          "id": "ml-system-design-classic-design-questions",
+          "title": "Classic Design Questions",
+          "lessons": [
+            {
+              "id": "ml-system-design-recommendation-feed",
+              "title": "Recommendation feed"
+            },
+            {
+              "id": "ml-system-design-search-ranking",
+              "title": "Search ranking"
+            },
+            {
+              "id": "ml-system-design-fraud-detection",
+              "title": "Fraud detection"
+            },
+            {
+              "id": "ml-system-design-ad-click-prediction",
+              "title": "Ad click prediction (CTR)"
+            },
+            {
+              "id": "ml-system-design-churn-prediction",
+              "title": "Churn prediction"
+            },
+            {
+              "id": "ml-system-design-content-moderation",
+              "title": "Content moderation"
+            },
+            {
+              "id": "ml-system-design-demand-forecasting",
+              "title": "Demand forecasting"
+            },
+            {
+              "id": "ml-system-design-rag-chatbot-enterprise-q-and-a",
+              "title": "RAG chatbot / enterprise Q&A"
+            },
+            {
+              "id": "ml-system-design-llm-powered-agent-system",
+              "title": "LLM-powered agent system"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mlops",
+      "title": "MLOps",
+      "description": "Tracking, registries, pipelines, serving, monitoring and deployment.",
+      "roles": {
+        "ds": 1,
+        "aids": 1,
+        "da": 0,
+        "bi": 0,
+        "de": 2,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 2,
+        "mlops": 3,
+        "devops": 3,
+        "dataops": 3
+      },
+      "subtopics": [
+        {
+          "id": "mlops-core-topics",
+          "title": "Core Topics",
+          "lessons": [
+            {
+              "id": "mlops-ml-lifecycle",
+              "title": "ML Lifecycle"
+            },
+            {
+              "id": "mlops-experiment-tracking",
+              "title": "Experiment Tracking (MLflow, Weights & Biases)"
+            },
+            {
+              "id": "mlops-model-registry-and-versioning",
+              "title": "Model Registry & versioning"
+            },
+            {
+              "id": "mlops-data-versioning",
+              "title": "Data versioning (DVC)"
+            },
+            {
+              "id": "mlops-ml-pipelines-and-orchestration",
+              "title": "ML Pipelines & orchestration (Kubeflow, Airflow, SageMaker / Vertex AI Pipelines)"
+            }
+          ]
+        },
+        {
+          "id": "mlops-model-serving",
+          "title": "Model Serving",
+          "lessons": [
+            {
+              "id": "mlops-rest-api",
+              "title": "REST API (FastAPI)"
+            },
+            {
+              "id": "mlops-batch-scoring",
+              "title": "Batch scoring"
+            },
+            {
+              "id": "mlops-model-servers",
+              "title": "Model servers (TorchServe, Triton, BentoML)"
+            }
+          ]
+        },
+        {
+          "id": "mlops-ci-cd-for-ml",
+          "title": "CI/CD for ML",
+          "lessons": [
+            {
+              "id": "mlops-testing-data-features-and-models",
+              "title": "Testing data, features, and models"
+            },
+            {
+              "id": "mlops-automated-retraining",
+              "title": "Automated retraining"
+            }
+          ]
+        },
+        {
+          "id": "mlops-monitoring",
+          "title": "Monitoring",
+          "lessons": [
+            {
+              "id": "mlops-data-drift-concept-drift",
+              "title": "Data drift, concept drift"
+            },
+            {
+              "id": "mlops-model-performance-decay",
+              "title": "Model performance decay"
+            },
+            {
+              "id": "mlops-alerting",
+              "title": "Alerting"
+            }
+          ]
+        },
+        {
+          "id": "mlops-deployment-strategies",
+          "title": "Deployment Strategies",
+          "lessons": [
+            {
+              "id": "mlops-shadow-deployment",
+              "title": "Shadow deployment"
+            },
+            {
+              "id": "mlops-canary-releases",
+              "title": "Canary releases"
+            },
+            {
+              "id": "mlops-blue-green-deployment",
+              "title": "Blue-green deployment"
+            }
+          ]
+        },
+        {
+          "id": "mlops-reproducibility-and-governance",
+          "title": "Reproducibility & governance",
+          "lessons": [
+            {
+              "id": "mlops-reproducibility-and-governance",
+              "title": "Reproducibility & governance"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-engineering",
+      "title": "Data Engineering",
+      "description": "Data modeling, storage, ETL, Spark, streaming and orchestration.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 2,
+        "bi": 2,
+        "de": 3,
+        "mle": 2,
+        "mlsci": 2,
+        "aidev": 1,
+        "mlops": 2,
+        "devops": 2,
+        "dataops": 2
+      },
+      "subtopics": [
+        {
+          "id": "data-engineering-data-modeling",
+          "title": "Data Modeling",
+          "lessons": [
+            {
+              "id": "data-engineering-oltp-vs-olap",
+              "title": "OLTP vs OLAP"
+            },
+            {
+              "id": "data-engineering-star-schema-snowflake-schema",
+              "title": "Star schema, snowflake schema"
+            },
+            {
+              "id": "data-engineering-fact-and-dimension-tables",
+              "title": "Fact & dimension tables"
+            },
+            {
+              "id": "data-engineering-slowly-changing-dimensions",
+              "title": "Slowly changing dimensions (SCD Type 1/2)"
+            },
+            {
+              "id": "data-engineering-data-vault-basics",
+              "title": "Data vault basics"
+            },
+            {
+              "id": "data-engineering-one-big-table-vs-dimensional",
+              "title": "One Big Table vs dimensional"
+            }
+          ]
+        },
+        {
+          "id": "data-engineering-storage",
+          "title": "Storage",
+          "lessons": [
+            {
+              "id": "data-engineering-data-warehouse",
+              "title": "Data warehouse (Snowflake, BigQuery, Redshift)"
+            },
+            {
+              "id": "data-engineering-data-lake",
+              "title": "Data lake"
+            },
+            {
+              "id": "data-engineering-lakehouse",
+              "title": "Lakehouse (Delta Lake, Iceberg)"
+            },
+            {
+              "id": "data-engineering-file-formats-csv-json-parquet-avro-orc",
+              "title": "File formats: CSV, JSON, Parquet, Avro, ORC"
+            },
+            {
+              "id": "data-engineering-row-vs-columnar-storage",
+              "title": "Row vs columnar storage"
+            },
+            {
+              "id": "data-engineering-partitioning-and-bucketing",
+              "title": "Partitioning & bucketing"
+            }
+          ]
+        },
+        {
+          "id": "data-engineering-etl-elt",
+          "title": "ETL / ELT",
+          "lessons": [
+            {
+              "id": "data-engineering-etl-vs-elt",
+              "title": "ETL vs ELT"
+            },
+            {
+              "id": "data-engineering-batch-pipelines",
+              "title": "Batch pipelines"
+            },
+            {
+              "id": "data-engineering-incremental-loads-and-cdc",
+              "title": "Incremental loads & CDC (change data capture)"
+            },
+            {
+              "id": "data-engineering-idempotency-and-backfills",
+              "title": "Idempotency & backfills"
+            },
+            {
+              "id": "data-engineering-dbt",
+              "title": "dbt"
+            }
+          ]
+        },
+        {
+          "id": "data-engineering-distributed-processing",
+          "title": "Distributed Processing",
+          "lessons": [
+            {
+              "id": "data-engineering-mapreduce-concepts",
+              "title": "MapReduce concepts"
+            },
+            {
+              "id": "data-engineering-apache-spark-architecture",
+              "title": "Apache Spark architecture (driver, executors, DAG)"
+            },
+            {
+              "id": "data-engineering-rdd-vs-dataframe",
+              "title": "RDD vs DataFrame"
+            },
+            {
+              "id": "data-engineering-transformations-vs-actions-lazy-evaluation",
+              "title": "Transformations vs actions, lazy evaluation"
+            },
+            {
+              "id": "data-engineering-shuffle-data-skew-broadcast-join",
+              "title": "Shuffle, data skew, broadcast join"
+            },
+            {
+              "id": "data-engineering-pyspark",
+              "title": "PySpark"
+            }
+          ]
+        },
+        {
+          "id": "data-engineering-streaming",
+          "title": "Streaming",
+          "lessons": [
+            {
+              "id": "data-engineering-batch-vs-streaming",
+              "title": "Batch vs streaming"
+            },
+            {
+              "id": "data-engineering-kafka",
+              "title": "Kafka (topics, partitions, consumer groups)"
+            },
+            {
+              "id": "data-engineering-spark-structured-streaming-flink",
+              "title": "Spark Structured Streaming / Flink"
+            },
+            {
+              "id": "data-engineering-windowing-watermarks",
+              "title": "Windowing, watermarks"
+            },
+            {
+              "id": "data-engineering-exactly-once-semantics",
+              "title": "Exactly-once semantics"
+            }
+          ]
+        },
+        {
+          "id": "data-engineering-orchestration",
+          "title": "Orchestration",
+          "lessons": [
+            {
+              "id": "data-engineering-airflow",
+              "title": "Airflow (DAG, operators, scheduling)"
+            },
+            {
+              "id": "data-engineering-dagster-prefect",
+              "title": "Dagster / Prefect"
+            }
+          ]
+        },
+        {
+          "id": "data-engineering-data-quality-and-governance",
+          "title": "Data Quality & Governance",
+          "lessons": [
+            {
+              "id": "data-engineering-data-validation",
+              "title": "Data validation (Great Expectations)"
+            },
+            {
+              "id": "data-engineering-data-lineage",
+              "title": "Data lineage"
+            },
+            {
+              "id": "data-engineering-data-catalog",
+              "title": "Data catalog"
+            },
+            {
+              "id": "data-engineering-data-contracts",
+              "title": "Data contracts"
+            },
+            {
+              "id": "data-engineering-privacy-and-compliance",
+              "title": "Privacy & compliance (PII, GDPR)"
+            }
+          ]
+        },
+        {
+          "id": "data-engineering-databases",
+          "title": "Databases",
+          "lessons": [
+            {
+              "id": "data-engineering-relational-vs-nosql",
+              "title": "Relational vs NoSQL"
+            },
+            {
+              "id": "data-engineering-document-key-value-column-family-graph",
+              "title": "Document, key-value, column-family, graph databases (Neo4j)"
+            },
+            {
+              "id": "data-engineering-cap-theorem",
+              "title": "CAP theorem"
+            },
+            {
+              "id": "data-engineering-sharding-and-replication",
+              "title": "Sharding & replication"
+            }
+          ]
+        },
+        {
+          "id": "data-engineering-data-pipeline-system-design",
+          "title": "Data Pipeline System Design",
+          "lessons": [
+            {
+              "id": "data-engineering-design-a-clickstream-pipeline",
+              "title": "Design a clickstream pipeline"
+            },
+            {
+              "id": "data-engineering-design-a-data-warehouse-for-an-e-commerce",
+              "title": "Design a data warehouse for an e-commerce company"
+            },
+            {
+              "id": "data-engineering-design-a-real-time-dashboard-backend",
+              "title": "Design a real-time dashboard backend"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloud-devops",
+      "title": "Cloud, DevOps & DataOps",
+      "description": "Linux, Git, containers, Kubernetes, CI/CD, IaC and cloud services.",
+      "roles": {
+        "ds": 1,
+        "aids": 1,
+        "da": 0,
+        "bi": 0,
+        "de": 3,
+        "mle": 2,
+        "mlsci": 2,
+        "aidev": 2,
+        "mlops": 3,
+        "devops": 3,
+        "dataops": 3
+      },
+      "subtopics": [
+        {
+          "id": "cloud-devops-linux-and-shell",
+          "title": "Linux & Shell",
+          "lessons": [
+            {
+              "id": "cloud-devops-file-system-permissions",
+              "title": "File system, permissions"
+            },
+            {
+              "id": "cloud-devops-common-commands",
+              "title": "Common commands (grep, awk, sed, find)"
+            },
+            {
+              "id": "cloud-devops-processes-ports",
+              "title": "Processes, ports"
+            },
+            {
+              "id": "cloud-devops-bash-scripting",
+              "title": "Bash scripting"
+            },
+            {
+              "id": "cloud-devops-ssh",
+              "title": "SSH"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-git",
+          "title": "Git",
+          "lessons": [
+            {
+              "id": "cloud-devops-branching-merge-vs-rebase",
+              "title": "Branching, merge vs rebase"
+            },
+            {
+              "id": "cloud-devops-pull-requests-and-code-review",
+              "title": "Pull requests & code review"
+            },
+            {
+              "id": "cloud-devops-resolving-conflicts",
+              "title": "Resolving conflicts"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-networking-basics",
+          "title": "Networking Basics",
+          "lessons": [
+            {
+              "id": "cloud-devops-http-https-dns-tcp-ip",
+              "title": "HTTP/HTTPS, DNS, TCP/IP"
+            },
+            {
+              "id": "cloud-devops-load-balancers-reverse-proxies",
+              "title": "Load balancers, reverse proxies"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-containers",
+          "title": "Containers",
+          "lessons": [
+            {
+              "id": "cloud-devops-docker",
+              "title": "Docker (image, container, Dockerfile, layers)"
+            },
+            {
+              "id": "cloud-devops-docker-compose",
+              "title": "docker-compose"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-kubernetes",
+          "title": "Kubernetes",
+          "lessons": [
+            {
+              "id": "cloud-devops-pod-deployment-service",
+              "title": "Pod, Deployment, Service"
+            },
+            {
+              "id": "cloud-devops-configmap-and-secret",
+              "title": "ConfigMap & Secret"
+            },
+            {
+              "id": "cloud-devops-scaling",
+              "title": "Scaling"
+            },
+            {
+              "id": "cloud-devops-helm",
+              "title": "Helm"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-ci-cd",
+          "title": "CI/CD",
+          "lessons": [
+            {
+              "id": "cloud-devops-github-actions-jenkins-gitlab-ci",
+              "title": "GitHub Actions / Jenkins / GitLab CI"
+            },
+            {
+              "id": "cloud-devops-pipeline-stages-build-test-deploy",
+              "title": "Pipeline stages: build, test, deploy"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-infrastructure-as-code",
+          "title": "Infrastructure as Code",
+          "lessons": [
+            {
+              "id": "cloud-devops-terraform",
+              "title": "Terraform"
+            },
+            {
+              "id": "cloud-devops-cloudformation",
+              "title": "CloudFormation"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-cloud-platforms",
+          "title": "Cloud Platforms",
+          "lessons": [
+            {
+              "id": "cloud-devops-aws-core-services",
+              "title": "AWS core services (EC2, S3, IAM, Lambda, RDS, SageMaker)"
+            },
+            {
+              "id": "cloud-devops-gcp-core-services",
+              "title": "GCP core services (GCS, BigQuery, Vertex AI, Cloud Run)"
+            },
+            {
+              "id": "cloud-devops-azure-core-services",
+              "title": "Azure core services"
+            },
+            {
+              "id": "cloud-devops-serverless-vs-vm-vs-container",
+              "title": "Serverless vs VM vs container"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-observability",
+          "title": "Observability",
+          "lessons": [
+            {
+              "id": "cloud-devops-logging-metrics-tracing",
+              "title": "Logging, metrics, tracing"
+            },
+            {
+              "id": "cloud-devops-prometheus-grafana",
+              "title": "Prometheus, Grafana"
+            },
+            {
+              "id": "cloud-devops-sla-slo-sli",
+              "title": "SLA / SLO / SLI"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-security",
+          "title": "Security",
+          "lessons": [
+            {
+              "id": "cloud-devops-iam-and-least-privilege",
+              "title": "IAM & least privilege"
+            },
+            {
+              "id": "cloud-devops-secrets-management",
+              "title": "Secrets management"
+            },
+            {
+              "id": "cloud-devops-devsecops-basics",
+              "title": "DevSecOps basics"
+            }
+          ]
+        },
+        {
+          "id": "cloud-devops-dataops",
+          "title": "DataOps",
+          "lessons": [
+            {
+              "id": "cloud-devops-pipeline-testing-and-ci-for-data",
+              "title": "Pipeline testing & CI for data"
+            },
+            {
+              "id": "cloud-devops-environment-management",
+              "title": "Environment management (dev / staging / prod)"
+            },
+            {
+              "id": "cloud-devops-data-observability",
+              "title": "Data observability"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "analytics-bi",
+      "title": "Data Analysis & BI",
+      "description": "Business metrics, dashboards, BI tools and analytics case studies.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 3,
+        "bi": 3,
+        "de": 1,
+        "mle": 0,
+        "mlsci": 0,
+        "aidev": 0,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "analytics-bi-analytics-workflow",
+          "title": "Analytics Workflow",
+          "lessons": [
+            {
+              "id": "analytics-bi-define-the-business-question",
+              "title": "Define the business question"
+            },
+            {
+              "id": "analytics-bi-data-gathering-and-cleaning",
+              "title": "Data gathering & cleaning"
+            },
+            {
+              "id": "analytics-bi-eda",
+              "title": "EDA"
+            },
+            {
+              "id": "analytics-bi-insight-recommendation",
+              "title": "Insight → recommendation"
+            }
+          ]
+        },
+        {
+          "id": "analytics-bi-business-metrics",
+          "title": "Business Metrics",
+          "lessons": [
+            {
+              "id": "analytics-bi-revenue-arpu-ltv-cac",
+              "title": "Revenue, ARPU, LTV, CAC"
+            },
+            {
+              "id": "analytics-bi-retention-churn",
+              "title": "Retention, churn"
+            },
+            {
+              "id": "analytics-bi-conversion-funnels",
+              "title": "Conversion funnels"
+            },
+            {
+              "id": "analytics-bi-cohort-analysis",
+              "title": "Cohort analysis"
+            },
+            {
+              "id": "analytics-bi-unit-economics",
+              "title": "Unit economics"
+            }
+          ]
+        },
+        {
+          "id": "analytics-bi-dashboards-and-reporting",
+          "title": "Dashboards & Reporting",
+          "lessons": [
+            {
+              "id": "analytics-bi-kpi-design",
+              "title": "KPI design"
+            },
+            {
+              "id": "analytics-bi-dashboard-design-principles",
+              "title": "Dashboard design principles"
+            },
+            {
+              "id": "analytics-bi-self-serve-analytics",
+              "title": "Self-serve analytics"
+            }
+          ]
+        },
+        {
+          "id": "analytics-bi-bi-tools",
+          "title": "BI Tools",
+          "lessons": [
+            {
+              "id": "analytics-bi-power-bi",
+              "title": "Power BI (DAX, data modeling, Power Query)"
+            },
+            {
+              "id": "analytics-bi-tableau",
+              "title": "Tableau (calculated fields, LOD expressions)"
+            },
+            {
+              "id": "analytics-bi-looker",
+              "title": "Looker (LookML)"
+            }
+          ]
+        },
+        {
+          "id": "analytics-bi-excel-google-sheets",
+          "title": "Excel / Google Sheets",
+          "lessons": [
+            {
+              "id": "analytics-bi-pivot-tables",
+              "title": "Pivot tables"
+            },
+            {
+              "id": "analytics-bi-vlookup-xlookup-index-match",
+              "title": "VLOOKUP / XLOOKUP / INDEX-MATCH"
+            },
+            {
+              "id": "analytics-bi-basic-modeling",
+              "title": "Basic modeling"
+            }
+          ]
+        },
+        {
+          "id": "analytics-bi-data-storytelling",
+          "title": "Data Storytelling",
+          "lessons": [
+            {
+              "id": "analytics-bi-communicating-to-non-technical-stakeholders",
+              "title": "Communicating to non-technical stakeholders"
+            },
+            {
+              "id": "analytics-bi-executive-summaries",
+              "title": "Executive summaries"
+            }
+          ]
+        },
+        {
+          "id": "analytics-bi-analytics-case-studies",
+          "title": "Analytics Case Studies",
+          "lessons": [
+            {
+              "id": "analytics-bi-metric-x-dropped-10-why",
+              "title": "\"Metric X dropped 10% — why?\""
+            },
+            {
+              "id": "analytics-bi-sizing-estimation",
+              "title": "Sizing / estimation (Fermi problems)"
+            },
+            {
+              "id": "analytics-bi-root-cause-analysis",
+              "title": "Root cause analysis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-sense",
+      "title": "Product Sense, Metrics & AI PM",
+      "description": "North-star metrics, product cases and AI product management.",
+      "roles": {
+        "ds": 3,
+        "aids": 3,
+        "da": 3,
+        "bi": 3,
+        "de": 0,
+        "mle": 1,
+        "mlsci": 1,
+        "aidev": 2,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "product-sense-product-metrics",
+          "title": "Product Metrics",
+          "lessons": [
+            {
+              "id": "product-sense-north-star-metric",
+              "title": "North star metric"
+            },
+            {
+              "id": "product-sense-input-vs-output-metrics",
+              "title": "Input vs output metrics"
+            },
+            {
+              "id": "product-sense-counter-guardrail-metrics",
+              "title": "Counter / guardrail metrics"
+            },
+            {
+              "id": "product-sense-metric-frameworks",
+              "title": "Metric frameworks (AARRR, HEART)"
+            }
+          ]
+        },
+        {
+          "id": "product-sense-product-case-interviews",
+          "title": "Product Case Interviews",
+          "lessons": [
+            {
+              "id": "product-sense-define-success-for-a-feature",
+              "title": "Define success for a feature"
+            },
+            {
+              "id": "product-sense-diagnose-a-metric-change",
+              "title": "Diagnose a metric change"
+            },
+            {
+              "id": "product-sense-evaluate-a-new-feature-launch",
+              "title": "Evaluate a new feature launch"
+            },
+            {
+              "id": "product-sense-trade-off-questions",
+              "title": "Trade-off questions"
+            }
+          ]
+        },
+        {
+          "id": "product-sense-ai-product-management",
+          "title": "AI Product Management",
+          "lessons": [
+            {
+              "id": "product-sense-identifying-good-ai-use-cases",
+              "title": "Identifying good AI use cases"
+            },
+            {
+              "id": "product-sense-build-vs-buy-vs-fine-tune",
+              "title": "Build vs buy vs fine-tune"
+            },
+            {
+              "id": "product-sense-defining-ai-success-metrics",
+              "title": "Defining AI success metrics (quality, latency, cost)"
+            },
+            {
+              "id": "product-sense-human-in-the-loop-design",
+              "title": "Human-in-the-loop design"
+            },
+            {
+              "id": "product-sense-responsible-ai-and-risk",
+              "title": "Responsible AI & risk"
+            },
+            {
+              "id": "product-sense-writing-a-prd-for-an-ai-feature",
+              "title": "Writing a PRD for an AI feature"
+            },
+            {
+              "id": "product-sense-roi-of-ai-projects",
+              "title": "ROI of AI projects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dsa",
+      "title": "Data Structures & Algorithms",
+      "description": "Complexity and the core patterns for coding interviews.",
+      "roles": {
+        "ds": 2,
+        "aids": 2,
+        "da": 1,
+        "bi": 1,
+        "de": 2,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 3,
+        "mlops": 2,
+        "devops": 2,
+        "dataops": 2
+      },
+      "subtopics": [
+        {
+          "id": "dsa-core-topics",
+          "title": "Core Topics",
+          "lessons": [
+            {
+              "id": "dsa-complexity",
+              "title": "Complexity (Big-O, time & space)"
+            },
+            {
+              "id": "dsa-arrays-and-strings",
+              "title": "Arrays & Strings"
+            },
+            {
+              "id": "dsa-hash-maps-and-sets",
+              "title": "Hash Maps & Sets"
+            },
+            {
+              "id": "dsa-two-pointers",
+              "title": "Two Pointers"
+            },
+            {
+              "id": "dsa-sliding-window",
+              "title": "Sliding Window"
+            },
+            {
+              "id": "dsa-stacks-and-queues",
+              "title": "Stacks & Queues"
+            },
+            {
+              "id": "dsa-linked-lists",
+              "title": "Linked Lists"
+            },
+            {
+              "id": "dsa-binary-search",
+              "title": "Binary Search"
+            },
+            {
+              "id": "dsa-sorting",
+              "title": "Sorting (quick sort, merge sort)"
+            },
+            {
+              "id": "dsa-heaps-priority-queues",
+              "title": "Heaps / Priority Queues"
+            },
+            {
+              "id": "dsa-trees",
+              "title": "Trees (BST, traversal)"
+            },
+            {
+              "id": "dsa-graphs",
+              "title": "Graphs (BFS, DFS, topological sort)"
+            },
+            {
+              "id": "dsa-recursion-and-backtracking",
+              "title": "Recursion & Backtracking"
+            },
+            {
+              "id": "dsa-dynamic-programming",
+              "title": "Dynamic Programming"
+            },
+            {
+              "id": "dsa-intervals",
+              "title": "Intervals"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swe",
+      "title": "Software Engineering for Data/AI",
+      "description": "Production Python, testing, APIs and backend basics.",
+      "roles": {
+        "ds": 1,
+        "aids": 1,
+        "da": 0,
+        "bi": 0,
+        "de": 2,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 3,
+        "mlops": 3,
+        "devops": 3,
+        "dataops": 3
+      },
+      "subtopics": [
+        {
+          "id": "swe-writing-production-quality-python",
+          "title": "Writing production-quality Python",
+          "lessons": [
+            {
+              "id": "swe-project-structure-packaging",
+              "title": "Project structure, packaging"
+            },
+            {
+              "id": "swe-virtual-environments-and-dependency-management",
+              "title": "Virtual environments & dependency management (venv, conda, uv, poetry)"
+            },
+            {
+              "id": "swe-logging-and-config-management",
+              "title": "Logging & config management"
+            }
+          ]
+        },
+        {
+          "id": "swe-testing",
+          "title": "Testing",
+          "lessons": [
+            {
+              "id": "swe-unit-tests",
+              "title": "Unit tests (pytest)"
+            },
+            {
+              "id": "swe-integration-tests",
+              "title": "Integration tests"
+            },
+            {
+              "id": "swe-mocking",
+              "title": "Mocking"
+            }
+          ]
+        },
+        {
+          "id": "swe-apis",
+          "title": "APIs",
+          "lessons": [
+            {
+              "id": "swe-rest-principles",
+              "title": "REST principles"
+            },
+            {
+              "id": "swe-fastapi-flask",
+              "title": "FastAPI / Flask"
+            },
+            {
+              "id": "swe-authentication-basics",
+              "title": "Authentication basics (OAuth, API keys, JWT)"
+            }
+          ]
+        },
+        {
+          "id": "swe-backend-basics",
+          "title": "Backend Basics",
+          "lessons": [
+            {
+              "id": "swe-caching",
+              "title": "Caching (Redis)"
+            },
+            {
+              "id": "swe-message-queues",
+              "title": "Message queues"
+            },
+            {
+              "id": "swe-async-processing",
+              "title": "Async processing"
+            }
+          ]
+        },
+        {
+          "id": "swe-system-design-basics",
+          "title": "System Design Basics",
+          "lessons": [
+            {
+              "id": "swe-scalability-availability",
+              "title": "Scalability, availability"
+            },
+            {
+              "id": "swe-monolith-vs-microservices",
+              "title": "Monolith vs microservices"
+            }
+          ]
+        },
+        {
+          "id": "swe-code-quality",
+          "title": "Code Quality",
+          "lessons": [
+            {
+              "id": "swe-design-patterns",
+              "title": "Design patterns"
+            },
+            {
+              "id": "swe-code-review",
+              "title": "Code review"
+            },
+            {
+              "id": "swe-documentation",
+              "title": "Documentation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consulting",
+      "title": "Consulting & Case Interviews",
+      "description": "Case frameworks, market sizing and structuring ambiguous problems.",
+      "roles": {
+        "ds": 1,
+        "aids": 1,
+        "da": 2,
+        "bi": 2,
+        "de": 0,
+        "mle": 0,
+        "mlsci": 0,
+        "aidev": 1,
+        "mlops": 0,
+        "devops": 0,
+        "dataops": 0
+      },
+      "subtopics": [
+        {
+          "id": "consulting-core-topics",
+          "title": "Core Topics",
+          "lessons": [
+            {
+              "id": "consulting-case-frameworks",
+              "title": "Case frameworks (profitability, market entry, growth)"
+            },
+            {
+              "id": "consulting-market-sizing",
+              "title": "Market sizing"
+            },
+            {
+              "id": "consulting-structuring-ambiguous-problems",
+              "title": "Structuring ambiguous problems"
+            },
+            {
+              "id": "consulting-translating-business-problems-into-data-ai-solutions",
+              "title": "Translating business problems into data/AI solutions"
+            },
+            {
+              "id": "consulting-ai-strategy-and-maturity-assessment",
+              "title": "AI strategy & maturity assessment"
+            },
+            {
+              "id": "consulting-stakeholder-management",
+              "title": "Stakeholder management"
+            },
+            {
+              "id": "consulting-presenting-recommendations",
+              "title": "Presenting recommendations"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "behavioral",
+      "title": "Behavioral Interviews",
+      "description": "STAR stories, project deep dives and the questions to ask back.",
+      "roles": {
+        "ds": 3,
+        "aids": 3,
+        "da": 3,
+        "bi": 3,
+        "de": 3,
+        "mle": 3,
+        "mlsci": 3,
+        "aidev": 3,
+        "mlops": 3,
+        "devops": 3,
+        "dataops": 3
+      },
+      "subtopics": [
+        {
+          "id": "behavioral-core-topics",
+          "title": "Core Topics",
+          "lessons": [
+            {
+              "id": "behavioral-star-method",
+              "title": "STAR method"
+            },
+            {
+              "id": "behavioral-tell-me-about-yourself",
+              "title": "Tell me about yourself"
+            },
+            {
+              "id": "behavioral-why-this-company-role",
+              "title": "Why this company / role"
+            },
+            {
+              "id": "behavioral-project-deep-dive",
+              "title": "Project deep dive"
+            },
+            {
+              "id": "behavioral-conflict-and-disagreement",
+              "title": "Conflict & disagreement"
+            },
+            {
+              "id": "behavioral-failure-and-learning",
+              "title": "Failure & learning"
+            },
+            {
+              "id": "behavioral-leadership-and-ownership",
+              "title": "Leadership & ownership"
+            },
+            {
+              "id": "behavioral-ambiguity",
+              "title": "Ambiguity"
+            },
+            {
+              "id": "behavioral-influencing-without-authority",
+              "title": "Influencing without authority"
+            },
+            {
+              "id": "behavioral-prioritization-under-deadlines",
+              "title": "Prioritization under deadlines"
+            },
+            {
+              "id": "behavioral-questions-to-ask-the-interviewer",
+              "title": "Questions to ask the interviewer"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
