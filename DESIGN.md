@@ -106,7 +106,7 @@ ds-prep/
 │  ├─ auth/ (AuthProvider, useAuth, RequireAuth)
 │  ├─ runtimes/ (sqlRunner.ts, pyodideWorker.ts, pythonRunner.ts)
 │  └─ styles/
-├─ firestore.rules
+├─ firestore.rules.example      # Rules template; real firestore.rules (with emails) is git-ignored
 ├─ .github/workflows/deploy.yml
 └─ vite.config.ts
 ```
@@ -358,6 +358,9 @@ users/{uid}/progress/{lessonId}
 ## 8. Security
 
 ### 8.1 `firestore.rules`
+
+The repo is public, so it only holds `firestore.rules.example`. The real `firestore.rules` with member emails is git-ignored and published from the Firebase console.
+
 ```
 rules_version = '2';
 service cloud.firestore {

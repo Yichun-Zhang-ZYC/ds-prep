@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, type Auth } from 'firebase/auth';
-import { initializeFirestore, persistentLocalCache, type Firestore } from 'firebase/firestore';
+import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, type Firestore } from 'firebase/firestore';
 import { firebaseConfig } from './firebase.config';
 
 export const firebaseEnabled = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId);
@@ -12,7 +12,7 @@ if (firebaseEnabled) {
   const app = initializeApp(firebaseConfig);
   auth = getAuth(app);
   // Local cache keeps the UI usable through brief network drops (DESIGN.md §10).
-  db = initializeFirestore(app, { localCache: persistentLocalCache() });
+  db = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) });
 }
 
 export { auth, db };

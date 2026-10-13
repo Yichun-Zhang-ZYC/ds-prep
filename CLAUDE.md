@@ -33,7 +33,7 @@ Vite + React 18 + TypeScript + Tailwind, HashRouter, Firebase Auth/Firestore, Gi
 - Completing quizzes/exercises never auto-completes a lesson; only "Mark complete" does.
 - Auth = Google + optional email/password **linked** to the same account (`linkWithCredential`, same uid).
   Never create standalone password accounts. See DESIGN.md §8.3.
-- Security relies on `firestore.rules` + email allowlist; `firebaseConfig` in the client is public by design.
+- Security relies on Firestore rules + email allowlist (`firestore.rules` is git-ignored; never commit member emails, edit `firestore.rules.example` for rule changes); `firebaseConfig` in the client is public by design.
   Never commit secrets other than the public Firebase config.
 
 ## Commands

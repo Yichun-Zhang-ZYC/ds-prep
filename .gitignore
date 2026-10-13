@@ -42,3 +42,6 @@ __pycache__/
 .idea/
 .DS_Store
 *.swp
+
+# Real Firestore allowlist (emails stay out of the public repo; template: firestore.rules.example)
+firestore.rules

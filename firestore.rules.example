@@ -9,6 +9,7 @@ service cloud.firestore {
         && request.auth.token.email_verified == true
         && request.auth.token.email.lower() in [
           // ===== EDIT ALLOWLIST HERE (lowercase) =====
+          // Template only. Copy to firestore.rules (git-ignored), add real emails, publish in the console.
           "member1@gmail.com",
           "member2@gmail.com"
         ];

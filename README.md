@@ -38,10 +38,10 @@ These steps need your Google account, so they're done in the Firebase Console ra
    - **Email/Password** → Enable (leave "Email link" off) → Save.
 4. **Authorized domains**: Authentication → Settings → Authorized domains → *Add domain* → `yichun-zhang-zyc.github.io` (`localhost` is there by default).
 5. **Create the database**: Build → Firestore Database → *Create database* → Standard edition, a nearby region → *Start in production mode*.
-6. **Publish the rules**: edit the allowlist in [`firestore.rules`](firestore.rules) (lowercase emails), then paste the whole file into Firestore → Rules → *Publish*.
+6. **Publish the rules**: copy [`firestore.rules.example`](firestore.rules.example) to `firestore.rules` (git-ignored, so member emails stay out of this public repo), put the allowlisted emails in it (lowercase), then paste the whole file into Firestore → Rules → *Publish*.
 7. Restart `npm run dev`. The "Demo mode" badge disappears and Google sign-in is real.
 
-To let someone else in later: add their email to `firestore.rules` and publish the rules again. No redeploy needed.
+To let someone else in later: add their email to your local `firestore.rules` and publish the rules again in the console. No redeploy needed.
 
 ### Password sign-in
 
