@@ -3,7 +3,9 @@
     {
       "id": "sql",
       "title": "SQL",
+      "titleZh": "SQL",
       "description": "Querying, aggregation, joins, window functions and classic interview patterns.",
+      "descriptionZh": "查询、聚合、连接、窗口函数，以及经典面试题型。",
       "roles": {
         "ds": 3,
         "aids": 3,
@@ -21,6 +23,7 @@
         {
           "id": "sql-fundamentals",
           "title": "SQL Fundamentals",
+          "titleZh": "SQL 基础",
           "lessons": [
             {
               "id": "sql-select-where-order-by-limit",
@@ -51,6 +54,7 @@
         {
           "id": "sql-aggregation",
           "title": "Aggregation",
+          "titleZh": "聚合",
           "lessons": [
             {
               "id": "sql-count-sum-avg-min-max",
@@ -73,6 +77,7 @@
         {
           "id": "sql-joins",
           "title": "Joins",
+          "titleZh": "连接（JOIN）",
           "lessons": [
             {
               "id": "sql-inner-left-right-full-outer-join",
@@ -103,6 +108,7 @@
         {
           "id": "sql-subqueries-and-ctes",
           "title": "Subqueries & CTEs",
+          "titleZh": "子查询与 CTE",
           "lessons": [
             {
               "id": "sql-scalar-correlated-subqueries",
@@ -125,6 +131,7 @@
         {
           "id": "sql-set-operations",
           "title": "Set Operations",
+          "titleZh": "集合运算",
           "lessons": [
             {
               "id": "sql-union-vs-union-all",
@@ -139,6 +146,7 @@
         {
           "id": "sql-window-functions",
           "title": "Window Functions",
+          "titleZh": "窗口函数",
           "lessons": [
             {
               "id": "sql-row-number-rank-dense-rank",
@@ -169,6 +177,7 @@
         {
           "id": "sql-date-and-string-functions",
           "title": "Date & String Functions",
+          "titleZh": "日期与字符串函数",
           "lessons": [
             {
               "id": "sql-date-trunc-date-diff-extract",
@@ -187,6 +196,7 @@
         {
           "id": "sql-classic-interview-patterns",
           "title": "Classic Interview Patterns",
+          "titleZh": "经典面试题型",
           "lessons": [
             {
               "id": "sql-top-n-per-group",
@@ -237,6 +247,7 @@
         {
           "id": "sql-performance-and-internals",
           "title": "Performance & Internals",
+          "titleZh": "性能与内部原理",
           "lessons": [
             {
               "id": "sql-indexes",
@@ -263,6 +274,7 @@
         {
           "id": "sql-dialects",
           "title": "SQL Dialects",
+          "titleZh": "SQL 方言",
           "lessons": [
             {
               "id": "sql-postgresql-mysql",
@@ -279,7 +291,9 @@
     {
       "id": "python",
       "title": "Python & Data Manipulation",
+      "titleZh": "Python 与数据处理",
       "description": "Core Python, NumPy, pandas and from-scratch coding questions.",
+      "descriptionZh": "Python 核心、NumPy、pandas，以及手写实现类编程题。",
       "roles": {
         "ds": 3,
         "aids": 3,
@@ -297,6 +311,7 @@
         {
           "id": "python-core",
           "title": "Python Core",
+          "titleZh": "Python 核心",
           "lessons": [
             {
               "id": "python-data-types-mutability",
@@ -343,6 +358,7 @@
         {
           "id": "python-numpy",
           "title": "NumPy",
+          "titleZh": "NumPy",
           "lessons": [
             {
               "id": "python-ndarray-shape-dtype",
@@ -369,6 +385,7 @@
         {
           "id": "python-pandas",
           "title": "pandas",
+          "titleZh": "pandas",
           "lessons": [
             {
               "id": "python-series-and-dataframe",
@@ -419,6 +436,7 @@
         {
           "id": "python-visualization",
           "title": "Visualization",
+          "titleZh": "可视化",
           "lessons": [
             {
               "id": "python-matplotlib-seaborn-basics",
@@ -437,6 +455,7 @@
         {
           "id": "python-polars-and-duckdb",
           "title": "Polars & DuckDB (modern alternatives)",
+          "titleZh": "Polars 与 DuckDB（新一代工具）",
           "lessons": [
             {
               "id": "python-polars-and-duckdb",
@@ -447,6 +466,7 @@
         {
           "id": "python-coding-interview-patterns-for-ds",
           "title": "Python Coding Interview Patterns for DS",
+          "titleZh": "数据科学 Python 编程题型",
           "lessons": [
             {
               "id": "python-implement-metrics-from-scratch",
@@ -471,7 +491,9 @@
     {
       "id": "math",
       "title": "Math Foundations",
+      "titleZh": "数学基础",
       "description": "Linear algebra, calculus, optimization and information theory for ML.",
+      "descriptionZh": "面向机器学习的线性代数、微积分、优化与信息论。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -489,6 +511,7 @@
         {
           "id": "math-linear-algebra",
           "title": "Linear Algebra",
+          "titleZh": "线性代数",
           "lessons": [
             {
               "id": "math-vectors-dot-product-norms",
@@ -523,6 +546,7 @@
         {
           "id": "math-calculus",
           "title": "Calculus",
+          "titleZh": "微积分",
           "lessons": [
             {
               "id": "math-derivatives-chain-rule",
@@ -545,6 +569,7 @@
         {
           "id": "math-optimization",
           "title": "Optimization",
+          "titleZh": "优化",
           "lessons": [
             {
               "id": "math-convex-vs-non-convex",
@@ -579,6 +604,7 @@
         {
           "id": "math-information-theory",
           "title": "Information Theory",
+          "titleZh": "信息论",
           "lessons": [
             {
               "id": "math-entropy-cross-entropy",
@@ -599,7 +625,9 @@
     {
       "id": "probability",
       "title": "Probability",
+      "titleZh": "概率",
       "description": "Counting, conditional probability, distributions and brain-teasers.",
+      "descriptionZh": "计数、条件概率、常见分布与概率脑筋急转弯。",
       "roles": {
         "ds": 3,
         "aids": 3,
@@ -617,6 +645,7 @@
         {
           "id": "probability-basics",
           "title": "Basics",
+          "titleZh": "基础",
           "lessons": [
             {
               "id": "probability-sample-space-events-axioms",
@@ -647,6 +676,7 @@
         {
           "id": "probability-random-variables",
           "title": "Random Variables",
+          "titleZh": "随机变量",
           "lessons": [
             {
               "id": "probability-discrete-vs-continuous",
@@ -673,6 +703,7 @@
         {
           "id": "probability-distributions",
           "title": "Distributions",
+          "titleZh": "概率分布",
           "lessons": [
             {
               "id": "probability-bernoulli-binomial",
@@ -715,6 +746,7 @@
         {
           "id": "probability-limit-theorems",
           "title": "Limit Theorems",
+          "titleZh": "极限定理",
           "lessons": [
             {
               "id": "probability-law-of-large-numbers",
@@ -729,6 +761,7 @@
         {
           "id": "probability-classic-interview-problems",
           "title": "Classic Interview Problems",
+          "titleZh": "经典面试题",
           "lessons": [
             {
               "id": "probability-dice-coin-card-problems",
@@ -765,7 +798,9 @@
     {
       "id": "statistics",
       "title": "Statistics & Inference",
+      "titleZh": "统计与推断",
       "description": "Sampling, estimation, hypothesis testing and regression.",
+      "descriptionZh": "抽样、估计、假设检验与回归分析。",
       "roles": {
         "ds": 3,
         "aids": 3,
@@ -783,6 +818,7 @@
         {
           "id": "statistics-descriptive-statistics",
           "title": "Descriptive Statistics",
+          "titleZh": "描述统计",
           "lessons": [
             {
               "id": "statistics-mean-median-mode",
@@ -805,6 +841,7 @@
         {
           "id": "statistics-sampling",
           "title": "Sampling",
+          "titleZh": "抽样",
           "lessons": [
             {
               "id": "statistics-sampling-methods",
@@ -823,6 +860,7 @@
         {
           "id": "statistics-estimation",
           "title": "Estimation",
+          "titleZh": "估计",
           "lessons": [
             {
               "id": "statistics-point-estimates-bias-and-consistency",
@@ -845,6 +883,7 @@
         {
           "id": "statistics-confidence-intervals",
           "title": "Confidence Intervals",
+          "titleZh": "置信区间",
           "lessons": [
             {
               "id": "statistics-ci-for-mean-and-proportion",
@@ -863,6 +902,7 @@
         {
           "id": "statistics-hypothesis-testing",
           "title": "Hypothesis Testing",
+          "titleZh": "假设检验",
           "lessons": [
             {
               "id": "statistics-null-and-alternative-hypotheses",
@@ -905,6 +945,7 @@
         {
           "id": "statistics-regression-analysis",
           "title": "Regression Analysis",
+          "titleZh": "回归分析",
           "lessons": [
             {
               "id": "statistics-ols-assumptions",
@@ -939,6 +980,7 @@
         {
           "id": "statistics-bayesian-statistics",
           "title": "Bayesian Statistics",
+          "titleZh": "贝叶斯统计",
           "lessons": [
             {
               "id": "statistics-prior-likelihood-posterior",
@@ -957,6 +999,7 @@
         {
           "id": "statistics-paradoxes-and-pitfalls",
           "title": "Paradoxes & Pitfalls",
+          "titleZh": "悖论与常见陷阱",
           "lessons": [
             {
               "id": "statistics-simpson-s-paradox",
@@ -977,7 +1020,9 @@
     {
       "id": "experimentation",
       "title": "Experimentation & Causal Inference",
+      "titleZh": "实验与因果推断",
       "description": "A/B test design, analysis pitfalls and causal methods.",
+      "descriptionZh": "A/B 测试设计、分析陷阱与因果推断方法。",
       "roles": {
         "ds": 3,
         "aids": 3,
@@ -995,6 +1040,7 @@
         {
           "id": "experimentation-a-b-testing-fundamentals",
           "title": "A/B Testing Fundamentals",
+          "titleZh": "A/B 测试基础",
           "lessons": [
             {
               "id": "experimentation-hypothesis-and-metric-selection",
@@ -1021,6 +1067,7 @@
         {
           "id": "experimentation-running-experiments",
           "title": "Running Experiments",
+          "titleZh": "实验执行",
           "lessons": [
             {
               "id": "experimentation-a-a-tests",
@@ -1047,6 +1094,7 @@
         {
           "id": "experimentation-analysis",
           "title": "Analysis",
+          "titleZh": "结果分析",
           "lessons": [
             {
               "id": "experimentation-statistical-vs-practical-significance",
@@ -1069,6 +1117,7 @@
         {
           "id": "experimentation-advanced-designs",
           "title": "Advanced Designs",
+          "titleZh": "进阶实验设计",
           "lessons": [
             {
               "id": "experimentation-network-effects-and-interference",
@@ -1091,6 +1140,7 @@
         {
           "id": "experimentation-causal-inference",
           "title": "Causal Inference (when you can't A/B test)",
+          "titleZh": "因果推断（无法做 A/B 测试时）",
           "lessons": [
             {
               "id": "experimentation-potential-outcomes-framework",
@@ -1129,6 +1179,7 @@
         {
           "id": "experimentation-experiment-case-interviews",
           "title": "Experiment Case Interviews",
+          "titleZh": "实验类案例面试",
           "lessons": [
             {
               "id": "experimentation-launch-or-not-decision-framework",
@@ -1149,7 +1200,9 @@
     {
       "id": "ml",
       "title": "Machine Learning",
+      "titleZh": "机器学习",
       "description": "Fundamentals, core algorithms, evaluation and practical issues.",
+      "descriptionZh": "基础概念、核心算法、模型评估与实战问题。",
       "roles": {
         "ds": 3,
         "aids": 3,
@@ -1167,6 +1220,7 @@
         {
           "id": "ml-fundamentals",
           "title": "ML Fundamentals",
+          "titleZh": "机器学习基础",
           "lessons": [
             {
               "id": "ml-supervised-vs-unsupervised-vs-reinforcement-learning",
@@ -1213,6 +1267,7 @@
         {
           "id": "ml-supervised-learning",
           "title": "Supervised Learning",
+          "titleZh": "监督学习",
           "lessons": [
             {
               "id": "ml-linear-regression",
@@ -1259,6 +1314,7 @@
         {
           "id": "ml-unsupervised-learning",
           "title": "Unsupervised Learning",
+          "titleZh": "无监督学习",
           "lessons": [
             {
               "id": "ml-k-means",
@@ -1297,6 +1353,7 @@
         {
           "id": "ml-feature-engineering",
           "title": "Feature Engineering",
+          "titleZh": "特征工程",
           "lessons": [
             {
               "id": "ml-scaling-and-normalization",
@@ -1327,6 +1384,7 @@
         {
           "id": "ml-model-evaluation",
           "title": "Model Evaluation",
+          "titleZh": "模型评估",
           "lessons": [
             {
               "id": "ml-regression-mse-rmse-mae-mape-r",
@@ -1365,6 +1423,7 @@
         {
           "id": "ml-practical-issues",
           "title": "Practical Issues",
+          "titleZh": "实战问题",
           "lessons": [
             {
               "id": "ml-imbalanced-data",
@@ -1387,6 +1446,7 @@
         {
           "id": "ml-reinforcement-learning-basics",
           "title": "Reinforcement Learning Basics",
+          "titleZh": "强化学习基础",
           "lessons": [
             {
               "id": "ml-mdp-reward-policy",
@@ -1407,7 +1467,9 @@
     {
       "id": "deep-learning",
       "title": "Deep Learning",
+      "titleZh": "深度学习",
       "description": "Neural networks, training techniques and modern architectures.",
+      "descriptionZh": "神经网络、训练技巧与现代模型架构。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -1425,6 +1487,7 @@
         {
           "id": "deep-learning-neural-network-basics",
           "title": "Neural Network Basics",
+          "titleZh": "神经网络基础",
           "lessons": [
             {
               "id": "deep-learning-perceptron-mlp",
@@ -1455,6 +1518,7 @@
         {
           "id": "deep-learning-training-techniques",
           "title": "Training Techniques",
+          "titleZh": "训练技巧",
           "lessons": [
             {
               "id": "deep-learning-optimizers",
@@ -1489,6 +1553,7 @@
         {
           "id": "deep-learning-architectures",
           "title": "Architectures",
+          "titleZh": "模型架构",
           "lessons": [
             {
               "id": "deep-learning-cnn",
@@ -1523,6 +1588,7 @@
         {
           "id": "deep-learning-transfer-learning-and-fine-tuning",
           "title": "Transfer Learning & Fine-tuning",
+          "titleZh": "迁移学习与微调",
           "lessons": [
             {
               "id": "deep-learning-transfer-learning-and-fine-tuning",
@@ -1533,6 +1599,7 @@
         {
           "id": "deep-learning-frameworks",
           "title": "Frameworks",
+          "titleZh": "框架",
           "lessons": [
             {
               "id": "deep-learning-pytorch-basics",
@@ -1549,7 +1616,9 @@
     {
       "id": "nlp-llms",
       "title": "NLP & LLMs",
+      "titleZh": "NLP 与大语言模型",
       "description": "Embeddings, transformers, LLM training, fine-tuning and efficiency.",
+      "descriptionZh": "词向量、Transformer、大模型训练、微调与推理效率。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -1567,6 +1636,7 @@
         {
           "id": "nlp-llms-classic-nlp",
           "title": "Classic NLP",
+          "titleZh": "经典 NLP",
           "lessons": [
             {
               "id": "nlp-llms-tokenization-stemming-lemmatization",
@@ -1589,6 +1659,7 @@
         {
           "id": "nlp-llms-embeddings",
           "title": "Embeddings",
+          "titleZh": "词向量与嵌入",
           "lessons": [
             {
               "id": "nlp-llms-word2vec-glove",
@@ -1611,6 +1682,7 @@
         {
           "id": "nlp-llms-transformer-based-models",
           "title": "Transformer-based Models",
+          "titleZh": "基于 Transformer 的模型",
           "lessons": [
             {
               "id": "nlp-llms-self-attention-multi-head-attention",
@@ -1637,6 +1709,7 @@
         {
           "id": "nlp-llms-large-language-models",
           "title": "Large Language Models",
+          "titleZh": "大语言模型",
           "lessons": [
             {
               "id": "nlp-llms-pre-training-objectives",
@@ -1671,6 +1744,7 @@
         {
           "id": "nlp-llms-fine-tuning",
           "title": "Fine-tuning",
+          "titleZh": "微调",
           "lessons": [
             {
               "id": "nlp-llms-full-fine-tuning-vs-peft",
@@ -1689,6 +1763,7 @@
         {
           "id": "nlp-llms-efficiency",
           "title": "Efficiency",
+          "titleZh": "推理效率",
           "lessons": [
             {
               "id": "nlp-llms-quantization",
@@ -1707,6 +1782,7 @@
         {
           "id": "nlp-llms-multimodal-models",
           "title": "Multimodal Models (vision-language)",
+          "titleZh": "多模态模型（视觉-语言）",
           "lessons": [
             {
               "id": "nlp-llms-multimodal-models",
@@ -1719,7 +1795,9 @@
     {
       "id": "genai-eng",
       "title": "GenAI Application Engineering",
+      "titleZh": "生成式 AI 应用工程",
       "description": "Prompting, RAG, agents, evaluation, guardrails and LLMOps.",
+      "descriptionZh": "Prompt、RAG、Agent、评估、安全护栏与 LLMOps。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -1737,6 +1815,7 @@
         {
           "id": "genai-eng-prompt-engineering",
           "title": "Prompt Engineering",
+          "titleZh": "Prompt 工程",
           "lessons": [
             {
               "id": "genai-eng-zero-shot-few-shot",
@@ -1755,6 +1834,7 @@
         {
           "id": "genai-eng-llm-apis",
           "title": "LLM APIs",
+          "titleZh": "大模型 API",
           "lessons": [
             {
               "id": "genai-eng-openai-anthropic-open-source-model-apis",
@@ -1773,6 +1853,7 @@
         {
           "id": "genai-eng-rag",
           "title": "RAG (Retrieval-Augmented Generation)",
+          "titleZh": "RAG（检索增强生成）",
           "lessons": [
             {
               "id": "genai-eng-document-loading-and-chunking-strategies",
@@ -1807,6 +1888,7 @@
         {
           "id": "genai-eng-agents",
           "title": "Agents",
+          "titleZh": "Agent（智能体）",
           "lessons": [
             {
               "id": "genai-eng-tool-use-function-calling",
@@ -1837,6 +1919,7 @@
         {
           "id": "genai-eng-nl-to-sql-text-to-sql-systems",
           "title": "NL-to-SQL / Text-to-SQL systems",
+          "titleZh": "NL-to-SQL / Text-to-SQL 系统",
           "lessons": [
             {
               "id": "genai-eng-nl-to-sql-text-to-sql-systems",
@@ -1847,6 +1930,7 @@
         {
           "id": "genai-eng-evaluation-of-llm-apps",
           "title": "Evaluation of LLM Apps",
+          "titleZh": "大模型应用评估",
           "lessons": [
             {
               "id": "genai-eng-offline-eval-sets",
@@ -1869,6 +1953,7 @@
         {
           "id": "genai-eng-safety-and-guardrails",
           "title": "Safety & Guardrails",
+          "titleZh": "安全与护栏",
           "lessons": [
             {
               "id": "genai-eng-prompt-injection",
@@ -1887,6 +1972,7 @@
         {
           "id": "genai-eng-llmops",
           "title": "LLMOps",
+          "titleZh": "LLMOps",
           "lessons": [
             {
               "id": "genai-eng-prompt-versioning",
@@ -1911,7 +1997,9 @@
     {
       "id": "computer-vision",
       "title": "Computer Vision",
+      "titleZh": "计算机视觉",
       "description": "Classification, detection, segmentation and vision transformers.",
+      "descriptionZh": "图像分类、目标检测、分割与视觉 Transformer。",
       "roles": {
         "ds": 1,
         "aids": 1,
@@ -1929,6 +2017,7 @@
         {
           "id": "computer-vision-core-topics",
           "title": "Core Topics",
+          "titleZh": "核心主题",
           "lessons": [
             {
               "id": "computer-vision-image-basics",
@@ -1969,7 +2058,9 @@
     {
       "id": "time-series",
       "title": "Time Series & Forecasting",
+      "titleZh": "时间序列与预测",
       "description": "Stationarity, ARIMA, ML forecasting and backtesting.",
+      "descriptionZh": "平稳性、ARIMA、机器学习预测与回测。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -1987,6 +2078,7 @@
         {
           "id": "time-series-core-topics",
           "title": "Core Topics",
+          "titleZh": "核心主题",
           "lessons": [
             {
               "id": "time-series-components-trend-seasonality-residual",
@@ -2039,7 +2131,9 @@
     {
       "id": "recsys",
       "title": "Recommender & Ranking Systems",
+      "titleZh": "推荐与排序系统",
       "description": "Collaborative filtering, two-tower models and learning to rank.",
+      "descriptionZh": "协同过滤、双塔模型与排序学习。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -2057,6 +2151,7 @@
         {
           "id": "recsys-core-topics",
           "title": "Core Topics",
+          "titleZh": "核心主题",
           "lessons": [
             {
               "id": "recsys-collaborative-filtering",
@@ -2109,7 +2204,9 @@
     {
       "id": "ml-system-design",
       "title": "ML System Design",
+      "titleZh": "机器学习系统设计",
       "description": "A repeatable design framework plus classic design questions.",
+      "descriptionZh": "可复用的设计框架与经典系统设计题。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -2127,6 +2224,7 @@
         {
           "id": "ml-system-design-design-framework",
           "title": "Design Framework",
+          "titleZh": "设计框架",
           "lessons": [
             {
               "id": "ml-system-design-clarify-requirements-and-business-goal",
@@ -2169,6 +2267,7 @@
         {
           "id": "ml-system-design-serving-patterns",
           "title": "Serving Patterns",
+          "titleZh": "服务模式",
           "lessons": [
             {
               "id": "ml-system-design-batch-vs-real-time-inference",
@@ -2191,6 +2290,7 @@
         {
           "id": "ml-system-design-scaling",
           "title": "Scaling",
+          "titleZh": "扩展",
           "lessons": [
             {
               "id": "ml-system-design-distributed-training",
@@ -2205,6 +2305,7 @@
         {
           "id": "ml-system-design-classic-design-questions",
           "title": "Classic Design Questions",
+          "titleZh": "经典设计题",
           "lessons": [
             {
               "id": "ml-system-design-recommendation-feed",
@@ -2249,7 +2350,9 @@
     {
       "id": "mlops",
       "title": "MLOps",
+      "titleZh": "MLOps",
       "description": "Tracking, registries, pipelines, serving, monitoring and deployment.",
+      "descriptionZh": "实验追踪、模型仓库、流水线、部署、监控与发布策略。",
       "roles": {
         "ds": 1,
         "aids": 1,
@@ -2267,6 +2370,7 @@
         {
           "id": "mlops-core-topics",
           "title": "Core Topics",
+          "titleZh": "核心主题",
           "lessons": [
             {
               "id": "mlops-ml-lifecycle",
@@ -2293,6 +2397,7 @@
         {
           "id": "mlops-model-serving",
           "title": "Model Serving",
+          "titleZh": "模型服务",
           "lessons": [
             {
               "id": "mlops-rest-api",
@@ -2311,6 +2416,7 @@
         {
           "id": "mlops-ci-cd-for-ml",
           "title": "CI/CD for ML",
+          "titleZh": "机器学习的 CI/CD",
           "lessons": [
             {
               "id": "mlops-testing-data-features-and-models",
@@ -2325,6 +2431,7 @@
         {
           "id": "mlops-monitoring",
           "title": "Monitoring",
+          "titleZh": "监控",
           "lessons": [
             {
               "id": "mlops-data-drift-concept-drift",
@@ -2343,6 +2450,7 @@
         {
           "id": "mlops-deployment-strategies",
           "title": "Deployment Strategies",
+          "titleZh": "发布策略",
           "lessons": [
             {
               "id": "mlops-shadow-deployment",
@@ -2361,6 +2469,7 @@
         {
           "id": "mlops-reproducibility-and-governance",
           "title": "Reproducibility & governance",
+          "titleZh": "可复现性与治理",
           "lessons": [
             {
               "id": "mlops-reproducibility-and-governance",
@@ -2373,7 +2482,9 @@
     {
       "id": "data-engineering",
       "title": "Data Engineering",
+      "titleZh": "数据工程",
       "description": "Data modeling, storage, ETL, Spark, streaming and orchestration.",
+      "descriptionZh": "数据建模、存储、ETL、Spark、流处理与编排。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -2391,6 +2502,7 @@
         {
           "id": "data-engineering-data-modeling",
           "title": "Data Modeling",
+          "titleZh": "数据建模",
           "lessons": [
             {
               "id": "data-engineering-oltp-vs-olap",
@@ -2421,6 +2533,7 @@
         {
           "id": "data-engineering-storage",
           "title": "Storage",
+          "titleZh": "存储",
           "lessons": [
             {
               "id": "data-engineering-data-warehouse",
@@ -2451,6 +2564,7 @@
         {
           "id": "data-engineering-etl-elt",
           "title": "ETL / ELT",
+          "titleZh": "ETL / ELT",
           "lessons": [
             {
               "id": "data-engineering-etl-vs-elt",
@@ -2477,6 +2591,7 @@
         {
           "id": "data-engineering-distributed-processing",
           "title": "Distributed Processing",
+          "titleZh": "分布式计算",
           "lessons": [
             {
               "id": "data-engineering-mapreduce-concepts",
@@ -2507,6 +2622,7 @@
         {
           "id": "data-engineering-streaming",
           "title": "Streaming",
+          "titleZh": "流处理",
           "lessons": [
             {
               "id": "data-engineering-batch-vs-streaming",
@@ -2533,6 +2649,7 @@
         {
           "id": "data-engineering-orchestration",
           "title": "Orchestration",
+          "titleZh": "任务编排",
           "lessons": [
             {
               "id": "data-engineering-airflow",
@@ -2547,6 +2664,7 @@
         {
           "id": "data-engineering-data-quality-and-governance",
           "title": "Data Quality & Governance",
+          "titleZh": "数据质量与治理",
           "lessons": [
             {
               "id": "data-engineering-data-validation",
@@ -2573,6 +2691,7 @@
         {
           "id": "data-engineering-databases",
           "title": "Databases",
+          "titleZh": "数据库",
           "lessons": [
             {
               "id": "data-engineering-relational-vs-nosql",
@@ -2595,6 +2714,7 @@
         {
           "id": "data-engineering-data-pipeline-system-design",
           "title": "Data Pipeline System Design",
+          "titleZh": "数据管道系统设计",
           "lessons": [
             {
               "id": "data-engineering-design-a-clickstream-pipeline",
@@ -2615,7 +2735,9 @@
     {
       "id": "cloud-devops",
       "title": "Cloud, DevOps & DataOps",
+      "titleZh": "云、DevOps 与 DataOps",
       "description": "Linux, Git, containers, Kubernetes, CI/CD, IaC and cloud services.",
+      "descriptionZh": "Linux、Git、容器、Kubernetes、CI/CD、IaC 与云服务。",
       "roles": {
         "ds": 1,
         "aids": 1,
@@ -2633,6 +2755,7 @@
         {
           "id": "cloud-devops-linux-and-shell",
           "title": "Linux & Shell",
+          "titleZh": "Linux 与 Shell",
           "lessons": [
             {
               "id": "cloud-devops-file-system-permissions",
@@ -2659,6 +2782,7 @@
         {
           "id": "cloud-devops-git",
           "title": "Git",
+          "titleZh": "Git",
           "lessons": [
             {
               "id": "cloud-devops-branching-merge-vs-rebase",
@@ -2677,6 +2801,7 @@
         {
           "id": "cloud-devops-networking-basics",
           "title": "Networking Basics",
+          "titleZh": "网络基础",
           "lessons": [
             {
               "id": "cloud-devops-http-https-dns-tcp-ip",
@@ -2691,6 +2816,7 @@
         {
           "id": "cloud-devops-containers",
           "title": "Containers",
+          "titleZh": "容器",
           "lessons": [
             {
               "id": "cloud-devops-docker",
@@ -2705,6 +2831,7 @@
         {
           "id": "cloud-devops-kubernetes",
           "title": "Kubernetes",
+          "titleZh": "Kubernetes",
           "lessons": [
             {
               "id": "cloud-devops-pod-deployment-service",
@@ -2727,6 +2854,7 @@
         {
           "id": "cloud-devops-ci-cd",
           "title": "CI/CD",
+          "titleZh": "CI/CD",
           "lessons": [
             {
               "id": "cloud-devops-github-actions-jenkins-gitlab-ci",
@@ -2741,6 +2869,7 @@
         {
           "id": "cloud-devops-infrastructure-as-code",
           "title": "Infrastructure as Code",
+          "titleZh": "基础设施即代码",
           "lessons": [
             {
               "id": "cloud-devops-terraform",
@@ -2755,6 +2884,7 @@
         {
           "id": "cloud-devops-cloud-platforms",
           "title": "Cloud Platforms",
+          "titleZh": "云平台",
           "lessons": [
             {
               "id": "cloud-devops-aws-core-services",
@@ -2777,6 +2907,7 @@
         {
           "id": "cloud-devops-observability",
           "title": "Observability",
+          "titleZh": "可观测性",
           "lessons": [
             {
               "id": "cloud-devops-logging-metrics-tracing",
@@ -2795,6 +2926,7 @@
         {
           "id": "cloud-devops-security",
           "title": "Security",
+          "titleZh": "安全",
           "lessons": [
             {
               "id": "cloud-devops-iam-and-least-privilege",
@@ -2813,6 +2945,7 @@
         {
           "id": "cloud-devops-dataops",
           "title": "DataOps",
+          "titleZh": "DataOps",
           "lessons": [
             {
               "id": "cloud-devops-pipeline-testing-and-ci-for-data",
@@ -2833,7 +2966,9 @@
     {
       "id": "analytics-bi",
       "title": "Data Analysis & BI",
+      "titleZh": "数据分析与 BI",
       "description": "Business metrics, dashboards, BI tools and analytics case studies.",
+      "descriptionZh": "业务指标、看板、BI 工具与分析类案例。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -2851,6 +2986,7 @@
         {
           "id": "analytics-bi-analytics-workflow",
           "title": "Analytics Workflow",
+          "titleZh": "分析流程",
           "lessons": [
             {
               "id": "analytics-bi-define-the-business-question",
@@ -2873,6 +3009,7 @@
         {
           "id": "analytics-bi-business-metrics",
           "title": "Business Metrics",
+          "titleZh": "业务指标",
           "lessons": [
             {
               "id": "analytics-bi-revenue-arpu-ltv-cac",
@@ -2899,6 +3036,7 @@
         {
           "id": "analytics-bi-dashboards-and-reporting",
           "title": "Dashboards & Reporting",
+          "titleZh": "看板与报表",
           "lessons": [
             {
               "id": "analytics-bi-kpi-design",
@@ -2917,6 +3055,7 @@
         {
           "id": "analytics-bi-bi-tools",
           "title": "BI Tools",
+          "titleZh": "BI 工具",
           "lessons": [
             {
               "id": "analytics-bi-power-bi",
@@ -2935,6 +3074,7 @@
         {
           "id": "analytics-bi-excel-google-sheets",
           "title": "Excel / Google Sheets",
+          "titleZh": "Excel / Google Sheets",
           "lessons": [
             {
               "id": "analytics-bi-pivot-tables",
@@ -2953,6 +3093,7 @@
         {
           "id": "analytics-bi-data-storytelling",
           "title": "Data Storytelling",
+          "titleZh": "数据叙事",
           "lessons": [
             {
               "id": "analytics-bi-communicating-to-non-technical-stakeholders",
@@ -2967,6 +3108,7 @@
         {
           "id": "analytics-bi-analytics-case-studies",
           "title": "Analytics Case Studies",
+          "titleZh": "分析类案例",
           "lessons": [
             {
               "id": "analytics-bi-metric-x-dropped-10-why",
@@ -2987,7 +3129,9 @@
     {
       "id": "product-sense",
       "title": "Product Sense, Metrics & AI PM",
+      "titleZh": "产品思维、指标与 AI 产品管理",
       "description": "North-star metrics, product cases and AI product management.",
+      "descriptionZh": "北极星指标、产品案例与 AI 产品管理。",
       "roles": {
         "ds": 3,
         "aids": 3,
@@ -3005,6 +3149,7 @@
         {
           "id": "product-sense-product-metrics",
           "title": "Product Metrics",
+          "titleZh": "产品指标",
           "lessons": [
             {
               "id": "product-sense-north-star-metric",
@@ -3027,6 +3172,7 @@
         {
           "id": "product-sense-product-case-interviews",
           "title": "Product Case Interviews",
+          "titleZh": "产品案例面试",
           "lessons": [
             {
               "id": "product-sense-define-success-for-a-feature",
@@ -3049,6 +3195,7 @@
         {
           "id": "product-sense-ai-product-management",
           "title": "AI Product Management",
+          "titleZh": "AI 产品管理",
           "lessons": [
             {
               "id": "product-sense-identifying-good-ai-use-cases",
@@ -3085,7 +3232,9 @@
     {
       "id": "dsa",
       "title": "Data Structures & Algorithms",
+      "titleZh": "数据结构与算法",
       "description": "Complexity and the core patterns for coding interviews.",
+      "descriptionZh": "复杂度分析与编程面试核心题型。",
       "roles": {
         "ds": 2,
         "aids": 2,
@@ -3103,6 +3252,7 @@
         {
           "id": "dsa-core-topics",
           "title": "Core Topics",
+          "titleZh": "核心主题",
           "lessons": [
             {
               "id": "dsa-complexity",
@@ -3171,7 +3321,9 @@
     {
       "id": "swe",
       "title": "Software Engineering for Data/AI",
+      "titleZh": "数据/AI 软件工程",
       "description": "Production Python, testing, APIs and backend basics.",
+      "descriptionZh": "生产级 Python、测试、API 与后端基础。",
       "roles": {
         "ds": 1,
         "aids": 1,
@@ -3189,6 +3341,7 @@
         {
           "id": "swe-writing-production-quality-python",
           "title": "Writing production-quality Python",
+          "titleZh": "编写生产级 Python",
           "lessons": [
             {
               "id": "swe-project-structure-packaging",
@@ -3207,6 +3360,7 @@
         {
           "id": "swe-testing",
           "title": "Testing",
+          "titleZh": "测试",
           "lessons": [
             {
               "id": "swe-unit-tests",
@@ -3225,6 +3379,7 @@
         {
           "id": "swe-apis",
           "title": "APIs",
+          "titleZh": "API",
           "lessons": [
             {
               "id": "swe-rest-principles",
@@ -3243,6 +3398,7 @@
         {
           "id": "swe-backend-basics",
           "title": "Backend Basics",
+          "titleZh": "后端基础",
           "lessons": [
             {
               "id": "swe-caching",
@@ -3261,6 +3417,7 @@
         {
           "id": "swe-system-design-basics",
           "title": "System Design Basics",
+          "titleZh": "系统设计基础",
           "lessons": [
             {
               "id": "swe-scalability-availability",
@@ -3275,6 +3432,7 @@
         {
           "id": "swe-code-quality",
           "title": "Code Quality",
+          "titleZh": "代码质量",
           "lessons": [
             {
               "id": "swe-design-patterns",
@@ -3295,7 +3453,9 @@
     {
       "id": "consulting",
       "title": "Consulting & Case Interviews",
+      "titleZh": "咨询与案例面试",
       "description": "Case frameworks, market sizing and structuring ambiguous problems.",
+      "descriptionZh": "案例框架、市场规模估算与结构化拆解问题。",
       "roles": {
         "ds": 1,
         "aids": 1,
@@ -3313,6 +3473,7 @@
         {
           "id": "consulting-core-topics",
           "title": "Core Topics",
+          "titleZh": "核心主题",
           "lessons": [
             {
               "id": "consulting-case-frameworks",
@@ -3349,7 +3510,9 @@
     {
       "id": "behavioral",
       "title": "Behavioral Interviews",
+      "titleZh": "行为面试",
       "description": "STAR stories, project deep dives and the questions to ask back.",
+      "descriptionZh": "STAR 故事、项目深挖，以及反问面试官的问题。",
       "roles": {
         "ds": 3,
         "aids": 3,
@@ -3367,6 +3530,7 @@
         {
           "id": "behavioral-core-topics",
           "title": "Core Topics",
+          "titleZh": "核心主题",
           "lessons": [
             {
               "id": "behavioral-star-method",

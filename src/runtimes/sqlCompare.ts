@@ -26,8 +26,8 @@ const rowKey = (row: unknown[]) => JSON.stringify(row.map(normalize));
 
 export interface CompareOutcome {
   ok: boolean;
-  /** Learner-facing explanation when ok is false. */
-  reason?: string;
+  /** i18n key + variables explaining the mismatch (see "sql.cmp.*" in src/i18n/strings.ts). */
+  reason?: { key: string; vars?: Record<string, string | number> };
 }
 
 /**
@@ -36,9 +36,9 @@ export interface CompareOutcome {
  */
 export function compareResults(actual: QueryResult, expected: QueryResult, orderMatters = false): CompareOutcome {
   if (actual.columns.length !== expected.columns.length)
-    return { ok: false, reason: `Your query returns ${actual.columns.length} column${actual.columns.length === 1 ? '' : 's'}, expected ${expected.columns.length} (${expected.columns.join(', ')}).` };
+    return { ok: false, reason: { key: 'sql.cmp.cols', vars: { got: actual.columns.length, want: expected.columns.length, names: expected.columns.join(', ') } } };
   if (actual.rows.length !== expected.rows.length)
-    return { ok: false, reason: `Your query returns ${actual.rows.length} row${actual.rows.length === 1 ? '' : 's'}, expected ${expected.rows.length}.` };
+    return { ok: false, reason: { key: 'sql.cmp.rows', vars: { got: actual.rows.length, want: expected.rows.length } } };
   const a = actual.rows.map(rowKey);
   const e = expected.rows.map(rowKey);
   if (!orderMatters) {
@@ -46,11 +46,7 @@ export function compareResults(actual: QueryResult, expected: QueryResult, order
     e.sort();
   }
   for (let i = 0; i < a.length; i++) {
-    if (a[i] !== e[i])
-      return {
-        ok: false,
-        reason: orderMatters ? 'Same number of rows, but the values or their order differ from the expected result.' : 'Same number of rows, but some values differ from the expected result.',
-      };
+    if (a[i] !== e[i]) return { ok: false, reason: { key: orderMatters ? 'sql.cmp.order' : 'sql.cmp.values' } };
   }
   return { ok: true };
 }

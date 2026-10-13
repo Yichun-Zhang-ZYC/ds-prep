@@ -4,6 +4,7 @@ import { keymap } from '@codemirror/view';
 import { Prec } from '@codemirror/state';
 import { sql, SQLite } from '@codemirror/lang-sql';
 import { python } from '@codemirror/lang-python';
+import { useI18n } from '../../i18n/useI18n';
 import { useTheme } from '../../theme';
 
 const IS_MAC = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
@@ -20,6 +21,7 @@ interface Props {
 
 export function CodeEditor({ id, language, value, onChange, onRun, label }: Props) {
   const { theme } = useTheme();
+  const { t } = useI18n();
   const runRef = useRef(onRun);
   runRef.current = onRun;
 
@@ -46,7 +48,7 @@ export function CodeEditor({ id, language, value, onChange, onRun, label }: Prop
       />
       <div className="text-xs text-muted">
         <kbd className="rounded border border-b-2 border-border px-1 font-mono text-[11px]">{IS_MAC ? '⌘' : 'Ctrl'}</kbd>{' '}
-        <kbd className="rounded border border-b-2 border-border px-1 font-mono text-[11px]">Enter</kbd> to run
+        <kbd className="rounded border border-b-2 border-border px-1 font-mono text-[11px]">Enter</kbd> {t('ex.toRun')}
       </div>
     </div>
   );

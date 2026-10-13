@@ -3,6 +3,7 @@ import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-d
 import { AuthProvider } from './auth/AuthProvider';
 import { FullPageSpinner, RequireAuth } from './auth/RequireAuth';
 import { ToastProvider } from './components/Toast';
+import { I18nProvider } from './i18n/I18nProvider';
 import { DashboardPage } from './routes/DashboardPage';
 import { LoginPage } from './routes/LoginPage';
 import { NotAuthorizedPage } from './routes/NotAuthorizedPage';
@@ -22,29 +23,31 @@ function ScrollToTop() {
 /** HashRouter because GitHub Pages has no SPA fallback (DESIGN.md §2). */
 export default function App() {
   return (
-    <ToastProvider>
-      <AuthProvider>
-        <HashRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/not-authorized" element={<NotAuthorizedPage />} />
-            <Route element={<RequireAuth />}>
-              <Route path="/" element={<DashboardPage />} />
-              <Route path="/section/:sectionId" element={<SectionPage />} />
-              <Route
-                path="/lesson/:sectionId/:lessonId"
-                element={
-                  <Suspense fallback={<FullPageSpinner label="Loading lesson…" />}>
-                    <LessonPage />
-                  </Suspense>
-                }
-              />
-            </Route>
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </HashRouter>
-      </AuthProvider>
-    </ToastProvider>
+    <I18nProvider>
+      <ToastProvider>
+        <AuthProvider>
+          <HashRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/not-authorized" element={<NotAuthorizedPage />} />
+              <Route element={<RequireAuth />}>
+                <Route path="/" element={<DashboardPage />} />
+                <Route path="/section/:sectionId" element={<SectionPage />} />
+                <Route
+                  path="/lesson/:sectionId/:lessonId"
+                  element={
+                    <Suspense fallback={<FullPageSpinner />}>
+                      <LessonPage />
+                    </Suspense>
+                  }
+                />
+              </Route>
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </HashRouter>
+        </AuthProvider>
+      </ToastProvider>
+    </I18nProvider>
   );
 }

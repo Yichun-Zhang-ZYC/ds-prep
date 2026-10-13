@@ -1,6 +1,7 @@
 import { createContext, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { RoleKey } from '../content/types';
 import { useToast } from '../components/Toast';
+import { useI18n } from '../i18n/useI18n';
 import type { ProgressMap, ProgressPatch, ProgressStore, UserDoc } from './types';
 import { applyPatch } from './types';
 
@@ -26,6 +27,9 @@ const CODE_DEBOUNCE_MS = 1000;
  */
 export function ProgressProvider({ store, children }: { store: ProgressStore; children: ReactNode }) {
   const toast = useToast();
+  const { t } = useI18n();
+  const tRef = useRef(t);
+  tRef.current = t;
   const [progress, setProgress] = useState<ProgressMap>(new Map());
   const [user, setUser] = useState<UserDoc | null>(null);
   const [ready, setReady] = useState(false);
@@ -36,7 +40,7 @@ export function ProgressProvider({ store, children }: { store: ProgressStore; ch
   const fail = useCallback(
     (e: unknown) => {
       console.error(e);
-      toast("Couldn't save progress. Changes are kept on this page and will retry on your next action.", 'error');
+      toast(tRef.current('lesson.saveFailed'), 'error');
     },
     [toast],
   );

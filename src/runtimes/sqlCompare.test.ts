@@ -11,12 +11,12 @@ describe('compareResults', () => {
   });
   it('ignores column names but checks column count', () => {
     expect(compareResults(r(['total'], [[1]]), r(['sum'], [[1]])).ok).toBe(true);
-    expect(compareResults(r(['a', 'b'], [[1, 2]]), r(['a'], [[1]])).reason).toMatch(/2 columns, expected 1/);
+    expect(compareResults(r(['a', 'b'], [[1, 2]]), r(['a'], [[1]])).reason).toEqual({ key: 'sql.cmp.cols', vars: { got: 2, want: 1, names: 'a' } });
   });
   it('compares floats to 6 decimals', () => {
     expect(compareResults(r(['x'], [[0.1 + 0.2]]), r(['x'], [[0.3]])).ok).toBe(true);
   });
   it('reports row count mismatches', () => {
-    expect(compareResults(r(['x'], [[1]]), r(['x'], [[1], [2]])).reason).toMatch(/1 row, expected 2/);
+    expect(compareResults(r(['x'], [[1]]), r(['x'], [[1], [2]])).reason).toEqual({ key: 'sql.cmp.rows', vars: { got: 1, want: 2 } });
   });
 });

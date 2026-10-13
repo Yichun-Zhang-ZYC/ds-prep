@@ -5,6 +5,8 @@ export interface PythonResult {
   error?: string;
   timedOut?: boolean;
   stopped?: boolean;
+  /** The Pyodide runtime itself couldn't load (network / CDN). */
+  loadFailed?: boolean;
 }
 
 export const PYTHON_TIMEOUT_MS = 10_000;
@@ -58,16 +60,17 @@ class PythonRunner {
     };
     w.onerror = e => {
       this.setLoading(false);
-      this.failAll(`Python runtime failed to load: ${e.message || 'network error'}`);
+      console.error('Pyodide worker error', e.message);
+      this.failAll('', true);
     };
     this.worker = w;
     return w;
   }
 
-  private failAll(error: string) {
+  private failAll(error: string, loadFailed = false) {
     this.pending.forEach(p => {
       clearTimeout(p.timer);
-      p.resolve({ ok: false, stdout: '', stderr: '', error });
+      p.resolve({ ok: false, stdout: '', stderr: '', error, loadFailed, stopped: !loadFailed });
     });
     this.pending.clear();
     this.worker?.terminate();
@@ -83,15 +86,9 @@ class PythonRunner {
     this.worker = null;
     this.loaded = false;
     this.setLoading(false);
-    p.resolve({
-      ok: false,
-      stdout: '',
-      stderr: '',
-      error: flags.timedOut ? `Stopped after ${PYTHON_TIMEOUT_MS / 1000}s. Look for an infinite loop or a very slow step.` : 'Stopped.',
-      ...flags,
-    });
+    p.resolve({ ok: false, stdout: '', stderr: '', ...flags });
     // Anything else queued on the dead worker is lost too.
-    this.failAll('Stopped.');
+    this.failAll('');
   }
 
   run(code: string, packages: string[] = []): Promise<PythonResult> {

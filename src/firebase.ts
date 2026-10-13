@@ -3,7 +3,8 @@ import { getAuth, type Auth } from 'firebase/auth';
 import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, type Firestore } from 'firebase/firestore';
 import { firebaseConfig } from './firebase.config';
 
-export const firebaseEnabled = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId);
+// `npm run dev:demo` forces demo mode locally (fake sign-in) even though a config is present.
+export const firebaseEnabled = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId) && import.meta.env.VITE_FORCE_DEMO !== '1';
 
 let auth: Auth | null = null;
 let db: Firestore | null = null;

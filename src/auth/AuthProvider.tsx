@@ -33,12 +33,12 @@ export interface AuthContextValue {
   status: AuthStatus;
   user: AuthUser | null;
   store: ProgressStore | null;
-  /** Message to show on the login page after a failed sign-in attempt. */
+  /** i18n key of the message to show on the login page after a failed sign-in attempt. */
   error: string | null;
   signInWithGoogle(): Promise<void>;
   signInWithPassword(email: string, password: string): Promise<void>;
   sendPasswordReset(email: string): Promise<void>;
-  /** Links a password to the current account (or changes it). Same uid either way. */
+  /** Links a password to the current account (or changes it). Same uid either way. Throws Error(i18nKey). */
   setPassword(password: string): Promise<void>;
   signOut(): Promise<void>;
 }
@@ -49,6 +49,7 @@ export const MIN_PASSWORD_LENGTH = 8;
 
 const mode: AuthMode = firebaseEnabled ? 'firebase' : import.meta.env.DEV ? 'demo' : 'unconfigured';
 
+/** Maps Firebase errors to i18n keys (see src/i18n/strings.ts, "auth.*"). */
 function friendlyAuthError(e: unknown): string {
   const code = (e as { code?: string })?.code ?? '';
   switch (code) {
@@ -56,22 +57,25 @@ function friendlyAuthError(e: unknown): string {
     case 'auth/wrong-password':
     case 'auth/user-not-found':
     case 'auth/invalid-email':
-      return 'Email or password is incorrect.';
+      return 'auth.badCredentials';
     case 'auth/too-many-requests':
-      return 'Too many attempts. Wait a few minutes or sign in with Google.';
+      return 'auth.tooMany';
     case 'auth/popup-closed-by-user':
     case 'auth/cancelled-popup-request':
-      return 'Sign-in window was closed before finishing.';
+      return 'auth.popupClosed';
     case 'auth/popup-blocked':
-      return 'Your browser blocked the sign-in window. Allow pop-ups for this site and try again.';
+      return 'auth.popupBlocked';
     case 'auth/unauthorized-domain':
-      return 'This domain is not authorized in Firebase Auth. Add it under Authentication → Settings → Authorized domains.';
+      return 'auth.unauthorizedDomain';
     case 'auth/weak-password':
-      return `Use at least ${MIN_PASSWORD_LENGTH} characters.`;
+      return 'auth.weakPassword';
     case 'auth/network-request-failed':
-      return 'Network error. Check your connection and try again.';
+      return 'auth.network';
+    case 'auth/operation-not-allowed':
+      return 'auth.passwordDisabled';
     default:
-      return (e as Error)?.message || 'Something went wrong. Try again.';
+      console.error(e);
+      return 'auth.generic';
   }
 }
 
@@ -192,7 +196,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (mode === 'demo') {
       const stored = ls.get(DEMO_PW);
       if (stored && email.trim().toLowerCase() === DEMO_USER.email && (await sha256(password)) === stored) return startDemoSession();
-      setError('Email or password is incorrect.');
+      setError('auth.badCredentials');
       return;
     }
     if (!auth) return;
@@ -215,14 +219,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const setPassword = useCallback(async (password: string) => {
-    if (password.length < MIN_PASSWORD_LENGTH) throw new Error(`Use at least ${MIN_PASSWORD_LENGTH} characters.`);
+    if (password.length < MIN_PASSWORD_LENGTH) throw new Error('auth.weakPassword');
     if (mode === 'demo') {
       ls.set(DEMO_PW, await sha256(password));
       setUser(u => (u ? { ...u, hasPassword: true } : u));
       return;
     }
     const current = auth?.currentUser;
-    if (!current || !current.email) throw new Error('Sign in again, then set your password.');
+    if (!current || !current.email) throw new Error('auth.signInAgain');
     const run = () =>
       current.providerData.some(p => p.providerId === 'password')
         ? updatePassword(current, password)

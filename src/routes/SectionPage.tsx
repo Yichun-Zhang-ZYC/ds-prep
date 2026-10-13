@@ -4,6 +4,7 @@ import { Header } from '../components/layout/Header';
 import { BlockBadges } from '../components/lesson/BlockBadges';
 import { ProgressBar } from '../components/progress/ProgressBar';
 import { StatusIcon } from '../components/progress/StatusIcon';
+import { useI18n } from '../i18n/useI18n';
 import { continueTarget, lessonStatus, stats } from '../progress/derive';
 import { useProgress } from '../progress/useProgress';
 
@@ -11,41 +12,45 @@ export function SectionPage() {
   const { sectionId = '' } = useParams();
   const section = SECTION_BY_ID.get(sectionId);
   const { progress } = useProgress();
+  const { t, loc } = useI18n();
   if (!section) return <Navigate to="/" replace />;
 
   const s = stats(section.lessons, progress);
   const available = section.lessons.filter(l => l.available);
   const next = continueTarget(available, progress, null);
+  const title = loc(section.title, section.titleZh);
 
   return (
     <>
       <Header />
       <main className="mx-auto grid max-w-[1160px] gap-7 px-4 pb-16 pt-8">
-        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-sm text-muted">
-          <Link to="/" className="hover:text-accent hover:underline">My Learning</Link>
+        <nav aria-label={t('common.breadcrumb')} className="flex flex-wrap items-center gap-1.5 text-sm text-muted">
+          <Link to="/" className="hover:text-accent hover:underline">{t('common.myLearning')}</Link>
           <span aria-hidden="true">›</span>
-          <span aria-current="page">{section.title}</span>
+          <span aria-current="page">{title}</span>
         </nav>
 
         <section className="grid items-end gap-x-8 gap-y-4 md:grid-cols-[minmax(0,1fr)_auto]">
           <div>
-            <h1 className="text-[30px] font-bold tracking-tight">{section.title}</h1>
-            <p className="mt-1.5 max-w-[62ch] text-muted">{section.description}</p>
+            <h1 className="text-[30px] font-bold tracking-tight">{title}</h1>
+            <p className="mt-1.5 max-w-[62ch] text-muted">{loc(section.description, section.descriptionZh)}</p>
           </div>
           <div className="grid gap-2 md:min-w-[280px]">
             <div className="flex justify-between text-sm tabular-nums text-muted">
-              <span>{s.total ? `${s.completed} / ${s.total} lessons` : 'No lessons yet'}</span>
+              <span>{s.total ? t('dash.cardLessons', { done: s.completed, total: s.total }) : t('section.noLessons')}</span>
               <span>{s.pct}%</span>
             </div>
-            <ProgressBar pct={s.pct} label={`${section.title} progress`} />
+            <ProgressBar pct={s.pct} label={t('dash.progressOf', { title })} />
             {next ? (
               <Link to={`/lesson/${section.id}/${next.id}`} className="btn btn-primary">
-                <span className="truncate">{s.completed || progress.has(next.id) ? 'Continue' : 'Start'}: {next.title}</span>
+                <span className="truncate">
+                  {t(s.completed || progress.has(next.id) ? 'section.continue' : 'section.start')}: {loc(next.title, next.titleZh)}
+                </span>
               </Link>
             ) : s.total ? (
-              <span className="badge bg-success-soft text-success">Section complete</span>
+              <span className="badge bg-success-soft text-success">{t('section.complete')}</span>
             ) : (
-              <span className="badge">Coming soon</span>
+              <span className="badge">{t('common.comingSoon')}</span>
             )}
           </div>
         </section>
@@ -53,13 +58,14 @@ export function SectionPage() {
         <div className="grid gap-3">
           {section.subtopics.map(sub => {
             const ss = stats(sub.lessons, progress);
+            const subTitle = loc(sub.title, sub.titleZh);
             return (
               <details key={sub.id} open className="group overflow-hidden rounded-card border border-border">
                 <summary className="flex list-none items-center gap-3 bg-surface px-4.5 py-3.5 [&::-webkit-details-marker]:hidden">
                   <span className="text-muted transition-transform group-open:rotate-90" aria-hidden="true">›</span>
-                  <span className="min-w-0 flex-1 font-semibold">{sub.title}</span>
-                  <span className="text-[13px] tabular-nums text-muted">{ss.total ? `${ss.completed} / ${ss.total}` : 'Planned'}</span>
-                  <ProgressBar pct={ss.pct} size="mini" label={`${sub.title} progress`} />
+                  <span className="min-w-0 flex-1 font-semibold">{subTitle}</span>
+                  <span className="text-[13px] tabular-nums text-muted">{ss.total ? `${ss.completed} / ${ss.total}` : t('section.planned')}</span>
+                  <ProgressBar pct={ss.pct} size="mini" label={t('dash.progressOf', { title: subTitle })} />
                 </summary>
                 {sub.lessons.map(l =>
                   l.available ? (
@@ -69,15 +75,15 @@ export function SectionPage() {
                       className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-t border-border px-4.5 py-3 hover:bg-surface md:grid-cols-[auto_minmax(0,1fr)_auto_auto]"
                     >
                       <StatusIcon status={lessonStatus(progress, l.id)} />
-                      <span className="text-[15px]">{l.title}</span>
+                      <span className="text-[15px]">{loc(l.title, l.titleZh)}</span>
                       <span className="hidden gap-1.5 md:flex"><BlockBadges blocks={l.blocks} /></span>
-                      <span className="min-w-[52px] text-right text-[13px] tabular-nums text-muted">{l.estimatedMinutes} min</span>
+                      <span className="min-w-[52px] text-right text-[13px] tabular-nums text-muted">{t('common.minutes', { n: l.estimatedMinutes })}</span>
                     </Link>
                   ) : (
                     <div key={l.id} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-t border-border px-4.5 py-3 text-muted">
                       <StatusIcon status="soon" />
-                      <span className="text-[15px]">{l.title}</span>
-                      <span className="text-[12px]">Coming soon</span>
+                      <span className="text-[15px]">{loc(l.title, l.titleZh)}</span>
+                      <span className="text-[12px]">{t('common.comingSoon')}</span>
                     </div>
                   ),
                 )}

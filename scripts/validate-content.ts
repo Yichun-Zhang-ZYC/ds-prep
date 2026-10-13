@@ -8,8 +8,11 @@
  *   - interactive block JSON that doesn't parse or match its schema; duplicate block ids in a lesson
  *   - sql-exercise solution that fails on its own setup (run with sql.js)
  *   - python-exercise solution that fails its own tests (run with local python3)
+ *   - <id>.zh.md without <id>.md, zh frontmatter id mismatch, or a Chinese file whose
+ *     "##" sections / block sequence differ from English, or whose block translations are invalid
  * Warnings:
  *   - lesson doesn't end with an "Interview tips" callout
+ *   - lesson has no Chinese translation (<id>.zh.md)
  * Info:
  *   - planned lessons in curriculum.json without a file (shown as "Coming soon")
  *
@@ -20,7 +23,8 @@ import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSy
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import initSqlJs from 'sql.js';
-import { BLOCK_CHECKS, checkFrontmatter, extractBlocks, splitFrontmatter } from '../src/content/parse';
+import { BLOCK_CHECKS, checkFrontmatter, checkFrontmatterZh, checkZhOverlay, extractBlocks, splitFrontmatter } from '../src/content/parse';
+import { compareShapes, splitLesson, splitParagraphs } from '../src/content/segments';
 import type { Curriculum, PythonExerciseData, SqlExerciseData } from '../src/content/types';
 import { ROLE_KEYS } from '../src/content/types';
 import { compareResults, lastResult } from '../src/runtimes/sqlCompare';
@@ -78,11 +82,16 @@ async function main() {
 
   const SQL = await initSqlJs();
   const pythonJobs: { where: string; code: string }[] = [];
+  let zhCount = 0;
   const found = new Set<string>();
 
   const sectionDirs = existsSync(LESSONS) ? readdirSync(LESSONS, { withFileTypes: true }).filter(d => d.isDirectory()) : [];
   for (const dir of sectionDirs) {
-    for (const file of readdirSync(join(LESSONS, dir.name)).filter(f => f.endsWith('.md'))) {
+    const files = readdirSync(join(LESSONS, dir.name)).filter(f => f.endsWith('.md'));
+    for (const file of files.filter(f => f.endsWith('.zh.md'))) {
+      if (!files.includes(file.replace(/\.zh\.md$/, '.md'))) err(`content/lessons/${dir.name}/${file}`, 'Chinese file has no English counterpart');
+    }
+    for (const file of files.filter(f => !f.endsWith('.zh.md'))) {
       const where = `content/lessons/${dir.name}/${file}`;
       const fileId = file.replace(/\.md$/, '');
       const raw = readFileSync(join(LESSONS, dir.name, file), 'utf8');
@@ -148,6 +157,46 @@ async function main() {
       }
 
       if (!/>\s*\[!TIP\][^\n]*interview tips/i.test(parsed.body)) warn(where, 'lesson should end with a "> [!TIP] Interview tips" callout');
+
+      // ----- Chinese translation -----
+      const zhFile = `${fileId}.zh.md`;
+      const zhWhere = `content/lessons/${dir.name}/${zhFile}`;
+      if (!files.includes(zhFile)) {
+        warn(where, 'no Chinese translation (.zh.md)');
+      } else {
+        zhCount++;
+        const zhRaw = readFileSync(join(LESSONS, dir.name, zhFile), 'utf8');
+        let zhParsed;
+        try {
+          zhParsed = splitFrontmatter(zhRaw);
+        } catch (e) {
+          err(zhWhere, `frontmatter is not valid YAML: ${(e as Error).message}`);
+          continue;
+        }
+        const zfm = checkFrontmatterZh(zhParsed.data);
+        zfm.errors.forEach(m => err(zhWhere, m));
+        if (zfm.fm && zfm.fm.id !== fileId) err(zhWhere, `frontmatter id "${zfm.fm.id}" must be "${fileId}"`);
+        const enSecs = splitLesson(parsed.body);
+        const zhSecs = splitLesson(zhParsed.body);
+        const shapeErrors = compareShapes(enSecs, zhSecs);
+        shapeErrors.forEach(m => err(zhWhere, m));
+        if (!shapeErrors.length) {
+          enSecs.forEach((sec, i) =>
+            sec.segments.forEach((seg, j) => {
+              const zseg = zhSecs[i].segments[j];
+              if (seg.type === 'md' && zseg.type === 'md') {
+                const a = splitParagraphs(seg.text).length;
+                const b = splitParagraphs(zseg.text).length;
+                if (a !== b) warn(`${zhWhere} (section "${zhSecs[i].heading}")`, `${b} paragraphs vs ${a} in English, so Combined mode pairs the whole section instead of paragraph by paragraph`);
+                return;
+              }
+              if (seg.type !== 'block' || zseg.type !== 'block') return;
+              const base = BLOCK_CHECKS[seg.kind](seg.source).data;
+              checkZhOverlay(seg.kind, zseg.source, base).errors.forEach(m => err(`${zhWhere} (section "${zhSecs[i].heading}")`, m));
+            }),
+          );
+        }
+      }
     }
   }
 
@@ -175,7 +224,7 @@ async function main() {
   }
 
   const planned = [...sectionOf.keys()].filter(id => !found.has(id)).length;
-  console.log(`Lessons written: ${found.size} · planned (no file yet): ${planned} · python solutions run: ${process.env.SKIP_PYTHON === '1' ? 0 : pythonJobs.length}`);
+  console.log(`Lessons written: ${found.size} (Chinese: ${zhCount}) · planned (no file yet): ${planned} · python solutions run: ${process.env.SKIP_PYTHON === '1' ? 0 : pythonJobs.length}`);
   finish();
 }
 

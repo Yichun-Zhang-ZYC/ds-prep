@@ -21,18 +21,22 @@ export interface CurriculumLessonRef {
   id: string;
   /** Planning title from INDEX.md; the lesson file's frontmatter title wins once written. */
   title: string;
+  titleZh?: string;
 }
 
 export interface CurriculumSubtopic {
   id: string;
   title: string;
+  titleZh?: string;
   lessons: CurriculumLessonRef[];
 }
 
 export interface CurriculumSection {
   id: string;
   title: string;
+  titleZh?: string;
   description: string;
+  descriptionZh?: string;
   roles: Partial<Record<RoleKey, number>>;
   subtopics: CurriculumSubtopic[];
 }
@@ -61,6 +65,14 @@ export interface LessonMeta extends LessonFrontmatter {
   sectionId: string;
   /** Interactive block kinds present in the body, for the Quiz / SQL / Python badges. */
   blocks: BlockKind[];
+  /** Title from <id>.zh.md when a Chinese translation exists. */
+  titleZh?: string;
+}
+
+/** Frontmatter of <id>.zh.md: everything except the title comes from the English file. */
+export interface LessonFrontmatterZh {
+  id: string;
+  title: string;
 }
 
 // ---------- Interactive block schemas (DESIGN.md §6.3) ----------
@@ -100,6 +112,27 @@ export interface RevealBlockData {
   answer: string;
 }
 
+// ---------- Chinese overlays for interactive blocks (in <id>.zh.md) ----------
+// Only learner-facing text is translated; answers, SQL, tests, etc. always come from English.
+
+export interface QuizZh {
+  question: string;
+  options?: string[];
+  explanation?: string;
+}
+
+export interface ExerciseZh {
+  prompt: string;
+  hints?: string[];
+}
+
+export interface RevealZh {
+  prompt: string;
+  answer: string;
+}
+
+export type BlockZh = QuizZh | ExerciseZh | RevealZh;
+
 // ---------- Resolved curriculum used by the UI ----------
 
 export interface Lesson {
@@ -107,6 +140,9 @@ export interface Lesson {
   sectionId: string;
   subtopicId: string;
   title: string;
+  titleZh?: string;
+  /** True when <id>.zh.md exists. */
+  hasZh: boolean;
   /** False when the lesson is planned in curriculum.json but has no file yet ("Coming soon"). */
   available: boolean;
   estimatedMinutes: number;
@@ -117,13 +153,16 @@ export interface Lesson {
 export interface Subtopic {
   id: string;
   title: string;
+  titleZh?: string;
   lessons: Lesson[];
 }
 
 export interface Section {
   id: string;
   title: string;
+  titleZh?: string;
   description: string;
+  descriptionZh?: string;
   roles: Partial<Record<RoleKey, number>>;
   subtopics: Subtopic[];
   lessons: Lesson[];

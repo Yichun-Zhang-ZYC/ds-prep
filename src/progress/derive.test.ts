@@ -3,7 +3,7 @@ import { continueTarget, formatMinutes, neighbors, stats } from './derive';
 import type { LessonProgress, ProgressMap } from './types';
 
 const lesson = (id: string, available = true, estimatedMinutes = 10): Lesson => ({
-  id, sectionId: 's', subtopicId: 'st', title: id, available, estimatedMinutes, blocks: [],
+  id, sectionId: 's', subtopicId: 'st', title: id, hasZh: false, available, estimatedMinutes, blocks: [],
 });
 const done = (): LessonProgress => ({ status: 'completed', completedAt: 1, firstVisitedAt: 1, quiz: {}, exercises: {}, updatedAt: 1 });
 const visited = (): LessonProgress => ({ ...done(), status: 'visited', completedAt: null });

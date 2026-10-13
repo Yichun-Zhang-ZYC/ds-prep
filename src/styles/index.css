@@ -339,3 +339,16 @@
   content: "⚠︎  " attr(data-title);
   color: var(--warning);
 }
+
+/* Combined mode: the Chinese run under each English run */
+.prose-lesson .zh-pair {
+  display: grid;
+  gap: 0.9rem;
+  border-left: 3px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding: 0.15rem 0 0.15rem 1rem;
+  margin-top: -0.35rem;
+  color: color-mix(in srgb, var(--text) 82%, var(--bg));
+}
+.prose-lesson .zh-pair > * {
+  min-width: 0;
+}

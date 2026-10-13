@@ -5,6 +5,7 @@
 import { parse as parseYaml } from 'yaml';
 import type {
   BlockKind,
+  BlockZh,
   LessonFrontmatter,
   PythonExerciseData,
   QuizBlockData,
@@ -149,4 +150,43 @@ export function lessonMetaFromFile(raw: string, sectionId: string) {
   const { fm, errors } = checkFrontmatter(data);
   const blocks = [...new Set(extractBlocks(body).map(b => b.kind))];
   return { meta: fm ? { ...fm, sectionId, blocks } : undefined, errors, body };
+}
+
+// ---------- Chinese translation files (<id>.zh.md) ----------
+
+export function checkFrontmatterZh(data: Record<string, unknown>): { fm?: { id: string; title: string }; errors: string[] } {
+  const errors: string[] = [];
+  if (typeof data.id !== 'string' || !data.id) errors.push('zh frontmatter: "id" is required');
+  if (typeof data.title !== 'string' || !data.title) errors.push('zh frontmatter: "title" is required');
+  return errors.length ? { errors } : { errors, fm: { id: data.id as string, title: data.title as string } };
+}
+
+/**
+ * Checks a Chinese overlay block against its English base block.
+ * quiz → { question, options?, explanation? }; sql/python-exercise → { prompt, hints? }; reveal → { prompt, answer }.
+ */
+export function checkZhOverlay(kind: BlockKind, source: string, base: unknown): Check<BlockZh> {
+  const { value: v, error } = parseJson(source);
+  if (!v) return { errors: [`zh ${kind}: ${error}`] };
+  const errors: string[] = [];
+  const b = (base ?? {}) as Record<string, unknown>;
+  if ('id' in v && b.id !== undefined && v.id !== b.id) errors.push(`zh ${kind}: id "${String(v.id)}" doesn't match English "${String(b.id)}"`);
+  const sameLen = (field: string) => {
+    if (v[field] === undefined) return;
+    if (!isStrArr(v[field])) errors.push(`zh ${kind}: "${field}" must be a list of strings`);
+    else if (Array.isArray(b[field]) && (v[field] as string[]).length !== (b[field] as unknown[]).length)
+      errors.push(`zh ${kind}: "${field}" has ${(v[field] as string[]).length} items, English has ${(b[field] as unknown[]).length}`);
+  };
+  if (kind === 'quiz') {
+    if (!isStr(v.question)) errors.push('zh quiz: "question" is required');
+    sameLen('options');
+    if (v.explanation !== undefined && typeof v.explanation !== 'string') errors.push('zh quiz: "explanation" must be a string');
+  } else if (kind === 'sql-exercise' || kind === 'python-exercise') {
+    if (!isStr(v.prompt)) errors.push(`zh ${kind}: "prompt" is required`);
+    sameLen('hints');
+  } else {
+    if (!isStr(v.prompt)) errors.push('zh reveal: "prompt" is required');
+    if (!isStr(v.answer)) errors.push('zh reveal: "answer" is required');
+  }
+  return errors.length ? { errors } : { errors, data: v as unknown as BlockZh };
 }

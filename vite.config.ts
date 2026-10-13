@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { resolve, relative } from 'node:path';
-import { lessonMetaFromFile } from './src/content/parse.ts';
+import { checkFrontmatterZh, lessonMetaFromFile, splitFrontmatter } from './src/content/parse.ts';
+import type { LessonMeta } from './src/content/types.ts';
 
 const LESSONS_DIR = resolve(import.meta.dirname, 'content/lessons');
 const META_ID = 'virtual:lesson-meta';
@@ -17,19 +18,26 @@ const RESOLVED_META_ID = '\0' + META_ID;
  */
 function lessonMetaPlugin(): Plugin {
   const collect = () => {
-    const metas: unknown[] = [];
+    const metas: LessonMeta[] = [];
+    const zhTitles = new Map<string, string>();
     if (!existsSync(LESSONS_DIR)) return metas;
     for (const sectionId of readdirSync(LESSONS_DIR)) {
       const dir = resolve(LESSONS_DIR, sectionId);
       let files: string[];
       try { files = readdirSync(dir).filter(f => f.endsWith('.md')); } catch { continue; }
       for (const f of files) {
-        const { meta, errors } = lessonMetaFromFile(readFileSync(resolve(dir, f), 'utf8'), sectionId);
+        const raw = readFileSync(resolve(dir, f), 'utf8');
+        if (f.endsWith('.zh.md')) {
+          const { fm } = checkFrontmatterZh(splitFrontmatter(raw).data);
+          if (fm) zhTitles.set(fm.id, fm.title);
+          continue;
+        }
+        const { meta, errors } = lessonMetaFromFile(raw, sectionId);
         if (meta) metas.push(meta);
         else console.warn(`[lesson-meta] ${sectionId}/${f}: ${errors.join('; ')}`);
       }
     }
-    return metas;
+    return metas.map(m => (zhTitles.has(m.id) ? { ...m, titleZh: zhTitles.get(m.id) } : m));
   };
   return {
     name: 'ds-prep-lesson-meta',

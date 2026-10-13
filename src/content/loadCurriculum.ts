@@ -9,6 +9,7 @@ export function buildSections(curriculum: Curriculum, metas: LessonMeta[]): Sect
     const subtopics = sec.subtopics.map(st => ({
       id: st.id,
       title: st.title,
+      titleZh: st.titleZh,
       lessons: st.lessons.map((ref): Lesson => {
         const meta = metaById.get(ref.id);
         return {
@@ -16,6 +17,8 @@ export function buildSections(curriculum: Curriculum, metas: LessonMeta[]): Sect
           sectionId: sec.id,
           subtopicId: st.id,
           title: meta?.title ?? ref.title,
+          titleZh: meta?.titleZh ?? ref.titleZh,
+          hasZh: !!meta?.titleZh,
           available: !!meta && meta.sectionId === sec.id,
           estimatedMinutes: meta?.estimatedMinutes ?? 0,
           difficulty: meta?.difficulty,
@@ -26,7 +29,9 @@ export function buildSections(curriculum: Curriculum, metas: LessonMeta[]): Sect
     return {
       id: sec.id,
       title: sec.title,
+      titleZh: sec.titleZh,
       description: sec.description,
+      descriptionZh: sec.descriptionZh,
       roles: sec.roles,
       subtopics,
       lessons: subtopics.flatMap(s => s.lessons),
@@ -42,8 +47,11 @@ export const ORDER: Lesson[] = SECTIONS.flatMap(s => s.lessons).filter(l => l.av
 
 const bodies = import.meta.glob<string>('/content/lessons/*/*.md', { query: '?raw', import: 'default' });
 
-/** Lazily loads one lesson's raw Markdown (code-split per file). */
-export async function loadLessonSource(sectionId: string, lessonId: string): Promise<string | null> {
-  const load = bodies[`/content/lessons/${sectionId}/${lessonId}.md`];
-  return load ? load() : null;
+/** Lazily loads one lesson's raw Markdown in English and, when it exists, Chinese (code-split per file). */
+export async function loadLessonSource(sectionId: string, lessonId: string): Promise<{ en: string; zh: string | null } | null> {
+  const loadEn = bodies[`/content/lessons/${sectionId}/${lessonId}.md`];
+  if (!loadEn) return null;
+  const loadZh = bodies[`/content/lessons/${sectionId}/${lessonId}.zh.md`];
+  const [en, zh] = await Promise.all([loadEn(), loadZh ? loadZh() : Promise.resolve(null)]);
+  return { en, zh };
 }

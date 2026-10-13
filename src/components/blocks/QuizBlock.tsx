@@ -1,15 +1,29 @@
 import { useId, useState } from 'react';
-import type { QuizBlockData } from '../../content/types';
+import type { QuizBlockData, QuizZh } from '../../content/types';
+import type { LessonLang } from '../../i18n/I18nProvider';
+import { useI18n } from '../../i18n/useI18n';
 import { useProgress } from '../../progress/useProgress';
+import { Bi } from './Bilingual';
 import { BlockFrame, Feedback } from './BlockFrame';
-import { InlineMarkdown } from '../lesson/InlineMarkdown';
 
-const sameSet = (a: number[], b: number[]) => a.length === b.length && [...a].sort().every((v, i) => v === [...b].sort()[i]);
+const sameSet = (a: number[], b: number[]) => {
+  const x = [...a].sort();
+  const y = [...b].sort();
+  return x.length === y.length && x.every((v, i) => v === y[i]);
+};
+
+interface Props {
+  data: QuizBlockData;
+  zh?: QuizZh;
+  mode?: LessonLang;
+  lessonId: string;
+}
 
 /** Single or multi-answer question; real radio / checkbox inputs (DESIGN.md §9 accessibility). */
-export function QuizBlock({ data, lessonId }: { data: QuizBlockData; lessonId: string }) {
+export function QuizBlock({ data, zh, mode = 'en', lessonId }: Props) {
   const multi = data.type === 'multi';
   const name = useId();
+  const { t } = useI18n();
   const { progress, recordQuiz } = useProgress();
   const record = progress.get(lessonId)?.quiz[data.id];
   const [selected, setSelected] = useState<number[]>([]);
@@ -32,22 +46,21 @@ export function QuizBlock({ data, lessonId }: { data: QuizBlockData; lessonId: s
 
   return (
     <BlockFrame
-      label={multi ? 'Quiz · select all that apply' : 'Quiz'}
+      label={t(multi ? 'quiz.labelMulti' : 'quiz.label')}
       aside={
         attempts > 0 && (
           <span className="text-[13px] text-muted">
-            {record?.correct ? '✓ Answered correctly · ' : ''}
-            {attempts} attempt{attempts === 1 ? '' : 's'}
+            {record?.correct ? t('quiz.answered') : ''}
+            {t(attempts === 1 ? 'quiz.attempt1' : 'quiz.attempts', { n: attempts })}
           </span>
         )
       }
     >
       <fieldset className="grid gap-2">
         <legend className="mb-2 font-semibold leading-normal">
-          <InlineMarkdown text={data.question} />
+          <Bi mode={mode} en={data.question} zh={zh?.question} />
         </legend>
         {data.options.map((opt, i) => {
-          const isPicked = selected.includes(i);
           // Mark only what the learner picked, so a wrong attempt doesn't give the answer away.
           const state = checked?.picks.includes(i) ? (answer.includes(i) ? 'right' : 'wrong') : null;
           return (
@@ -60,31 +73,31 @@ export function QuizBlock({ data, lessonId }: { data: QuizBlockData; lessonId: s
               <input
                 type={multi ? 'checkbox' : 'radio'}
                 name={name}
-                checked={isPicked}
+                checked={selected.includes(i)}
                 onChange={() => toggle(i)}
-                className="size-4 accent-[var(--accent)]"
+                className="size-4 shrink-0 accent-[var(--accent)]"
               />
-              <InlineMarkdown text={opt} />
-              {state === 'right' && <span className="ml-auto text-success" aria-label="correct">✓</span>}
-              {state === 'wrong' && <span className="ml-auto text-error" aria-label="incorrect">✗</span>}
+              <Bi mode={mode} en={opt} zh={zh?.options?.[i]} />
+              {state === 'right' && <span className="ml-auto text-success" aria-label={t('quiz.correctMark')}>✓</span>}
+              {state === 'wrong' && <span className="ml-auto text-error" aria-label={t('quiz.wrongMark')}>✗</span>}
             </label>
           );
         })}
       </fieldset>
       <div className="flex flex-wrap items-center gap-2">
         <button className="btn btn-primary btn-sm" onClick={check} disabled={!selected.length}>
-          Check answer
+          {t('quiz.check')}
         </button>
         {checked && !checked.correct && (
           <button className="btn btn-sm" onClick={() => { setChecked(null); setSelected([]); }}>
-            Try again
+            {t('quiz.retry')}
           </button>
         )}
       </div>
       {checked && (
         <Feedback tone={checked.correct ? 'ok' : 'bad'}>
-          <b>{checked.correct ? 'Correct. ' : multi ? 'Not quite. Check which options you missed or added. ' : 'Not quite. Try again. '}</b>
-          {checked.correct && data.explanation && <InlineMarkdown text={data.explanation} />}
+          <b>{t(checked.correct ? 'quiz.correct' : multi ? 'quiz.wrongMulti' : 'quiz.wrong')}</b>
+          {checked.correct && data.explanation && <Bi mode={mode} en={data.explanation} zh={zh?.explanation} />}
         </Feedback>
       )}
     </BlockFrame>

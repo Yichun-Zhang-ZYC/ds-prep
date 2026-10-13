@@ -20,6 +20,9 @@ Vite + React 18 + TypeScript + Tailwind, HashRouter, Firebase Auth/Firestore, Gi
 - **Content:** concise, interview-focused, no filler; examples over prose; every lesson ends with
   an `> [!TIP] Interview tips` callout. Follow the standard outline in DESIGN.md §6.2.
 - **Write content one section at a time**, then run `npm run validate`.
+- **Every lesson is bilingual**: `<id>.md` (English) + `<id>.zh.md` (Simplified Chinese) with the same `##` sections,
+  block sequence and paragraph count. Chinese blocks are text-only overlays. See DESIGN.md §5.5 and §6.5.
+- **All UI text goes through `t()`** (`src/i18n/strings.ts`, both `en` and `zh`). No hard-coded UI strings.
 - **Small, focused commits** with descriptive messages.
 
 ## Key facts
@@ -37,7 +40,8 @@ Vite + React 18 + TypeScript + Tailwind, HashRouter, Firebase Auth/Firestore, Gi
   Never commit secrets other than the public Firebase config.
 
 ## Commands
-- `npm run dev` — http://localhost:5173/ds-prep/ (demo mode while `src/firebase.config.ts` is empty)
+- `npm run dev` — http://localhost:5173/ds-prep/ with real Firebase sign-in
+- `npm run dev:demo` — same, but forces demo mode (fake sign-in, local progress) for testing
 - `npm run validate` — content validation (must pass before deploy)
 - `npm run test` — Vitest
 - `npm run build` — production build
