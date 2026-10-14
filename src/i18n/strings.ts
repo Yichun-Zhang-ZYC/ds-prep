@@ -41,6 +41,7 @@ export const STRINGS = {
   'password.saving': { en: 'Saving…', zh: '保存中…' },
   'password.mismatch': { en: "Passwords don't match.", zh: '两次输入的密码不一致。' },
   'password.toastSet': { en: 'Password set. You can now sign in with your email and this password.', zh: '密码已设置。现在可以用邮箱和这个密码登录了。' },
+  'password.toastVerify': { en: 'Password set. We sent a verification link to your email: click it once so password sign-in works on other devices.', zh: '密码已设置。验证链接已发送到你的邮箱：点一次链接后，其他设备上也能用密码登录。' },
   'password.toastChanged': { en: 'Password changed', zh: '密码已修改' },
   'reset.title': { en: 'Reset all progress?', zh: '确定要重置全部进度吗？' },
   'reset.body': { en: "This deletes every completed and visited lesson, quiz attempt and saved exercise code for your account. It can't be undone.", zh: '这会删除你账号下所有已完成和已访问的课程、答题记录和保存的练习代码，且无法恢复。' },
@@ -86,6 +87,13 @@ export const STRINGS = {
   'notAuth.signedInAs': { en: 'You signed in as {email}. DS Prep is limited to study-group members.', zh: '你当前登录的是 {email}。DS Prep 仅对学习小组成员开放。' },
   'notAuth.unknown': { en: 'an unknown account', zh: '未知账号' },
   'notAuth.ask': { en: 'Ask the group admin to add this email to the allowlist, then sign in again.', zh: '请联系小组管理员把这个邮箱加入白名单，然后重新登录。' },
+  'notAuth.unverifiedTitle': { en: 'Verify your email to continue', zh: '请先验证邮箱' },
+  'notAuth.unverifiedBody': { en: 'You signed in as {email} with a password, but this email isn’t verified yet. Open the verification email we sent and click the link, then press “I’ve verified”.', zh: '你用密码登录了 {email}，但这个邮箱还没有验证。打开我们发送的验证邮件并点击链接，然后点“我已验证”。' },
+  'notAuth.resend': { en: 'Send verification email', zh: '发送验证邮件' },
+  'notAuth.sent': { en: 'Verification email sent. Check your inbox (and spam).', zh: '验证邮件已发送，请查看收件箱（以及垃圾邮件）。' },
+  'notAuth.recheck': { en: 'I’ve verified, try again', zh: '我已验证，重试' },
+  'notAuth.checking': { en: 'Checking…', zh: '检查中…' },
+  'notAuth.details': { en: 'Details: {email} · verified: {verified} · signed in with: {method}', zh: '详情：{email} · 已验证：{verified} · 登录方式：{method}' },
   'notAuth.signOut': { en: 'Sign out and use another account', zh: '退出并换一个账号' },
 
   // ---------- Dashboard ----------

@@ -98,8 +98,8 @@ function PasswordDialog({ onClose }: { onClose(): void }) {
     setBusy(true);
     setError(null);
     try {
-      await setPassword(pw1);
-      toast(t(changing ? 'password.toastChanged' : 'password.toastSet'));
+      const verificationSent = await setPassword(pw1);
+      toast(t(changing ? 'password.toastChanged' : verificationSent ? 'password.toastVerify' : 'password.toastSet'));
       onClose();
     } catch (err) {
       setError(t((err as Error).message, { n: MIN_PASSWORD_LENGTH }));
