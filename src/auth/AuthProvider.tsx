@@ -5,7 +5,6 @@ import {
   linkWithCredential,
   onAuthStateChanged,
   reauthenticateWithPopup,
-  sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -27,10 +26,6 @@ export interface AuthUser {
   email: string;
   photoURL: string;
   hasPassword: boolean;
-  /** Firestore rules require a verified email (DESIGN.md §8). */
-  emailVerified: boolean;
-  /** How this session signed in: 'google.com', 'password', 'demo'… */
-  signInMethod: string;
 }
 
 export interface AuthContextValue {
@@ -43,15 +38,8 @@ export interface AuthContextValue {
   signInWithGoogle(): Promise<void>;
   signInWithPassword(email: string, password: string): Promise<void>;
   sendPasswordReset(email: string): Promise<void>;
-  /**
-   * Links a password to the current account (or changes it). Same uid either way. Throws Error(i18nKey).
-   * Resolves to true when a verification email was sent (linking can leave the email unverified).
-   */
-  setPassword(password: string): Promise<boolean>;
-  /** Sends Firebase's "verify your email" link to the signed-in user. Throws Error(i18nKey). */
-  sendVerification(): Promise<void>;
-  /** Reloads the user and fresh token, then re-runs the allowlist check (after verifying the email). */
-  recheck(): Promise<void>;
+  /** Links a password to the current account (or changes it). Same uid either way. Throws Error(i18nKey). */
+  setPassword(password: string): Promise<void>;
   signOut(): Promise<void>;
 }
 
@@ -85,18 +73,14 @@ function friendlyAuthError(e: unknown): string {
       return 'auth.network';
     case 'auth/operation-not-allowed':
       return 'auth.passwordDisabled';
-    case 'auth/too-many-requests-verify':
-      return 'auth.tooMany';
     default:
       console.error(e);
       return 'auth.generic';
   }
 }
 
-const toAuthUser = (u: User, signInMethod = ''): AuthUser => ({
+const toAuthUser = (u: User): AuthUser => ({
   uid: u.uid,
-  emailVerified: u.emailVerified,
-  signInMethod,
   displayName: u.displayName ?? u.email?.split('@')[0] ?? 'Learner',
   email: u.email ?? '',
   photoURL: u.photoURL ?? '',
@@ -109,8 +93,6 @@ const DEMO_SESSION = 'dsprep-demo-session';
 const DEMO_PW = 'dsprep-demo-password-sha256';
 const DEMO_USER: Omit<AuthUser, 'hasPassword'> = {
   uid: 'demo',
-  emailVerified: true,
-  signInMethod: 'demo',
   displayName: 'Demo Learner',
   email: 'demo@example.com',
   photoURL: '',
@@ -135,50 +117,45 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [store, setStore] = useState<ProgressStore | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Firebase: probe the allowlist by reading our own user doc (permission-denied → not allowlisted or unverified).
-  const authorize = useCallback(async (fbUser: User) => {
-    if (!db) return;
-    setStatus('loading');
-    const token = await fbUser.getIdTokenResult().catch(() => null);
-    const u = toAuthUser(fbUser, token?.signInProvider ?? '');
-    const s = createFirestoreStore(db, u.uid);
-    try {
-      const existing = await s.getUser();
-      if (!existing) {
-        await s.updateUser({ displayName: u.displayName, email: u.email, photoURL: u.photoURL, targetRole: null, lastLessonId: null, createdAt: Date.now() });
-      } else if (existing.displayName !== u.displayName || existing.photoURL !== u.photoURL) {
-        await s.updateUser({ displayName: u.displayName, photoURL: u.photoURL });
-      }
-      setUser(u);
-      setStore(s);
-      setError(null);
-      setStatus('authorized');
-    } catch (e) {
-      if ((e as { code?: string }).code === 'permission-denied') {
-        setUser(u);
-        setStore(null);
-        setStatus('unauthorized');
-      } else {
-        console.error(e);
-        setError(friendlyAuthError(e));
-        setUser(null);
-        setStatus('signed-out');
-      }
-    }
-  }, []);
-
+  // Firebase: react to sign-in state, then probe the allowlist by reading our own user doc.
   useEffect(() => {
-    if (mode !== 'firebase' || !auth) return;
-    return onAuthStateChanged(auth, fbUser => {
+    if (mode !== 'firebase' || !auth || !db) return;
+    const firestore = db;
+    return onAuthStateChanged(auth, async fbUser => {
       if (!fbUser) {
         setUser(null);
         setStore(null);
         setStatus('signed-out');
         return;
       }
-      void authorize(fbUser);
+      setStatus('loading');
+      const u = toAuthUser(fbUser);
+      const s = createFirestoreStore(firestore, u.uid);
+      try {
+        const existing = await s.getUser();
+        if (!existing) {
+          await s.updateUser({ displayName: u.displayName, email: u.email, photoURL: u.photoURL, targetRole: null, lastLessonId: null, createdAt: Date.now() });
+        } else if (existing.displayName !== u.displayName || existing.photoURL !== u.photoURL) {
+          await s.updateUser({ displayName: u.displayName, photoURL: u.photoURL });
+        }
+        setUser(u);
+        setStore(s);
+        setError(null);
+        setStatus('authorized');
+      } catch (e) {
+        if ((e as { code?: string }).code === 'permission-denied') {
+          setUser(u);
+          setStore(null);
+          setStatus('unauthorized');
+        } else {
+          console.error(e);
+          setError(friendlyAuthError(e));
+          setUser(null);
+          setStatus('signed-out');
+        }
+      }
     });
-  }, [authorize]);
+  }, []);
 
   // Demo: restore the fake session.
   useEffect(() => {
@@ -246,7 +223,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (mode === 'demo') {
       ls.set(DEMO_PW, await sha256(password));
       setUser(u => (u ? { ...u, hasPassword: true } : u));
-      return false;
+      return;
     }
     const current = auth?.currentUser;
     if (!current || !current.email) throw new Error('auth.signInAgain');
@@ -267,39 +244,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     }
     await current.reload();
-    const fresh = auth!.currentUser ?? current;
-    // Linking a password can mark the email unverified; then password sign-in fails the
-    // email_verified rule until the link in this email is clicked once.
-    let sent = false;
-    if (!fresh.emailVerified) {
-      try {
-        await sendEmailVerification(fresh, { url: window.location.origin + window.location.pathname });
-        sent = true;
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    setUser(u => ({ ...toAuthUser(fresh, u?.signInMethod ?? ''), hasPassword: true }));
-    return sent;
+    setUser(toAuthUser(auth!.currentUser ?? current));
   }, []);
-
-  const sendVerification = useCallback(async () => {
-    const current = auth?.currentUser;
-    if (!current) throw new Error('auth.signInAgain');
-    try {
-      await sendEmailVerification(current, { url: window.location.origin + window.location.pathname });
-    } catch (e) {
-      throw new Error(friendlyAuthError(e));
-    }
-  }, []);
-
-  const recheck = useCallback(async () => {
-    const current = auth?.currentUser;
-    if (!current) return;
-    await current.reload();
-    await current.getIdToken(true);
-    await authorize(auth!.currentUser ?? current);
-  }, [authorize]);
 
   const signOut = useCallback(async () => {
     if (mode === 'demo') {
@@ -313,8 +259,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ mode, status, user, store, error, signInWithGoogle, signInWithPassword, sendPasswordReset, setPassword, sendVerification, recheck, signOut }),
-    [status, user, store, error, signInWithGoogle, signInWithPassword, sendPasswordReset, setPassword, sendVerification, recheck, signOut],
+    () => ({ mode, status, user, store, error, signInWithGoogle, signInWithPassword, sendPasswordReset, setPassword, signOut }),
+    [status, user, store, error, signInWithGoogle, signInWithPassword, sendPasswordReset, setPassword, signOut],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
