@@ -4,6 +4,8 @@ import type { Section } from '../../content/types';
 import { useI18n } from '../../i18n/useI18n';
 import { lessonStatus, stats } from '../../progress/derive';
 import type { ProgressMap } from '../../progress/types';
+import { useToast } from '../Toast';
+import { useProgress } from '../../progress/useProgress';
 import { ProgressBar } from '../progress/ProgressBar';
 import { StatusIcon } from '../progress/StatusIcon';
 
@@ -18,6 +20,12 @@ interface Props {
 /** Section outline. Sticky column on desktop, slide-in drawer below lg. */
 export function Sidebar({ section, currentLessonId, progress, open, onClose }: Props) {
   const { t, loc } = useI18n();
+  const { markUnread } = useProgress();
+  const toast = useToast();
+  const unread = (id: string) => {
+    markUnread(id);
+    toast(t('progress.markedUnread'));
+  };
   const s = stats(section.lessons, progress);
   const title = loc(section.title, section.titleZh);
   const currentRef = useRef<HTMLAnchorElement>(null);
@@ -61,24 +69,25 @@ export function Sidebar({ section, currentLessonId, progress, open, onClose }: P
               {sub.lessons.map(l => {
                 if (!l.available)
                   return (
-                    <div key={l.id} className="flex items-center gap-2.5 px-2 py-1.5 text-sm text-muted opacity-70" title={t('common.comingSoon')}>
+                    <div key={l.id} className="flex items-center gap-1.5 px-1 py-1 text-sm text-muted opacity-70" title={t('common.comingSoon')}>
                       <StatusIcon status="soon" />
                       <span className="min-w-0">{loc(l.title, l.titleZh)}</span>
                     </div>
                   );
                 const current = l.id === currentLessonId;
                 return (
-                  <Link
-                    key={l.id}
-                    ref={current ? currentRef : undefined}
-                    to={`/lesson/${section.id}/${l.id}`}
-                    aria-current={current ? 'page' : undefined}
-                    onClick={onClose}
-                    className={`flex items-center gap-2.5 rounded-btn px-2 py-1.5 text-sm ${current ? 'bg-accent-soft font-medium text-accent' : 'hover:bg-surface-2'}`}
-                  >
-                    <StatusIcon status={lessonStatus(progress, l.id)} />
-                    <span className="min-w-0">{loc(l.title, l.titleZh)}</span>
-                  </Link>
+                  <div key={l.id} className={`flex items-center gap-1.5 rounded-btn pl-1 ${current ? 'bg-accent-soft' : 'hover:bg-surface-2'}`}>
+                    <StatusIcon status={lessonStatus(progress, l.id)} onMarkUnread={() => unread(l.id)} />
+                    <Link
+                      ref={current ? currentRef : undefined}
+                      to={`/lesson/${section.id}/${l.id}`}
+                      aria-current={current ? 'page' : undefined}
+                      onClick={onClose}
+                      className={`min-w-0 flex-1 py-1.5 pr-2 text-sm ${current ? 'font-medium text-accent' : ''}`}
+                    >
+                      {loc(l.title, l.titleZh)}
+                    </Link>
+                  </div>
                 );
               })}
             </div>

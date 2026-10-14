@@ -4,8 +4,12 @@ import type { ProgressMap } from './types';
 export type DisplayStatus = 'none' | 'visited' | 'completed';
 
 export function lessonStatus(progress: ProgressMap, lessonId: string): DisplayStatus {
-  return progress.get(lessonId)?.status ?? 'none';
+  const s = progress.get(lessonId)?.status;
+  return !s || s === 'unvisited' ? 'none' : s;
 }
+
+/** True once the learner has opened the lesson (and hasn't marked it unread since). */
+export const isTouched = (progress: ProgressMap, lessonId: string) => lessonStatus(progress, lessonId) !== 'none';
 
 export const isCompleted = (progress: ProgressMap, lessonId: string) => progress.get(lessonId)?.status === 'completed';
 
@@ -24,7 +28,7 @@ export interface Stats {
 export function stats(lessons: Lesson[], progress: ProgressMap): Stats {
   const available = lessons.filter(l => l.available);
   const completed = available.filter(l => isCompleted(progress, l.id)).length;
-  const touched = available.some(l => progress.has(l.id));
+  const touched = available.some(l => isTouched(progress, l.id));
   const total = available.length;
   const minutesLeft = available.filter(l => !isCompleted(progress, l.id)).reduce((a, l) => a + l.estimatedMinutes, 0);
   const state: Stats['state'] =

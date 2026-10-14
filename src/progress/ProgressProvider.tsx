@@ -11,6 +11,8 @@ export interface ProgressContextValue {
   user: UserDoc | null;
   visit(lessonId: string): void;
   setCompleted(lessonId: string, completed: boolean): void;
+  /** Back to ○ (not started). Keeps quiz attempts and saved exercise code. */
+  markUnread(lessonId: string): void;
   recordQuiz(lessonId: string, quizId: string, correct: boolean): void;
   recordExercise(lessonId: string, exerciseId: string, update: { passed?: boolean; code?: string }): void;
   setTargetRole(role: RoleKey | null): void;
@@ -94,10 +96,15 @@ export function ProgressProvider({ store, children }: { store: ProgressStore; ch
       user,
       visit(lessonId) {
         if (user?.lastLessonId !== lessonId) updateUser({ lastLessonId: lessonId });
-        if (!progressRef.current.has(lessonId)) write(lessonId, { status: 'visited', firstVisitedAt: Date.now() });
+        const prev = progressRef.current.get(lessonId);
+        if (!prev) write(lessonId, { status: 'visited', firstVisitedAt: Date.now() });
+        else if (prev.status === 'unvisited') write(lessonId, { status: 'visited' });
       },
       setCompleted(lessonId, completed) {
         write(lessonId, completed ? { status: 'completed', completedAt: Date.now() } : { status: 'visited', completedAt: null });
+      },
+      markUnread(lessonId) {
+        if (progressRef.current.has(lessonId)) write(lessonId, { status: 'unvisited', completedAt: null });
       },
       recordQuiz(lessonId, quizId, correct) {
         const prev = progressRef.current.get(lessonId)?.quiz[quizId];

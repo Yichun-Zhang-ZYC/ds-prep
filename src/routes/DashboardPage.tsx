@@ -5,7 +5,7 @@ import { useAuth } from '../auth/useAuth';
 import { Header } from '../components/layout/Header';
 import { ProgressBar } from '../components/progress/ProgressBar';
 import { useI18n } from '../i18n/useI18n';
-import { continueTarget, formatMinutes, stats, type Stats } from '../progress/derive';
+import { continueTarget, formatMinutes, isTouched, stats, type Stats } from '../progress/derive';
 import type { ProgressMap } from '../progress/types';
 import { useProgress } from '../progress/useProgress';
 
@@ -72,7 +72,7 @@ export function DashboardPage() {
   const next = continueTarget(ORDER, progress, user?.lastLessonId ?? null);
   const nextSection = next ? SECTION_BY_ID.get(next.sectionId) : null;
   const firstName = (user?.displayName || authUser?.displayName || t('dash.there')).split(' ')[0];
-  const started = progress.size > 0;
+  const started = ORDER.some(l => isTouched(progress, l.id));
 
   // Role filter (DESIGN.md §5.2): stable sort by stars, sections with no stars dimmed.
   const sections = role ? [...SECTIONS].sort((a, b) => (b.roles[role] ?? 0) - (a.roles[role] ?? 0)) : SECTIONS;

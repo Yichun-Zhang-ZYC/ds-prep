@@ -1,6 +1,7 @@
 import type { RoleKey } from '../content/types';
 
-export type LessonStatus = 'visited' | 'completed';
+/** 'unvisited' = the learner marked the lesson unread; quiz / exercise history is kept. */
+export type LessonStatus = 'visited' | 'completed' | 'unvisited';
 
 export interface QuizRecord {
   correct: boolean;

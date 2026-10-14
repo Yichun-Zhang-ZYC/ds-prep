@@ -355,7 +355,7 @@ users/{uid}
   updatedAt: Timestamp
 
 users/{uid}/progress/{lessonId}
-  status: "visited" | "completed"
+  status: "visited" | "completed" | "unvisited"
   completedAt: Timestamp | null
   firstVisitedAt: Timestamp
   quiz: { [quizId]: { correct: boolean, attempts: number } }
@@ -461,6 +461,7 @@ Add `users/{uid}/public/summary` readable by any `allowed()` user, containing on
 
 - **Global lesson order** = flatten `sections[].subtopics[].lessons[]`.
 - **Mark complete** writes `status: completed`, `completedAt: now`. Un-mark sets `status: visited`, `completedAt: null`.
+- **Mark as unread** (click a ◐ / ✓ icon in the sidebar or section page, or "Mark as unread" on the lesson page) writes `status: unvisited`, `completedAt: null`. The lesson shows ○ again; quiz attempts and saved exercise code are kept. Opening the lesson again sets `status: visited`.
 - Completing quizzes/exercises does **not** auto-complete the lesson (user decides).
 - Quiz: user can retry; record `attempts` and whether ever correct.
 - Exercise: record `passed` once any attempt passes; keep latest code.

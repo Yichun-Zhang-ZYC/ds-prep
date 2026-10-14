@@ -5,14 +5,16 @@ import { BlockBadges } from '../components/lesson/BlockBadges';
 import { ProgressBar } from '../components/progress/ProgressBar';
 import { StatusIcon } from '../components/progress/StatusIcon';
 import { useI18n } from '../i18n/useI18n';
-import { continueTarget, lessonStatus, stats } from '../progress/derive';
+import { continueTarget, isTouched, lessonStatus, stats } from '../progress/derive';
 import { useProgress } from '../progress/useProgress';
+import { useToast } from '../components/Toast';
 
 export function SectionPage() {
   const { sectionId = '' } = useParams();
   const section = SECTION_BY_ID.get(sectionId);
-  const { progress } = useProgress();
+  const { progress, markUnread } = useProgress();
   const { t, loc } = useI18n();
+  const toast = useToast();
   if (!section) return <Navigate to="/" replace />;
 
   const s = stats(section.lessons, progress);
@@ -44,7 +46,7 @@ export function SectionPage() {
             {next ? (
               <Link to={`/lesson/${section.id}/${next.id}`} className="btn btn-primary">
                 <span className="truncate">
-                  {t(s.completed || progress.has(next.id) ? 'section.continue' : 'section.start')}: {loc(next.title, next.titleZh)}
+                  {t(s.completed || isTouched(progress, next.id) ? 'section.continue' : 'section.start')}: {loc(next.title, next.titleZh)}
                 </span>
               </Link>
             ) : s.total ? (
@@ -69,18 +71,25 @@ export function SectionPage() {
                 </summary>
                 {sub.lessons.map(l =>
                   l.available ? (
-                    <Link
-                      key={l.id}
-                      to={`/lesson/${section.id}/${l.id}`}
-                      className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-t border-border px-4.5 py-3 hover:bg-surface md:grid-cols-[auto_minmax(0,1fr)_auto_auto]"
-                    >
-                      <StatusIcon status={lessonStatus(progress, l.id)} />
-                      <span className="text-[15px]">{loc(l.title, l.titleZh)}</span>
-                      <span className="hidden gap-1.5 md:flex"><BlockBadges blocks={l.blocks} /></span>
-                      <span className="min-w-[52px] text-right text-[13px] tabular-nums text-muted">{t('common.minutes', { n: l.estimatedMinutes })}</span>
-                    </Link>
+                    <div key={l.id} className="flex items-center gap-2 border-t border-border pl-3.5 hover:bg-surface">
+                      <StatusIcon
+                        status={lessonStatus(progress, l.id)}
+                        onMarkUnread={() => {
+                          markUnread(l.id);
+                          toast(t('progress.markedUnread'));
+                        }}
+                      />
+                      <Link
+                        to={`/lesson/${section.id}/${l.id}`}
+                        className="grid min-w-0 flex-1 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 py-3 pr-4.5 md:grid-cols-[minmax(0,1fr)_auto_auto]"
+                      >
+                        <span className="text-[15px]">{loc(l.title, l.titleZh)}</span>
+                        <span className="hidden gap-1.5 md:flex"><BlockBadges blocks={l.blocks} /></span>
+                        <span className="min-w-[52px] text-right text-[13px] tabular-nums text-muted">{t('common.minutes', { n: l.estimatedMinutes })}</span>
+                      </Link>
+                    </div>
                   ) : (
-                    <div key={l.id} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-t border-border px-4.5 py-3 text-muted">
+                    <div key={l.id} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 border-t border-border py-3 pl-3.5 pr-4.5 text-muted">
                       <StatusIcon status="soon" />
                       <span className="text-[15px]">{loc(l.title, l.titleZh)}</span>
                       <span className="text-[12px]">{t('common.comingSoon')}</span>

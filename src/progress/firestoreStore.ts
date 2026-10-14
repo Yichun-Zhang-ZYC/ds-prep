@@ -17,7 +17,7 @@ const ts = (v: number | null | undefined) => (v == null ? null : Timestamp.fromM
 
 function toProgress(d: DocumentData): LessonProgress {
   return {
-    status: d.status === 'completed' ? 'completed' : 'visited',
+    status: d.status === 'completed' || d.status === 'unvisited' ? d.status : 'visited',
     completedAt: d.completedAt ? ms(d.completedAt) : null,
     firstVisitedAt: ms(d.firstVisitedAt),
     quiz: d.quiz ?? {},

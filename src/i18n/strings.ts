@@ -110,6 +110,8 @@ export const STRINGS = {
   'dash.inProgressContent': { en: 'Content in progress', zh: '内容制作中' },
   'dash.morePlanned': { en: ' · {n} more planned', zh: ' · 另有 {n} 课待上线' },
   'dash.progressOf': { en: '{title} progress', zh: '{title} 进度' },
+  'progress.markUnread': { en: 'Mark as unread', zh: '标记为未读' },
+  'progress.markedUnread': { en: 'Marked as unread', zh: '已标记为未读' },
   'state.notStarted': { en: 'Not started', zh: '未开始' },
   'state.inProgress': { en: 'In progress', zh: '学习中' },
   'state.completed': { en: 'Completed', zh: '已完成' },

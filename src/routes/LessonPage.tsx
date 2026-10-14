@@ -11,7 +11,7 @@ import { LessonContent } from '../components/lesson/LessonContent';
 import { useToast } from '../components/Toast';
 import type { LessonLang } from '../i18n/I18nProvider';
 import { useI18n } from '../i18n/useI18n';
-import { isCompleted, neighbors, stats } from '../progress/derive';
+import { isCompleted, isTouched, neighbors, stats } from '../progress/derive';
 import { useProgress } from '../progress/useProgress';
 
 export function LessonPage() {
@@ -19,7 +19,7 @@ export function LessonPage() {
   const navigate = useNavigate();
   const toast = useToast();
   const { t, loc, lesson: mode, setLesson } = useI18n();
-  const { progress, ready, visit, setCompleted } = useProgress();
+  const { progress, ready, visit, setCompleted, markUnread } = useProgress();
   const [body, setBody] = useState<{ en: string; zh: string | null } | null>(null);
   const [loadError, setLoadError] = useState(false);
   const [outlineOpen, setOutlineOpen] = useState(false);
@@ -126,6 +126,17 @@ export function LessonPage() {
                 {lesson.difficulty && <><span aria-hidden="true">·</span><span>{t(`lesson.${lesson.difficulty}`)}</span></>}
                 <BlockBadges blocks={lesson.blocks} />
                 {completed && <span className="badge bg-success-soft text-success">{t('state.completed')}</span>}
+                {isTouched(progress, lesson.id) && (
+                  <button
+                    className="ml-auto text-[13px] text-muted underline-offset-2 hover:text-accent hover:underline"
+                    onClick={() => {
+                      markUnread(lesson.id);
+                      toast(t('progress.markedUnread'));
+                    }}
+                  >
+                    ○ {t('progress.markUnread')}
+                  </button>
+                )}
               </div>
             </header>
             {loadError ? (

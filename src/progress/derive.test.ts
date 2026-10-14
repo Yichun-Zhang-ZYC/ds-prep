@@ -1,5 +1,5 @@
 import type { Lesson } from '../content/types';
-import { continueTarget, formatMinutes, neighbors, stats } from './derive';
+import { continueTarget, formatMinutes, isTouched, lessonStatus, neighbors, stats } from './derive';
 import type { LessonProgress, ProgressMap } from './types';
 
 const lesson = (id: string, available = true, estimatedMinutes = 10): Lesson => ({
@@ -48,5 +48,15 @@ describe('neighbors / formatMinutes', () => {
     expect(formatMinutes(45)).toBe('45m');
     expect(formatMinutes(60)).toBe('1h');
     expect(formatMinutes(95)).toBe('1h 35m');
+  });
+});
+
+describe('mark as unread', () => {
+  const unvisited = (): LessonProgress => ({ ...visited(), status: 'unvisited' });
+  it('shows an unread lesson as not started', () => {
+    const progress: ProgressMap = new Map([['a', unvisited()]]);
+    expect(lessonStatus(progress, 'a')).toBe('none');
+    expect(isTouched(progress, 'a')).toBe(false);
+    expect(stats([lesson('a')], progress).state).toBe('not-started');
   });
 });
