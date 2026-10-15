@@ -21,7 +21,7 @@ Logical order of execution:
 That order is why you can't use an aggregate in `WHERE`: the groups don't exist yet.
 
 ## Worked example
-Customers who spent more than $500 on completed orders:
+Customers who spent more than \$500 on completed orders:
 
 ```sql
 SELECT customer_id,

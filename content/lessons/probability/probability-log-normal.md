@@ -27,7 +27,7 @@ $$
 \text{median} = e^{3.5} \approx 33.1, \qquad \text{mean} = e^{3.5 + 0.32} \approx 45.6
 $$
 
-A report quoting the mean ($45.6) describes a "typical" order that's larger than what most customers actually spend.
+A report quoting the mean (\$45.6) describes a "typical" order that's larger than what most customers actually spend.
 
 ## Check your understanding
 
