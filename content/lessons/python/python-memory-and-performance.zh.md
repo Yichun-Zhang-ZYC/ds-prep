@@ -63,7 +63,7 @@ aov = {c: sums[c] / counts[c] for c in sums}
 ```python-exercise
 {
   "id": "ex1",
-  "prompt": "编写 `shrink(df)`，返回一个副本：唯一值比例低于 50% 的 object 列转为 `category`，int64 列用 `pd.to_numeric(..., downcast='integer')` 向下转换，float64 列转为 float32。编写 `chunked_mean(chunks, key, value)`：接收由 DataFrame 组成的可迭代对象，返回字典 key → value 的均值，均值由合并后的和与计数计算（而不是对均值求平均）。",
+  "prompt": "编写 `shrink(df)`，返回一个副本：唯一值比例低于 50% 的字符串列（object 类型，或 pandas 3 中的字符串类型；`pd.api.types.is_string_dtype` 两者都能识别）转为 `category`，int64 列用 `pd.to_numeric(..., downcast='integer')` 向下转换，float64 列转为 float32。编写 `chunked_mean(chunks, key, value)`：接收由 DataFrame 组成的可迭代对象，返回字典 key → value 的均值，均值由合并后的和与计数计算（而不是对均值求平均）。",
   "hints": ["用 s.nunique() / len(s) 决定是否转为 category。", "对 'a'：(1 + 3 + 8) / 3 = 4，而不是各块均值（2 和 8）的平均。"]
 }
 ```
