@@ -55,7 +55,7 @@ $$
 ```python-exercise
 {
   "id": "ex1",
-  "prompt": "编写 `choose_tool(kind)`：对 `'io'` 返回 `'threads_or_asyncio'`，对 `'cpu_python'` 返回 `'processes'`，对 `'cpu_numeric'` 返回 `'vectorize'`（其他情况抛出 `ValueError`）。再编写 `amdahl(p, n)` 返回加速比，以及 `workers_for_speedup(p, target)`，返回达到目标的最小整数 n；如果不可能达到（target ≥ 1/(1 − p)），返回 `None`。",
+  "prompt": "编写 `choose_tool(kind)`：对 `'io'` 返回 `'threads_or_asyncio'`，对 `'cpu_python'` 返回 `'processes'`，对 `'cpu_numeric'` 返回 `'vectorize'`（其他情况抛出 `ValueError`）。再编写 `amdahl(p, n)` 返回加速比，以及 `workers_for_speedup(p, target)`，返回达到目标的最小整数 n；如果不可能达到（target ≥ 1/(1 − p)；比较时用 1e-9 这样的小容差，因为在浮点数中 1/(1 − 0.9) 等于 10.000000000000002），返回 `None`。",
   "hints": ["n → ∞ 时的极限是 1/(1 − p)。", "p = 0.9、目标为 5 时：n = 9 恰好得到 5。"]
 }
 ```
