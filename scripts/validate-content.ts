@@ -152,6 +152,8 @@ async function main() {
 
         if (block.kind === 'python-exercise') {
           const ex = data as PythonExerciseData;
+          // Pyodide runs code from a string, so there is no source file for inspect to read.
+          if (/\binspect\.getsource/.test(`${ex.setup ?? ''}\n${ex.tests}`)) err(at, 'python-exercise: inspect.getsource does not work in Pyodide');
           pythonJobs.push({ where: at, code: [ex.setup, ex.solution, ex.tests].filter(Boolean).join('\n\n') });
         }
       }

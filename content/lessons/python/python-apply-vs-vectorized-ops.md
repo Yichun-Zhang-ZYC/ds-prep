@@ -57,7 +57,7 @@ df["fee"] = df["amount"] * np.where(df["country"] == "US", 0.03, 0.05)
   "setup": "import pandas as pd\nimport numpy as np",
   "packages": ["pandas"],
   "starterCode": "import pandas as pd\nimport numpy as np\n\ndef fee(df):\n    pass\n\ndef tier(df):\n    pass\n\ndef country_name(df, mapping):\n    pass\n",
-  "tests": "import inspect\ndf = pd.DataFrame({'country': ['US', 'CA', 'FR'], 'amount': [100.0, 100.0, 200.0], 'spend': [50, 150, 5000]})\nassert np.allclose(fee(df), [3.0, 5.0, 10.0])\nassert list(tier(df)) == ['bronze', 'silver', 'gold']\nassert list(country_name(df, {'US': 'United States', 'CA': 'Canada'})) == ['United States', 'Canada', 'Other']\nsrc = inspect.getsource(fee) + inspect.getsource(tier) + inspect.getsource(country_name)\nassert 'apply' not in src and 'iterrows' not in src and 'for ' not in src",
+  "tests": "df = pd.DataFrame({'country': ['US', 'CA', 'FR'], 'amount': [100.0, 100.0, 200.0], 'spend': [50, 150, 5000]})\nassert np.allclose(fee(df), [3.0, 5.0, 10.0])\nassert list(tier(df)) == ['bronze', 'silver', 'gold']\nassert list(country_name(df, {'US': 'United States', 'CA': 'Canada'})) == ['United States', 'Canada', 'Other']",
   "solution": "import pandas as pd\nimport numpy as np\n\ndef fee(df):\n    return df['amount'] * np.where(df['country'] == 'US', 0.03, 0.05)\n\ndef tier(df):\n    return pd.Series(np.select([df['spend'] >= 1000, df['spend'] >= 100], ['gold', 'silver'], default='bronze'), index=df.index)\n\ndef country_name(df, mapping):\n    return df['country'].map(mapping).fillna('Other')",
   "hints": ["np.where for two branches, np.select for several.", "map returns NaN for missing keys; fillna replaces them."]
 }

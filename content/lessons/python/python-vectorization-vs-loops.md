@@ -59,7 +59,7 @@ On 10 million rows this is roughly 50× faster than a Python loop with if/elif.
   "setup": "import numpy as np",
   "packages": ["numpy"],
   "starterCode": "import numpy as np\n\ndef bucketize(amount):\n    pass\n\ndef group_sum(keys, vals, n_groups):\n    pass\n\ndef pct_change(prices):\n    pass\n\nprint(bucketize(np.array([5, 50, 500])), group_sum(np.array([0, 2, 0]), np.array([1., 2., 3.]), 3))",
-  "tests": "assert list(bucketize(np.array([5, 50, 500, 20, 100]))) == ['low', 'mid', 'high', 'low', 'mid']\nassert np.allclose(group_sum(np.array([0, 2, 0]), np.array([1., 2., 3.]), 3), [4, 0, 2])\nassert np.allclose(pct_change(np.array([100., 110., 99.])), [0.1, -0.1])\nimport inspect\nsrc = inspect.getsource(bucketize) + inspect.getsource(group_sum) + inspect.getsource(pct_change)\nassert 'for ' not in src",
+  "tests": "assert list(bucketize(np.array([5, 50, 500, 20, 100]))) == ['low', 'mid', 'high', 'low', 'mid']\nassert np.allclose(group_sum(np.array([0, 2, 0]), np.array([1., 2., 3.]), 3), [4, 0, 2])\nassert np.allclose(pct_change(np.array([100., 110., 99.])), [0.1, -0.1])",
   "solution": "import numpy as np\n\ndef bucketize(amount):\n    return np.select([amount > 100, amount > 20], ['high', 'mid'], default='low')\n\ndef group_sum(keys, vals, n_groups):\n    return np.bincount(keys, weights=vals, minlength=n_groups)\n\ndef pct_change(prices):\n    return np.diff(prices) / prices[:-1]",
   "hints": ["np.select evaluates conditions in order, like if/elif.", "np.bincount with weights sums values per integer key; minlength pads empty groups."]
 }
