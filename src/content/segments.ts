@@ -80,8 +80,10 @@ export function compareShapes(en: LessonSection[], zh: LessonSection[]): string[
 }
 
 /**
- * Splits a Markdown run into top-level chunks separated by blank lines (code fences
- * stay whole). Used to interleave English and Chinese paragraph by paragraph.
+ * Splits a Markdown run into top-level chunks separated by blank lines. Code fences
+ * stay whole and always form their own chunk, even when a sentence runs straight into
+ * them, so Combined mode can show shared code once. Used to interleave English and
+ * Chinese paragraph by paragraph.
  */
 export function splitParagraphs(text: string): string[] {
   const chunks: string[] = [];
@@ -96,10 +98,14 @@ export function splitParagraphs(text: string): string[] {
     const m = line.match(/^(```+|~~~+)/);
     if (fence) {
       buf.push(line);
-      if (m && line.startsWith(fence)) fence = null;
+      if (m && line.startsWith(fence)) {
+        fence = null;
+        flush();
+      }
       continue;
     }
     if (m) {
+      flush();
       fence = m[1];
       buf.push(line);
       continue;

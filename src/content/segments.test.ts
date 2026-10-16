@@ -1,5 +1,5 @@
 import { checkZhOverlay } from './parse';
-import { compareShapes, splitLesson } from './segments';
+import { compareShapes, splitLesson, splitParagraphs } from './segments';
 
 const EN = `## Why it matters
 Text with a code sample:
@@ -65,5 +65,15 @@ describe('checkZhOverlay', () => {
   it('rejects option count mismatches and missing text', () => {
     expect(checkZhOverlay('quiz', '{"question":"问？","options":["甲"]}', base).errors[0]).toMatch(/1 items, English has 2/);
     expect(checkZhOverlay('reveal', '{"prompt":"问"}', {}).errors[0]).toMatch(/answer/);
+  });
+});
+
+describe('splitParagraphs', () => {
+  it('keeps a code fence as its own chunk even without blank lines around it', () => {
+    const text = 'Example:\n```python\nx = 1\n\ny = 2\n```\nAfter the code.';
+    expect(splitParagraphs(text)).toEqual(['Example:', '```python\nx = 1\n\ny = 2\n```', 'After the code.']);
+  });
+  it('splits ordinary paragraphs on blank lines', () => {
+    expect(splitParagraphs('a\nb\n\nc')).toEqual(['a\nb', 'c']);
   });
 });
