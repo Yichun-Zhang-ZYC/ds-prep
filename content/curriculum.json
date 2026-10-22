@@ -285,6 +285,45 @@
               "title": "BigQuery, Snowflake, Spark SQL differences"
             }
           ]
+        },
+        {
+          "id": "sql-practice",
+          "title": "Interview Practice Sets",
+          "titleZh": "面试练习题集",
+          "lessons": [
+            {
+              "id": "sql-practice-ecommerce-analytics",
+              "title": "Practice: E-commerce analytics queries"
+            },
+            {
+              "id": "sql-practice-user-activity-and-sessions",
+              "title": "Practice: User activity and engagement queries"
+            },
+            {
+              "id": "sql-practice-ranking-and-percentiles",
+              "title": "Practice: Ranking, percentiles and top-N"
+            },
+            {
+              "id": "sql-practice-streaks-and-gaps",
+              "title": "Practice: Streaks, gaps and islands"
+            },
+            {
+              "id": "sql-practice-hierarchies-and-self-joins",
+              "title": "Practice: Hierarchies and self-joins"
+            },
+            {
+              "id": "sql-practice-conditional-aggregation-and-pivots",
+              "title": "Practice: Conditional aggregation and pivots"
+            },
+            {
+              "id": "sql-practice-dedup-and-data-cleaning",
+              "title": "Practice: Deduplication and data cleaning"
+            },
+            {
+              "id": "sql-practice-rolling-and-yoy-metrics",
+              "title": "Practice: Rolling windows and YoY metrics"
+            }
+          ]
         }
       ]
     },
@@ -485,6 +524,45 @@
               "title": "Simulations (Monte Carlo)"
             }
           ]
+        },
+        {
+          "id": "python-practice",
+          "title": "Coding Practice Sets",
+          "titleZh": "编程练习题集",
+          "lessons": [
+            {
+              "id": "python-practice-string-parsing-and-regex",
+              "title": "Practice: String parsing and regex"
+            },
+            {
+              "id": "python-practice-pandas-groupby-puzzles",
+              "title": "Practice: pandas groupby puzzles"
+            },
+            {
+              "id": "python-practice-merge-reshape-and-pivot",
+              "title": "Practice: Merge, reshape and pivot"
+            },
+            {
+              "id": "python-practice-datetime-and-resampling",
+              "title": "Practice: Dates, times and resampling"
+            },
+            {
+              "id": "python-practice-data-cleaning-pipeline",
+              "title": "Practice: Building a data-cleaning pipeline"
+            },
+            {
+              "id": "python-practice-numpy-vectorization",
+              "title": "Practice: NumPy vectorization"
+            },
+            {
+              "id": "python-practice-generators-and-iterators",
+              "title": "Practice: Generators and iterators"
+            },
+            {
+              "id": "python-practice-collections-and-itertools",
+              "title": "Practice: collections and itertools recipes"
+            }
+          ]
         }
       ]
     },
@@ -617,6 +695,29 @@
             {
               "id": "math-mutual-information",
               "title": "Mutual information"
+            }
+          ]
+        },
+        {
+          "id": "math-applied",
+          "title": "Applied Math for ML",
+          "titleZh": "机器学习中的应用数学",
+          "lessons": [
+            {
+              "id": "math-matrix-calculus-for-ml",
+              "title": "Matrix calculus for ML"
+            },
+            {
+              "id": "math-numerical-stability",
+              "title": "Numerical stability (log-sum-exp, softmax, overflow)"
+            },
+            {
+              "id": "math-norms-and-regularization-geometry",
+              "title": "Norms and the geometry of regularization"
+            },
+            {
+              "id": "math-pca-from-linear-algebra",
+              "title": "PCA from first principles"
             }
           ]
         }
@@ -790,6 +891,37 @@
             {
               "id": "probability-geometric-probability",
               "title": "Geometric probability"
+            }
+          ]
+        },
+        {
+          "id": "probability-puzzles",
+          "title": "Puzzle Sets",
+          "titleZh": "概率题集",
+          "lessons": [
+            {
+              "id": "probability-practice-bayes-and-conditional-puzzles",
+              "title": "Practice: Bayes and conditional probability puzzles"
+            },
+            {
+              "id": "probability-practice-dice-cards-and-coins",
+              "title": "Practice: Dice, cards and coins"
+            },
+            {
+              "id": "probability-practice-expected-value-games",
+              "title": "Practice: Expected value and games"
+            },
+            {
+              "id": "probability-practice-random-walks-and-markov-chains",
+              "title": "Practice: Random walks and Markov chains"
+            },
+            {
+              "id": "probability-practice-order-statistics-and-uniform",
+              "title": "Practice: Order statistics and uniform variables"
+            },
+            {
+              "id": "probability-practice-geometric-probability",
+              "title": "Practice: Geometric probability and simulation"
             }
           ]
         }
@@ -1014,6 +1146,37 @@
               "title": "Regression to the mean"
             }
           ]
+        },
+        {
+          "id": "statistics-practice",
+          "title": "Practice Sets",
+          "titleZh": "统计练习题集",
+          "lessons": [
+            {
+              "id": "statistics-practice-choosing-the-right-test",
+              "title": "Practice: Choosing the right test"
+            },
+            {
+              "id": "statistics-practice-confidence-interval-calculations",
+              "title": "Practice: Confidence interval calculations"
+            },
+            {
+              "id": "statistics-practice-regression-interpretation",
+              "title": "Practice: Interpreting regression output"
+            },
+            {
+              "id": "statistics-practice-power-and-sample-size",
+              "title": "Practice: Power and sample size calculations"
+            },
+            {
+              "id": "statistics-practice-bootstrap-and-permutation",
+              "title": "Practice: Bootstrap and permutation tests"
+            },
+            {
+              "id": "statistics-practice-multiple-testing",
+              "title": "Practice: Multiple testing corrections"
+            }
+          ]
         }
       ]
     },
@@ -1192,6 +1355,37 @@
             {
               "id": "experimentation-debugging-unexpected-results",
               "title": "Debugging unexpected results"
+            }
+          ]
+        },
+        {
+          "id": "experimentation-more-cases",
+          "title": "More Experiment Cases",
+          "titleZh": "更多实验案例",
+          "lessons": [
+            {
+              "id": "experimentation-case-two-sided-marketplace",
+              "title": "Case: Two-sided marketplace experiments"
+            },
+            {
+              "id": "experimentation-case-notifications-and-email",
+              "title": "Case: Notification and email experiments"
+            },
+            {
+              "id": "experimentation-case-pricing-experiments",
+              "title": "Case: Pricing experiments"
+            },
+            {
+              "id": "experimentation-case-ranking-algorithm-change",
+              "title": "Case: Testing a ranking or recommendation change"
+            },
+            {
+              "id": "experimentation-case-long-term-effects-and-holdouts",
+              "title": "Case: Long-term effects and holdouts"
+            },
+            {
+              "id": "experimentation-case-network-effects-and-clusters",
+              "title": "Case: Network effects and cluster randomization"
             }
           ]
         }
@@ -1461,6 +1655,41 @@
               "title": "Exploration vs exploitation"
             }
           ]
+        },
+        {
+          "id": "ml-practice",
+          "title": "Interview Practice",
+          "titleZh": "机器学习面试练习",
+          "lessons": [
+            {
+              "id": "ml-practice-debugging-a-model",
+              "title": "Practice: Debugging an underperforming model"
+            },
+            {
+              "id": "ml-practice-choosing-metrics-by-business-case",
+              "title": "Practice: Choosing metrics by business case"
+            },
+            {
+              "id": "ml-practice-leakage-case-studies",
+              "title": "Practice: Data leakage case studies"
+            },
+            {
+              "id": "ml-practice-imbalanced-data-case",
+              "title": "Practice: Imbalanced data case study"
+            },
+            {
+              "id": "ml-practice-hyperparameter-tuning-strategies",
+              "title": "Practice: Hyperparameter tuning strategies"
+            },
+            {
+              "id": "ml-practice-model-explainability-shap-lime",
+              "title": "Model explainability: SHAP and LIME"
+            },
+            {
+              "id": "ml-practice-from-scratch-implementations",
+              "title": "Practice: Algorithms from scratch (k-means, logistic regression, decision stump)"
+            }
+          ]
         }
       ]
     },
@@ -1608,6 +1837,37 @@
             {
               "id": "deep-learning-hugging-face-transformers",
               "title": "Hugging Face Transformers"
+            }
+          ]
+        },
+        {
+          "id": "deep-learning-more",
+          "title": "Additional Topics",
+          "titleZh": "更多主题",
+          "lessons": [
+            {
+              "id": "deep-learning-graph-neural-networks",
+              "title": "Graph neural networks"
+            },
+            {
+              "id": "deep-learning-self-supervised-and-contrastive-learning",
+              "title": "Self-supervised and contrastive learning"
+            },
+            {
+              "id": "deep-learning-regularization-weight-decay-and-augmentation",
+              "title": "Regularization: weight decay and data augmentation"
+            },
+            {
+              "id": "deep-learning-hyperparameter-tuning-and-debugging-training",
+              "title": "Tuning and debugging neural network training"
+            },
+            {
+              "id": "deep-learning-model-interpretability-for-deep-nets",
+              "title": "Interpretability for deep nets (saliency, attention, probing)"
+            },
+            {
+              "id": "deep-learning-embeddings-and-metric-learning",
+              "title": "Embeddings and metric learning (triplet, contrastive loss)"
             }
           ]
         }
@@ -1787,6 +2047,49 @@
             {
               "id": "nlp-llms-multimodal-models",
               "title": "Multimodal Models (vision-language)"
+            }
+          ]
+        },
+        {
+          "id": "nlp-llms-deep-dives",
+          "title": "LLM Interview Deep Dives",
+          "titleZh": "大模型面试深入专题",
+          "lessons": [
+            {
+              "id": "nlp-llms-positional-encodings-rope",
+              "title": "Positional encodings: sinusoidal, learned, RoPE, ALiBi"
+            },
+            {
+              "id": "nlp-llms-flash-attention-and-efficient-attention",
+              "title": "FlashAttention and efficient attention"
+            },
+            {
+              "id": "nlp-llms-mixture-of-experts",
+              "title": "Mixture of Experts"
+            },
+            {
+              "id": "nlp-llms-long-context-techniques",
+              "title": "Long-context techniques"
+            },
+            {
+              "id": "nlp-llms-speculative-decoding",
+              "title": "Speculative decoding"
+            },
+            {
+              "id": "nlp-llms-llm-evaluation-benchmarks",
+              "title": "LLM evaluation: benchmarks and their pitfalls"
+            },
+            {
+              "id": "nlp-llms-synthetic-data-and-data-curation",
+              "title": "Synthetic data and data curation for LLMs"
+            },
+            {
+              "id": "nlp-llms-reasoning-models-and-test-time-compute",
+              "title": "Reasoning models and test-time compute"
+            },
+            {
+              "id": "nlp-llms-tokenization-pitfalls",
+              "title": "Tokenization pitfalls in practice"
             }
           ]
         }
@@ -1991,6 +2294,53 @@
               "title": "Cost monitoring"
             }
           ]
+        },
+        {
+          "id": "genai-eng-case-studies",
+          "title": "Applied Case Studies",
+          "titleZh": "应用案例",
+          "lessons": [
+            {
+              "id": "genai-eng-case-customer-support-copilot",
+              "title": "Case: Customer-support copilot"
+            },
+            {
+              "id": "genai-eng-case-document-qa-over-pdfs",
+              "title": "Case: Document Q&A over PDFs"
+            },
+            {
+              "id": "genai-eng-case-structured-extraction-pipeline",
+              "title": "Case: Structured information extraction pipeline"
+            },
+            {
+              "id": "genai-eng-case-code-assistant",
+              "title": "Case: Code review and coding assistant"
+            },
+            {
+              "id": "genai-eng-case-meeting-summarizer",
+              "title": "Case: Meeting and long-document summarizer"
+            },
+            {
+              "id": "genai-eng-case-voice-agent",
+              "title": "Case: Voice agent"
+            },
+            {
+              "id": "genai-eng-case-llm-eval-platform",
+              "title": "Case: Designing an LLM evaluation platform"
+            },
+            {
+              "id": "genai-eng-case-model-routing-and-cost-optimization",
+              "title": "Case: Model routing and cost optimization"
+            },
+            {
+              "id": "genai-eng-case-debugging-agent-failures",
+              "title": "Case: Debugging agent failures"
+            },
+            {
+              "id": "genai-eng-case-fine-tune-vs-rag-decision",
+              "title": "Case: Fine-tune vs RAG decision"
+            }
+          ]
         }
       ]
     },
@@ -2050,6 +2400,29 @@
             {
               "id": "computer-vision-cv-evaluation-metrics",
               "title": "CV evaluation metrics (IoU, mAP)"
+            }
+          ]
+        },
+        {
+          "id": "computer-vision-more",
+          "title": "Additional Topics",
+          "titleZh": "更多主题",
+          "lessons": [
+            {
+              "id": "computer-vision-ocr-and-document-understanding",
+              "title": "OCR and document understanding"
+            },
+            {
+              "id": "computer-vision-face-recognition-and-verification",
+              "title": "Face recognition and verification"
+            },
+            {
+              "id": "computer-vision-video-understanding",
+              "title": "Video understanding"
+            },
+            {
+              "id": "computer-vision-data-augmentation-for-vision",
+              "title": "Data augmentation for vision"
             }
           ]
         }
@@ -2125,6 +2498,29 @@
               "title": "Anomaly detection in time series"
             }
           ]
+        },
+        {
+          "id": "time-series-more",
+          "title": "Additional Topics",
+          "titleZh": "更多主题",
+          "lessons": [
+            {
+              "id": "time-series-hierarchical-forecasting",
+              "title": "Hierarchical forecasting and reconciliation"
+            },
+            {
+              "id": "time-series-intermittent-demand",
+              "title": "Intermittent demand forecasting"
+            },
+            {
+              "id": "time-series-probabilistic-forecasting",
+              "title": "Probabilistic forecasting and prediction intervals"
+            },
+            {
+              "id": "time-series-forecasting-case-study",
+              "title": "Case: Building a demand forecast end to end"
+            }
+          ]
         }
       ]
     },
@@ -2196,6 +2592,29 @@
             {
               "id": "recsys-search-ranking-basics",
               "title": "Search ranking basics"
+            }
+          ]
+        },
+        {
+          "id": "recsys-more",
+          "title": "Additional Topics",
+          "titleZh": "更多主题",
+          "lessons": [
+            {
+              "id": "recsys-feedback-loops-and-bias",
+              "title": "Feedback loops, popularity and position bias"
+            },
+            {
+              "id": "recsys-multi-objective-ranking",
+              "title": "Multi-objective ranking"
+            },
+            {
+              "id": "recsys-sequence-aware-recommenders",
+              "title": "Sequence-aware recommenders"
+            },
+            {
+              "id": "recsys-recsys-case-study",
+              "title": "Case: Designing a two-stage recommender end to end"
             }
           ]
         }
@@ -2344,6 +2763,53 @@
               "title": "LLM-powered agent system"
             }
           ]
+        },
+        {
+          "id": "ml-system-design-more-questions",
+          "title": "More Design Questions",
+          "titleZh": "更多系统设计题",
+          "lessons": [
+            {
+              "id": "ml-system-design-eta-prediction",
+              "title": "Design: ETA prediction for ride-hailing"
+            },
+            {
+              "id": "ml-system-design-video-recommendation",
+              "title": "Design: Video recommendation (YouTube-style)"
+            },
+            {
+              "id": "ml-system-design-search-autocomplete",
+              "title": "Design: Search autocomplete"
+            },
+            {
+              "id": "ml-system-design-spam-detection",
+              "title": "Design: Spam and abuse detection"
+            },
+            {
+              "id": "ml-system-design-visual-search",
+              "title": "Design: Visual / image search"
+            },
+            {
+              "id": "ml-system-design-notification-personalization",
+              "title": "Design: Notification personalization"
+            },
+            {
+              "id": "ml-system-design-dynamic-pricing",
+              "title": "Design: Dynamic pricing"
+            },
+            {
+              "id": "ml-system-design-credit-scoring",
+              "title": "Design: Credit scoring and loan approval"
+            },
+            {
+              "id": "ml-system-design-semantic-search-for-documents",
+              "title": "Design: Semantic search for enterprise documents"
+            },
+            {
+              "id": "ml-system-design-code-completion-assistant",
+              "title": "Design: Code completion assistant"
+            }
+          ]
         }
       ]
     },
@@ -2474,6 +2940,29 @@
             {
               "id": "mlops-reproducibility-and-governance",
               "title": "Reproducibility & governance"
+            }
+          ]
+        },
+        {
+          "id": "mlops-more",
+          "title": "Practice & Platforms",
+          "titleZh": "实践与平台",
+          "lessons": [
+            {
+              "id": "mlops-ml-platform-design",
+              "title": "Designing an ML platform"
+            },
+            {
+              "id": "mlops-feature-drift-case-study",
+              "title": "Case: Investigating feature drift in production"
+            },
+            {
+              "id": "mlops-online-experimentation-for-models",
+              "title": "Online experimentation for models (interleaving, bandits, shadow metrics)"
+            },
+            {
+              "id": "mlops-cost-and-capacity-management",
+              "title": "Cost and capacity management for ML"
             }
           ]
         }
@@ -2729,6 +3218,41 @@
               "title": "Design a real-time dashboard backend"
             }
           ]
+        },
+        {
+          "id": "data-engineering-practice",
+          "title": "Practice & Case Studies",
+          "titleZh": "实践与案例",
+          "lessons": [
+            {
+              "id": "data-engineering-case-design-a-lakehouse",
+              "title": "Case: Designing a lakehouse"
+            },
+            {
+              "id": "data-engineering-case-slowly-changing-dimensions",
+              "title": "Case: Slowly changing dimensions in practice"
+            },
+            {
+              "id": "data-engineering-case-cdc-pipeline",
+              "title": "Case: Change data capture pipeline"
+            },
+            {
+              "id": "data-engineering-backfills-and-idempotency",
+              "title": "Backfills and idempotent pipelines"
+            },
+            {
+              "id": "data-engineering-case-metrics-layer-and-semantic-layer",
+              "title": "Case: Building a metrics (semantic) layer"
+            },
+            {
+              "id": "data-engineering-warehouse-cost-optimization",
+              "title": "Warehouse cost and performance optimization"
+            },
+            {
+              "id": "data-engineering-case-late-arriving-data",
+              "title": "Case: Late-arriving and out-of-order data"
+            }
+          ]
         }
       ]
     },
@@ -2960,6 +3484,29 @@
               "title": "Data observability"
             }
           ]
+        },
+        {
+          "id": "cloud-devops-more",
+          "title": "More Practice",
+          "titleZh": "更多实践",
+          "lessons": [
+            {
+              "id": "cloud-devops-terraform-state-and-modules",
+              "title": "Terraform state and modules"
+            },
+            {
+              "id": "cloud-devops-incident-response-and-postmortems",
+              "title": "Incident response and postmortems"
+            },
+            {
+              "id": "cloud-devops-cost-management-finops",
+              "title": "Cloud cost management (FinOps)"
+            },
+            {
+              "id": "cloud-devops-gpu-infrastructure-for-ml",
+              "title": "GPU infrastructure for ML workloads"
+            }
+          ]
         }
       ]
     },
@@ -3123,6 +3670,29 @@
               "title": "Root cause analysis"
             }
           ]
+        },
+        {
+          "id": "analytics-bi-more-cases",
+          "title": "More Case Studies",
+          "titleZh": "更多案例",
+          "lessons": [
+            {
+              "id": "analytics-bi-case-marketing-attribution",
+              "title": "Case: Marketing attribution"
+            },
+            {
+              "id": "analytics-bi-case-customer-segmentation-rfm",
+              "title": "Case: Customer segmentation with RFM"
+            },
+            {
+              "id": "analytics-bi-case-pricing-analysis",
+              "title": "Case: Pricing analysis"
+            },
+            {
+              "id": "analytics-bi-case-operations-and-supply-chain-metrics",
+              "title": "Case: Operations and supply-chain metrics"
+            }
+          ]
         }
       ]
     },
@@ -3226,6 +3796,37 @@
               "title": "ROI of AI projects"
             }
           ]
+        },
+        {
+          "id": "product-sense-more-cases",
+          "title": "More Product Cases",
+          "titleZh": "更多产品案例",
+          "lessons": [
+            {
+              "id": "product-sense-case-marketplace-health",
+              "title": "Case: Marketplace health metrics"
+            },
+            {
+              "id": "product-sense-case-subscription-business-metrics",
+              "title": "Case: Subscription business metrics"
+            },
+            {
+              "id": "product-sense-case-social-engagement",
+              "title": "Case: Social engagement and feed metrics"
+            },
+            {
+              "id": "product-sense-case-search-quality-metrics",
+              "title": "Case: Search quality metrics"
+            },
+            {
+              "id": "product-sense-case-notification-strategy",
+              "title": "Case: Notification strategy"
+            },
+            {
+              "id": "product-sense-case-launching-an-ai-assistant",
+              "title": "Case: Launching an AI assistant feature"
+            }
+          ]
         }
       ]
     },
@@ -3313,6 +3914,45 @@
             {
               "id": "dsa-intervals",
               "title": "Intervals"
+            }
+          ]
+        },
+        {
+          "id": "dsa-more-patterns",
+          "title": "More Patterns",
+          "titleZh": "更多题型",
+          "lessons": [
+            {
+              "id": "dsa-tries",
+              "title": "Tries"
+            },
+            {
+              "id": "dsa-union-find",
+              "title": "Union-find (disjoint sets)"
+            },
+            {
+              "id": "dsa-monotonic-stack-and-queue",
+              "title": "Monotonic stack and queue"
+            },
+            {
+              "id": "dsa-bit-manipulation",
+              "title": "Bit manipulation"
+            },
+            {
+              "id": "dsa-greedy-algorithms",
+              "title": "Greedy algorithms"
+            },
+            {
+              "id": "dsa-prefix-sums-and-difference-arrays",
+              "title": "Prefix sums and difference arrays"
+            },
+            {
+              "id": "dsa-shortest-paths-dijkstra",
+              "title": "Shortest paths (Dijkstra)"
+            },
+            {
+              "id": "dsa-design-data-structures",
+              "title": "Design problems (LRU cache, min stack, iterators)"
             }
           ]
         }
@@ -3447,6 +4087,29 @@
               "title": "Documentation"
             }
           ]
+        },
+        {
+          "id": "swe-more",
+          "title": "More Topics",
+          "titleZh": "更多主题",
+          "lessons": [
+            {
+              "id": "swe-concurrency-threads-and-processes",
+              "title": "Concurrency: threads, processes, asyncio"
+            },
+            {
+              "id": "swe-sql-and-orm-patterns",
+              "title": "Database access patterns and ORMs"
+            },
+            {
+              "id": "swe-error-handling-and-retries",
+              "title": "Error handling, retries and idempotency"
+            },
+            {
+              "id": "swe-type-hints-and-static-analysis",
+              "title": "Type hints and static analysis"
+            }
+          ]
         }
       ]
     },
@@ -3502,6 +4165,33 @@
             {
               "id": "consulting-presenting-recommendations",
               "title": "Presenting recommendations"
+            }
+          ]
+        },
+        {
+          "id": "consulting-practice",
+          "title": "Case Practice",
+          "titleZh": "案例练习",
+          "lessons": [
+            {
+              "id": "consulting-case-profitability",
+              "title": "Case: Profitability"
+            },
+            {
+              "id": "consulting-case-market-entry",
+              "title": "Case: Market entry"
+            },
+            {
+              "id": "consulting-case-pricing",
+              "title": "Case: Pricing"
+            },
+            {
+              "id": "consulting-case-ai-adoption-strategy",
+              "title": "Case: AI adoption strategy for a business"
+            },
+            {
+              "id": "consulting-case-math-and-mental-calculation",
+              "title": "Case math and mental calculation"
             }
           ]
         }
@@ -3575,6 +4265,33 @@
             {
               "id": "behavioral-questions-to-ask-the-interviewer",
               "title": "Questions to ask the interviewer"
+            }
+          ]
+        },
+        {
+          "id": "behavioral-more",
+          "title": "More Behavioral Topics",
+          "titleZh": "更多行为面试主题",
+          "lessons": [
+            {
+              "id": "behavioral-explaining-models-to-executives",
+              "title": "Explaining models to executives"
+            },
+            {
+              "id": "behavioral-handling-ambiguity-and-pushback",
+              "title": "Handling ambiguity and stakeholder pushback"
+            },
+            {
+              "id": "behavioral-failure-and-learning-stories",
+              "title": "Failure and learning stories"
+            },
+            {
+              "id": "behavioral-questions-to-ask-interviewers",
+              "title": "Questions to ask the interviewer"
+            },
+            {
+              "id": "behavioral-negotiation-and-career-narrative",
+              "title": "Career narrative and 'why this role?'"
             }
           ]
         }
